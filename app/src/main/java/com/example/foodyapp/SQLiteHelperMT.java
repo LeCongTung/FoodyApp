@@ -1,11 +1,15 @@
 package com.example.foodyapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Blob;
 
 public class SQLiteHelperMT extends SQLiteOpenHelper {
@@ -22,7 +26,7 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
     private static final String COLUMN_IMG = "imgProductMT";
 
 
-    public SQLiteHelperMT(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public SQLiteHelperMT(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -40,7 +44,26 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
         onCreate(DB);
     }
 
-    void addProductMT(){
+    void addProductMT(String name, Integer cost, String image)  {
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        ContentValues CV = new ContentValues();
+
+//        FileInputStream fs = new FileInputStream(image);
+//        byte[] imgbyte = new byte[fs.available()];
+//        fs.read(imgbyte);
+
+        CV.put(COLUMN_NAME, name);
+        CV.put(COLUMN_COST, cost);
+        CV.put(COLUMN_IMG, image);
+
+        long result = DB.insert(TABLE_NAME, null, CV);
+//            fs.close();
+        DB.close();
+
+
+        return result;
+
 
     }
 }
