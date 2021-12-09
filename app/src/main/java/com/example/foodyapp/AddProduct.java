@@ -12,7 +12,7 @@ public class AddProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addproduct);
+        setContentView(R.layout.activity_add_product);
 //        Do from here
 
         ActivityCompat.requestPermissions(this, new String[]
