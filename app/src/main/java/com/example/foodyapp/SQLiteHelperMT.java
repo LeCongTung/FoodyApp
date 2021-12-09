@@ -44,7 +44,7 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
         onCreate(DB);
     }
 
-    void addProductMT(String name, Integer cost, String image)  {
+    public long addProductMT(String name, Integer cost, String image)  {
         SQLiteDatabase DB = this.getWritableDatabase();
 
         ContentValues CV = new ContentValues();
@@ -61,9 +61,6 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
 //            fs.close();
         DB.close();
 
-
         return result;
-
-
     }
 }

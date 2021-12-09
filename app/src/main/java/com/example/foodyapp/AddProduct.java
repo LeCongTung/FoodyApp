@@ -2,6 +2,7 @@ package com.example.foodyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -44,9 +45,9 @@ public class AddProduct extends AppCompatActivity {
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
         inputCost = (EditText) findViewById(R.id.costP);
-
         btnaddImg = (Button) findViewById(R.id.btnaddImage);
 
+        //Event: Click btnaddProduct to adds an item
         btnaddProduct = (Button) findViewById(R.id.btnaddProduct);
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +57,7 @@ public class AddProduct extends AppCompatActivity {
             }
         });
 
-
+        //Event: Click btnback to go back a previous layout
         btnback = (ImageView) findViewById(R.id.btnback);
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +66,24 @@ public class AddProduct extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
+    private boolean checkStoragePermission(){
+        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+        return result;
+    }
 
+    private void requestStoragePermission(){
+        ActivityCompat.requestPermissions(this, storagePermission, STORAGE_REQUEST_CODE);
+    }
+
+    private boolean checkCameraPermission(){
+        boolean resultC = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
+        boolean resultW = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+        return resultC && resultW;
+    }
+
+    private void requestCameraPermission(){
+        ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
 }
