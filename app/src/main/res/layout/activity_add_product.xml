@@ -67,7 +67,6 @@
             android:background="@drawable/bg_orange_btn"
 
             android:drawableLeft="@drawable/ic_camera"
-            android:drawableStart="10dp"
             android:drawablePadding="10dp"
             android:text="Thêm hình ảnh"
             android:textAllCaps="false"
