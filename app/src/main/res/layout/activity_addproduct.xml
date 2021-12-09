@@ -55,7 +55,7 @@
             android:layout_marginTop="20dp" />
 
         <Button
-            android:id="@+id/addImage"
+            android:id="@+id/btnaddImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imgProduct"
@@ -70,14 +70,15 @@
             android:drawableStart="10dp"
             android:drawablePadding="10dp"
             android:text="Thêm hình ảnh"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
 
 <!--        Product Name-->
         <TextView
             android:id="@+id/titleName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/addImage"
+            android:layout_below="@id/btnaddImage"
 
             android:layout_marginTop="50dp"
 
@@ -89,14 +90,13 @@
             android:id="@+id/nameP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/addImage"
+            android:layout_below="@id/btnaddImage"
             android:layout_alignParentRight="true"
             android:layout_marginStart="20dp"
 
             android:layout_marginTop="30dp"
             android:layout_toRightOf="@id/titleName"
-
-            android:hint="vd: Trà sữa"
+            android:hint="Ví dụ: Trà sữa"
             android:textAlignment="center"/>
 
 <!--        Product Cost-->
@@ -107,7 +107,6 @@
             android:layout_below="@id/titleName"
 
             android:layout_marginTop="50dp"
-
             android:text="Giá sản phẩm:"
             android:textColor="@color/black"
             android:textStyle="bold"/>
@@ -123,8 +122,21 @@
             android:layout_marginTop="25dp"
             android:layout_marginStart="25dp"
 
-            android:hint="VND"
+            android:hint="Đơn vị: VNĐ"
             android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/btnaddProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/bg_orange_btn"
+
+            android:text="Thêm sản phẩm vào kho"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
     </RelativeLayout>
     
 
