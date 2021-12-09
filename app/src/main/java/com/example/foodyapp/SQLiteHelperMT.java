@@ -8,21 +8,21 @@ import androidx.annotation.Nullable;
 
 import java.sql.Blob;
 
-public class SQLiteHelper extends SQLiteOpenHelper {
+public class SQLiteHelperMT extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "Product.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE_NAME = "ProductDetail";
-    private static final String COLUMN_ID = "idProduct";
-    private static final String COLUMN_NAME = "nameProduct";
-    private static final String COLUMN_COST = "costProduct";
-    private static final String COLUMN_RATE = "rateProduct";
-    private static final String COLUMN_IMG = "imgProduct";
+    private static final String TABLE_NAME = "ProductDetailMT";
+    private static final String COLUMN_ID = "idProductMT";
+    private static final String COLUMN_NAME = "nameProductMT";
+    private static final String COLUMN_COST = "costProductMT";
+    private static final String COLUMN_RATE = "rateProductMT";
+    private static final String COLUMN_IMG = "imgProductMT";
 
 
-    public SQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public SQLiteHelperMT(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -40,8 +40,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         onCreate(DB);
     }
 
-//    Event For Product
-//    public Boolean insertData (Integer idProduct, String nameProduct, Integer cost, Integer rate, Blob imgProduct){
-//        SQLiteDatabase DB = this.getWritableDatabase()
-//    }
+    void addProductMT(){
+
+    }
 }
