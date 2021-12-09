@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddProduct">
+
+<!--    Header-->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+        android:background="@color/mainColor">
+
+        <ImageView
+            android:id="@+id/btnback"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+
+            android:layout_marginStart="10dp"
+
+            android:src="@drawable/ic_back"/>
+
+        <TextView
+            android:id="@+id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:text="Thêm sản phẩm"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+
+<!--    Main Content-->
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:layout_margin="20dp">
+
+<!--        Product Image-->
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/addImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgProduct"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+
+            android:background="@drawable/bg_orange_btn"
+
+            android:drawableLeft="@drawable/ic_camera"
+            android:drawableStart="10dp"
+            android:drawablePadding="10dp"
+            android:text="Thêm hình ảnh"
+            android:textAllCaps="false"/>
+
+<!--        Product Name-->
+        <TextView
+            android:id="@+id/titleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addImage"
+
+            android:layout_marginTop="50dp"
+
+            android:text="Tên sản phẩm:"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/nameP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/titleName"
+            android:layout_below="@id/addImage"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="20dp"/>
+
+<!--        Product Cost-->
+        <TextView
+            android:id="@+id/titleCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleName"
+
+            android:layout_marginTop="30dp"
+
+            android:text="Giá sản phẩm:"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/costP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/titleCost"
+            android:layout_below="@id/nameP"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginStart="20dp"/>
+    </RelativeLayout>
+    
+
+</RelativeLayout>
