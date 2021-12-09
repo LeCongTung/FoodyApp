@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodyApp">
         <activity
-            android:name=".ShowProduct"
+            android:name=".AddProduct"
             android:exported="true" />
         <activity
-            android:name=".AddProduct"
+            android:name=".ShowProduct"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
