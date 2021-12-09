@@ -83,18 +83,21 @@
 
             android:text="Tên sản phẩm:"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/nameP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/titleName"
             android:layout_below="@id/addImage"
             android:layout_alignParentRight="true"
+            android:layout_marginStart="20dp"
 
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="20dp"/>
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/titleName"
+
+            android:hint="vd: Trà sữa"
+            android:textAlignment="center"/>
 
 <!--        Product Cost-->
         <TextView
@@ -103,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/titleName"
 
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
 
             android:text="Giá sản phẩm:"
             android:textColor="@color/black"
@@ -117,7 +120,11 @@
             android:layout_below="@id/nameP"
             android:layout_alignParentRight="true"
 
-            android:layout_marginStart="20dp"/>
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="25dp"
+
+            android:hint="VND"
+            android:textAlignment="center"/>
     </RelativeLayout>
     
 
