@@ -94,7 +94,6 @@ public class AddProduct extends AppCompatActivity {
     }
 
 
-
     //Event class
     private void imagePickDialog() {
         String[] options = {"Camera", "Gallery"};
