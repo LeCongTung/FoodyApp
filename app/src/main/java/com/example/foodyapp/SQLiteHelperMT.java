@@ -34,7 +34,7 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase DB) {
         String query = "CREATE TABLE " + TABLE_NAME +
-                "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + "TEXT" + COLUMN_COST + "INTEGER" + COLUMN_RATE + "INTEGER" + COLUMN_IMG +"BLOB);";
+                "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + "TEXT" + COLUMN_COST + "INTEGER" + COLUMN_IMG +"BLOB);";
         DB.execSQL(query);
     }
 
