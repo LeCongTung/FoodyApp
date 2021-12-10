@@ -53,25 +53,23 @@
             android:layout_centerHorizontal="true"
 
             android:layout_marginTop="20dp"
-            android:src="@drawable/addImg" />
+            android:src="@drawable/addimage" />
 
-        <Button
+        <TextView
             android:id="@+id/btnaddImage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/imgProduct"
             android:layout_centerHorizontal="true"
 
-            android:layout_marginTop="20dp"
-            android:padding="15dp"
+            android:layout_marginTop="50dp"
+            android:padding="10dp"
 
-            android:background="@drawable/bg_orange_btn"
+            android:background="@color/mainColor"
 
-            android:drawableLeft="@drawable/ic_camera"
-            android:drawablePadding="10dp"
-            android:text="Thêm hình ảnh"
-            android:textAllCaps="false"
-            android:textColor="@color/white"/>
+            android:text="Thông tin sản phẩm"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
 
 <!--        Product Name-->
         <TextView

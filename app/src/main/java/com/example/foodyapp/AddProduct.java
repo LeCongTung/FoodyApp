@@ -60,17 +60,16 @@ public class AddProduct extends AppCompatActivity {
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
         inputCost = (EditText) findViewById(R.id.costP);
-        showImg = (ImageView) findViewById(R.id.imgProduct);
+
         sqlite = new SQLiteHelperMT(this);
 
         //Event: Click btnaddImage to adds an image
-        btnaddImg = (Button) findViewById(R.id.btnaddImage);
-        btnaddImg.setOnClickListener(new View.OnClickListener() {
+        showImg = (ImageView) findViewById(R.id.imgProduct);
+        showImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imagePickDialog();
             }
-
         });
 
         //Event: Click btnaddProduct to add an item
