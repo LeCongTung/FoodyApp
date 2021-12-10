@@ -46,8 +46,7 @@ public class AddProduct extends AppCompatActivity {
 
     //Another
     private Uri imageUri;
-    private String name;
-    private Integer cost;
+    private String name, cost;
     private SQLiteHelperMT sqlite;
 
     @Override
@@ -124,6 +123,12 @@ public class AddProduct extends AppCompatActivity {
     }
 
     private void pickFromGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent, IMAGE_PICK_GALLERY_CODE);
+    }
+
+    private void pickFromCamera() {
         ContentValues CV = new ContentValues();
         CV.put(MediaStore.Images.Media.TITLE, "Image Title");
         CV.put(MediaStore.Images.Media.DESCRIPTION, "Image Description");
@@ -134,19 +139,14 @@ public class AddProduct extends AppCompatActivity {
         startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
     }
 
-    private void pickFromCamera() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
-        galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent, IMAGE_PICK_GALLERY_CODE);
-    }
-
     private void inputData() {
         name = "" + inputName.getText().toString().trim();
-        cost = Integer.valueOf("" + inputCost.getText().toString().trim());
+        cost = "" + inputCost.getText().toString().trim();
 
         String timestamp = "" + System.currentTimeMillis();
         long id = sqlite.addProductMT(
-                "" +name, Integer.valueOf(""+cost), ""+imageUri);
+                "" +name, ""+cost, ""+imageUri);
+        Toast.makeText(this, "Record Added with " + id, Toast.LENGTH_SHORT).show();
     }
 
     //Set permission

@@ -44,7 +44,7 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
         onCreate(DB);
     }
 
-    public long addProductMT(String name, Integer cost, String image)  {
+    public long addProductMT(String name, String cost, String image)  {
         SQLiteDatabase DB = this.getWritableDatabase();
 
         ContentValues CV = new ContentValues();;
