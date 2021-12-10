@@ -21,10 +21,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
 public class AddProduct extends AppCompatActivity {
 
    //view
-    private ImageView btnback;
+    private ImageView btnback, showImg;
     private EditText inputName, inputCost;
     private Button btnaddImg, btnaddProduct;
     private SQLiteHelperMT dbMT;
@@ -55,6 +58,7 @@ public class AddProduct extends AppCompatActivity {
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
         inputCost = (EditText) findViewById(R.id.costP);
+        showImg = (ImageView) findViewById(R.id.imgProduct);
 
         //Event: Click btnaddImage to adds an image
         btnaddImg = (Button) findViewById(R.id.btnaddImage);
@@ -186,8 +190,22 @@ public class AddProduct extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == RESULT_OK){
             if (resultCode == IMAGE_PICK_GALLERY_CODE){
-
-                CropI
+                CropImage.activity(data.getData())
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .setAspectRatio(1, 1)
+                        .start(this);
+            }else if (resultCode == IMAGE_PICK_GALLERY_CODE){
+                CropImage.activity(imageUri)
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .setAspectRatio(1, 1)
+                        .start(this);
+            }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                if (resultCode == RESULT_OK){
+                    Uri resultUri = result.getUri();
+                    imageUri = resultUri;
+                    showImg.setImageURI(resultUri);
+                }
             }
         }
 
