@@ -1,17 +1,25 @@
 package com.example.foodyapp;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class AddProduct extends AppCompatActivity {
 
@@ -33,6 +41,8 @@ public class AddProduct extends AppCompatActivity {
     private String[] cameraPermission;
     private String[] storagePermission;
 
+    Uri imageUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +55,17 @@ public class AddProduct extends AppCompatActivity {
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
         inputCost = (EditText) findViewById(R.id.costP);
-        btnaddImg = (Button) findViewById(R.id.btnaddImage);
 
-        //Event: Click btnaddProduct to adds an item
+        //Event: Click btnaddImage to adds an image
+        btnaddImg = (Button) findViewById(R.id.btnaddImage);
+        btnaddImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imagePickDialog();
+            }
+        });
+
+        //Event: Click btnaddProduct to add an item
         btnaddProduct = (Button) findViewById(R.id.btnaddProduct);
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +86,52 @@ public class AddProduct extends AppCompatActivity {
         });
     }
 
+    //Event class
+    private void imagePickDialog() {
+        String[] options = {"Camera", "Gallery"};
+        //Set AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pick Image From");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i == 0){
+                    if (!checkCameraPermission()){
+                        requestCameraPermission();
+                    }else{
+                        pickFromCamera();
+                    }
+                }else if (i==1){
+                    if (!checkStoragePermission()){
+                        requestStoragePermission();
+                    }else{
+                        pickFromGallery();
+                    }
+                }
+            }
+        });
+        builder.create().show();
+    }
+
+    //Event class
+    private void pickFromGallery() {
+        ContentValues CV = new ContentValues();
+        CV.put(MediaStore.Images.Media.TITLE, "Image Title");
+        CV.put(MediaStore.Images.Media.DESCRIPTION, "Image Description");
+        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, CV);
+
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
+    }
+
+    private void pickFromCamera() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent, IMAGE_PICK_GALLERY_CODE);
+    }
+
+    //Set permission
     private boolean checkStoragePermission(){
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
         return result;
@@ -85,5 +149,48 @@ public class AddProduct extends AppCompatActivity {
 
     private void requestCameraPermission(){
         ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode){
+            case CAMERA_REQUEST_CODE:{
+                if (grantResults.length>0){
+                    boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (cameraAccepted && storageAccepted){
+                        pickFromCamera();
+                    }else{
+                        Toast.makeText(this, "Camera & Storage permissions are required!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }break;
+
+            case STORAGE_REQUEST_CODE:{
+                if (grantResults.length>0){
+                    boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (storageAccepted){
+                        pickFromCamera();
+                    }else{
+                        Toast.makeText(this, "Storage permissions are required!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_OK){
+            if (resultCode == IMAGE_PICK_GALLERY_CODE){
+
+                CropI
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
