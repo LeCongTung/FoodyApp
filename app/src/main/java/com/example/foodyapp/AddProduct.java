@@ -44,8 +44,11 @@ public class AddProduct extends AppCompatActivity {
     private String[] cameraPermission;
     private String[] storagePermission;
 
-    Uri imageUri;
-
+    //Another
+    private Uri imageUri;
+    private String name;
+    private Integer cost;
+    private SQLiteHelperMT sqlite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class AddProduct extends AppCompatActivity {
         inputName = (EditText) findViewById(R.id.nameP);
         inputCost = (EditText) findViewById(R.id.costP);
         showImg = (ImageView) findViewById(R.id.imgProduct);
+        sqlite = new SQLiteHelperMT(this);
 
         //Event: Click btnaddImage to adds an image
         btnaddImg = (Button) findViewById(R.id.btnaddImage);
@@ -67,6 +71,7 @@ public class AddProduct extends AppCompatActivity {
             public void onClick(View view) {
                 imagePickDialog();
             }
+
         });
 
         //Event: Click btnaddProduct to add an item
@@ -74,8 +79,7 @@ public class AddProduct extends AppCompatActivity {
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbMT = new SQLiteHelperMT(AddProduct.this);
-
+                inputData();
             }
         });
 
@@ -89,6 +93,8 @@ public class AddProduct extends AppCompatActivity {
             }
         });
     }
+
+
 
     //Event class
     private void imagePickDialog() {
@@ -117,7 +123,6 @@ public class AddProduct extends AppCompatActivity {
         builder.create().show();
     }
 
-    //Event class
     private void pickFromGallery() {
         ContentValues CV = new ContentValues();
         CV.put(MediaStore.Images.Media.TITLE, "Image Title");
@@ -133,6 +138,15 @@ public class AddProduct extends AppCompatActivity {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK);
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, IMAGE_PICK_GALLERY_CODE);
+    }
+
+    private void inputData() {
+        name = "" + inputName.getText().toString().trim();
+        cost = Integer.valueOf("" + inputCost.getText().toString().trim());
+
+        String timestamp = "" + System.currentTimeMillis();
+        long id = sqlite.addProductMT(
+                "" +name, Integer.valueOf(""+cost), ""+imageUri);
     }
 
     //Set permission
@@ -205,6 +219,9 @@ public class AddProduct extends AppCompatActivity {
                     Uri resultUri = result.getUri();
                     imageUri = resultUri;
                     showImg.setImageURI(resultUri);
+                }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+                    Exception error = result.getError();
+                    Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
                 }
             }
         }

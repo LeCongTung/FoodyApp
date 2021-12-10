@@ -47,18 +47,13 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
     public long addProductMT(String name, Integer cost, String image)  {
         SQLiteDatabase DB = this.getWritableDatabase();
 
-        ContentValues CV = new ContentValues();
-
-//        FileInputStream fs = new FileInputStream(image);
-//        byte[] imgbyte = new byte[fs.available()];
-//        fs.read(imgbyte);
+        ContentValues CV = new ContentValues();;
 
         CV.put(COLUMN_NAME, name);
         CV.put(COLUMN_COST, cost);
         CV.put(COLUMN_IMG, image);
 
         long result = DB.insert(TABLE_NAME, null, CV);
-//            fs.close();
         DB.close();
 
         return result;
