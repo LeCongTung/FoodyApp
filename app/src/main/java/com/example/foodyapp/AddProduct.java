@@ -28,7 +28,7 @@ public class AddProduct extends AppCompatActivity {
 
    //view
     private ImageView btnback, showImg;
-    private EditText inputName, inputCost;
+    private EditText inputName, inputCost, inputLocation;
     private Button btnaddImage, btnaddProduct;
     private SQLiteHelperMT dbMT;
 
@@ -46,7 +46,7 @@ public class AddProduct extends AppCompatActivity {
 
     //Another
     private Uri imageUri;
-    private String name, cost;
+    private String name, cost, location;
     private SQLiteHelperMT sqlite;
 
     @Override
@@ -60,6 +60,7 @@ public class AddProduct extends AppCompatActivity {
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
         inputCost = (EditText) findViewById(R.id.costP);
+        inputLocation = (EditText) findViewById(R.id.locationP);
         showImg = (ImageView) findViewById(R.id.imgProduct);
 
         sqlite = new SQLiteHelperMT(this);
@@ -141,10 +142,11 @@ public class AddProduct extends AppCompatActivity {
     private void inputData() {
         name = "" + inputName.getText().toString().trim();
         cost = "" + inputCost.getText().toString().trim();
+        location = "" + inputLocation.getText().toString().trim();
 
         String timestamp = "" + System.currentTimeMillis();
         long id = sqlite.addProductMT(
-                "" +name, ""+cost, ""+imageUri);
+                "" +name, ""+cost,""+location, ""+imageUri);
         Toast.makeText(this, "Record Added with " + id, Toast.LENGTH_SHORT).show();
     }
 
@@ -167,6 +169,7 @@ public class AddProduct extends AppCompatActivity {
     private void requestCameraPermission(){
         ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

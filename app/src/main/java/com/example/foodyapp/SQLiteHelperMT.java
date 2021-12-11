@@ -22,7 +22,7 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "idProductMT";
     private static final String COLUMN_NAME = "nameProductMT";
     private static final String COLUMN_COST = "costProductMT";
-    private static final String COLUMN_RATE = "rateProductMT";
+    private static final String COLUMN_LOCATION = "rateProductMT";
     private static final String COLUMN_IMG = "imgProductMT";
 
 
@@ -34,7 +34,7 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase DB) {
         String query = "CREATE TABLE " + TABLE_NAME +
-                "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + "TEXT" + COLUMN_COST + "INTEGER" + COLUMN_IMG +"BLOB);";
+                "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + "TEXT" + COLUMN_COST + "INTEGER"+ COLUMN_LOCATION + "TEXT" + COLUMN_IMG +"BLOB);";
         DB.execSQL(query);
     }
 
@@ -44,13 +44,14 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
         onCreate(DB);
     }
 
-    public long addProductMT(String name, String cost, String image)  {
+    public long addProductMT(String name, String cost, String location, String image)  {
         SQLiteDatabase DB = this.getWritableDatabase();
 
         ContentValues CV = new ContentValues();;
 
         CV.put(COLUMN_NAME, name);
         CV.put(COLUMN_COST, cost);
+        CV.put(COLUMN_LOCATION, location);
         CV.put(COLUMN_IMG, image);
 
         long result = DB.insert(TABLE_NAME, null, CV);
