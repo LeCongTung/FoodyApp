@@ -26,28 +26,29 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class AddProduct extends AppCompatActivity {
 
-   //view
+   //View
     private ImageView btnback, showImg;
     private EditText inputName, inputCost, inputLocation;
-    private Button btnaddImg, btnaddProduct;
-    private SQLiteHelperMT dbMT;
-
-    //permission arrays
-    private String[] cameraPermission;
-    private String[] storagePermission;
+    private Button btnaddProduct, btnaddImage;
+    public static SQLiteHelperMT dbMT;
 
     //Another
     private Uri imageUri;
     private String name, cost, location;
-    private SQLiteHelperMT sqlite;
+
+    //Permission
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
         //Init Permission
-        cameraPermission = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        storagePermission = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        //Create database 'tblMilktea
+        dbMT = new SQLiteHelperMT(this, "MILKTEA.sqlite", null, 1);
+        dbMT.queryData("CREATE TABLE IF NOT EXISTS MILKTEA (idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR, priceMT VARCHAR, imageMT BLOB)");
 
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
@@ -55,10 +56,9 @@ public class AddProduct extends AppCompatActivity {
         inputLocation = (EditText) findViewById(R.id.locationP);
         showImg = (ImageView) findViewById(R.id.imgProduct);
 
-
         //Event: Click btnaddImage to adds an image
-        btnaddImg = (Button) findViewById(R.id.btnaddImage);
-        btnaddImg.setOnClickListener(new View.OnClickListener() {
+        btnaddImage = (Button) findViewById(R.id.btnaddImage);
+        btnaddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -86,37 +86,12 @@ public class AddProduct extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
 
     //Event class
-    private void pickFromGallery() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
-        galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent, IMAGE_PICK_GALLERY_CODE);
-    }
-
-    private void pickFromCamera() {
-        ContentValues CV = new ContentValues();
-        CV.put(MediaStore.Images.Media.TITLE, "Image Title");
-        CV.put(MediaStore.Images.Media.DESCRIPTION, "Image Description");
-        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, CV);
-
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
-    }
-
-    private void inputData() {
-        name = "" + inputName.getText().toString().trim();
-        cost = "" + inputCost.getText().toString().trim();
-        location = "" + inputLocation.getText().toString().trim();
-
-        String timestamp = "" + System.currentTimeMillis();
-        long id = sqlite.addProductMT(
-                "" +name, ""+cost,""+location, ""+imageUri);
-        Toast.makeText(this, "Record Added with " + id, Toast.LENGTH_SHORT).show();
-    }
 
 
 }

@@ -30,7 +30,7 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
 
     public void addProductMT(String name, String price, String location, byte[] image){
         db = getWritableDatabase();
-        String sql = "INSERT INTO TRASUA VALUES (NULL, ?, ?, ?)";
+        String sql = "INSERT INTO tblMILKTEA VALUES (NULL, ?, ?, ?)";
 
         st = db.compileStatement(sql);
         st.clearBindings();
