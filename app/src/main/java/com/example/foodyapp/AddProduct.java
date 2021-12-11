@@ -29,7 +29,7 @@ public class AddProduct extends AppCompatActivity {
    //view
     private ImageView btnback, showImg;
     private EditText inputName, inputCost;
-    private Button btnaddImg, btnaddProduct;
+    private Button btnaddImage, btnaddProduct;
     private SQLiteHelperMT dbMT;
 
     //permission constants
@@ -60,12 +60,13 @@ public class AddProduct extends AppCompatActivity {
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
         inputCost = (EditText) findViewById(R.id.costP);
+        showImg = (ImageView) findViewById(R.id.imgProduct);
 
         sqlite = new SQLiteHelperMT(this);
 
         //Event: Click btnaddImage to adds an image
-        showImg = (ImageView) findViewById(R.id.imgProduct);
-        showImg.setOnClickListener(new View.OnClickListener() {
+        btnaddImage = (Button) findViewById(R.id.btnaddImage);
+        btnaddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imagePickDialog();
