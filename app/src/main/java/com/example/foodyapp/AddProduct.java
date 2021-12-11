@@ -1,5 +1,9 @@
 package com.example.foodyapp;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -8,10 +12,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -70,6 +76,7 @@ public class AddProduct extends AppCompatActivity {
         btnaddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 imagePickDialog();
             }
         });
@@ -79,6 +86,7 @@ public class AddProduct extends AppCompatActivity {
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 inputData();
             }
         });
@@ -96,6 +104,7 @@ public class AddProduct extends AppCompatActivity {
 
 
     //Event class
+        //Show dialog selection
     private void imagePickDialog() {
         String[] options = {"Camera", "Gallery"};
         //Set AlertDialog
@@ -125,18 +134,12 @@ public class AddProduct extends AppCompatActivity {
     private void pickFromGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK);
         galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent, IMAGE_PICK_GALLERY_CODE);
+        galleryActivities.launch(galleryIntent);
     }
 
     private void pickFromCamera() {
-        ContentValues CV = new ContentValues();
-        CV.put(MediaStore.Images.Media.TITLE, "Image Title");
-        CV.put(MediaStore.Images.Media.DESCRIPTION, "Image Description");
-        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, CV);
-
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
+        cameraActivities.launch(cameraIntent);
     }
 
     private void inputData() {
@@ -170,7 +173,7 @@ public class AddProduct extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
 
-
+    //Special activities
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -202,32 +205,35 @@ public class AddProduct extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK){
-            if (resultCode == IMAGE_PICK_GALLERY_CODE){
-                CropImage.activity(data.getData())
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .setAspectRatio(1, 1)
-                        .start(this);
-            }else if (resultCode == IMAGE_PICK_GALLERY_CODE){
-                CropImage.activity(imageUri)
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .setAspectRatio(1, 1)
-                        .start(this);
-            }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
-                CropImage.ActivityResult result = CropImage.getActivityResult(data);
-                if (resultCode == RESULT_OK){
-                    Uri resultUri = result.getUri();
-                    imageUri = resultUri;
-                    showImg.setImageURI(resultUri);
-                }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
-                    Exception error = result.getError();
-                    Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
+    private ActivityResultLauncher<Intent> galleryActivities = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK){
+                        Intent data = result.getData();
+                        Uri imageURI = data.getData();
+                        showImg.setImageURI(imageURI);
+                    }else{
+                        Toast.makeText(AddProduct.this, "Cancelled!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
-        }
+    );
 
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+    private ActivityResultLauncher<Intent> cameraActivities = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null){
+                        Bundle bundle = result.getData().getExtras();
+                        Bitmap bitmap = (Bitmap) bundle.get("data");
+                        showImg.setImageBitmap(bitmap);
+                    }else{
+                        Toast.makeText(AddProduct.this, "Cancelled!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+    );
 }
