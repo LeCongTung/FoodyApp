@@ -45,10 +45,13 @@ public class AddProduct extends AppCompatActivity {
     public static SQLiteHelperMT dbMT;
 
     //Another
-
+    int id = 0;
+    String[] cameraPermission;
+    String[] storagePermission;
 
     //Permission
-    final int REQUEST_CODE_GALLERY = 999;
+    final int REQUEST_CODE_CAMERA = 100;
+    final int REQUEST_CODE_GALLERY = 101;
 
 
     @Override
@@ -64,20 +67,12 @@ public class AddProduct extends AppCompatActivity {
         inputLocation = (EditText) findViewById(R.id.locationP);
 
         showImg = (ImageView) findViewById(R.id.imgProduct);
+        btnback = (ImageView) findViewById(R.id.btnback);
 
-        //Event: Click btnaddImage to adds an image
         btnaddImage = (Button) findViewById(R.id.btnaddImage);
-//        btnaddImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Intent.ACTION_PICK);
-//                intent.setType("image/*");
-//                galleryPermission.launch(intent);
-//            }
-//        });
+        btnback = (ImageView) findViewById(R.id.btnback);
 
         //Event: Click btnaddProduct to add an item
-        btnaddProduct = (Button) findViewById(R.id.btnaddProduct);
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +86,6 @@ public class AddProduct extends AppCompatActivity {
         });
 
         //Event: Click btnback to go back a previous layout
-        btnback = (ImageView) findViewById(R.id.btnback);
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +94,6 @@ public class AddProduct extends AppCompatActivity {
 
             }
         });
-
 
     }
 

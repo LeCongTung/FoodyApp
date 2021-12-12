@@ -39,8 +39,8 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
+        String query = "DROP TABLE IF EXISTS " + TABLE_NAME;
+        db.execSQL(query);
     }
 
     void InsertMT(String name, int price, String location){
