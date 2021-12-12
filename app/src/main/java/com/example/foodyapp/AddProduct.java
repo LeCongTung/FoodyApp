@@ -1,5 +1,9 @@
 package com.example.foodyapp;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -41,8 +45,7 @@ public class AddProduct extends AppCompatActivity {
     public static SQLiteHelperMT dbMT;
 
     //Another
-    private Uri imageUri;
-    private String name, cost, location;
+
 
     //Permission
     final int REQUEST_CODE_GALLERY = 999;
@@ -54,50 +57,36 @@ public class AddProduct extends AppCompatActivity {
         setContentView(R.layout.activity_add_product);
         //Init Permission
 
-        //Create database 'tblMilktea
-        dbMT = new SQLiteHelperMT(this, "MILKTEA.sqlite", null, 1);
-        dbMT.queryData("CREATE TABLE IF NOT EXISTS MILKTEA (idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR, priceMT VARCHAR, imageMT BLOB)");
 
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
         inputPrice = (EditText) findViewById(R.id.costP);
         inputLocation = (EditText) findViewById(R.id.locationP);
+
         showImg = (ImageView) findViewById(R.id.imgProduct);
 
         //Event: Click btnaddImage to adds an image
         btnaddImage = (Button) findViewById(R.id.btnaddImage);
-        btnaddImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ActivityCompat.requestPermissions(
-                        AddProduct.this,
-                        new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
-                        REQUEST_CODE_GALLERY);
-            }
-
-        });
+//        btnaddImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Intent.ACTION_PICK);
+//                intent.setType("image/*");
+//                galleryPermission.launch(intent);
+//            }
+//        });
 
         //Event: Click btnaddProduct to add an item
         btnaddProduct = (Button) findViewById(R.id.btnaddProduct);
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    dbMT.addProductMT(
-                            inputName.getText().toString().trim(),
-                            inputPrice.getText().toString().trim(),
-                            inputLocation.getText().toString().trim(),
-                            imageViewToByte(showImg)
-                    );
-                    Toast.makeText(getApplicationContext(), "Added Successfully", Toast.LENGTH_SHORT).show();
-                    inputName.setText("");
-                    inputPrice.setText("");
-                    inputLocation.setText("");
-                    showImg.setImageResource(R.drawable.addimage);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
+                dbMT = new SQLiteHelperMT(AddProduct.this);
+                dbMT.InsertMT(
+                        inputName.getText().toString().trim(),
+                        Integer.valueOf(inputPrice.getText().toString().trim()),
+                        inputLocation.getText().toString().trim()
+                );
             }
         });
 
@@ -116,43 +105,31 @@ public class AddProduct extends AppCompatActivity {
     }
 
     //Get images from Gallery
-    private byte[] imageViewToByte(ImageView image) {
-        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        return byteArray;
-    }
+//    private byte[] imageViewToByte(ImageView image) {
+//        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//        byte[] byteArray = stream.toByteArray();
+//        return byteArray;
+//    }
+
+//    private ActivityResultLauncher<Intent> galleryPermission = registerForActivityResult(
+//            new ActivityResultContracts.StartActivityForResult(),
+//            new ActivityResultCallback<ActivityResult>() {
+//                @Override
+//                public void onActivityResult(ActivityResult result) {
+//                    if (result.getResultCode() == RESULT_OK && result.getData() != null){
+//                        Intent intent = result.getData();
+//                        Uri imageUri = intent.getData();
+//                        showImg.setImageURI(imageUri);
+//                    }else{
+//                        Toast.makeText(AddProduct.this, "Cancelled!", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            }
+//    );
 
 
     //Declaration Permissions
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_CODE_GALLERY){
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, REQUEST_CODE_GALLERY);
-            }else {
-                Toast.makeText(getApplicationContext(), "Error!", Toast.LENGTH_SHORT).show();
-            }
-        }
 
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == REQUEST_CODE_GALLERY && requestCode == RESULT_OK && data != null){
-            Uri imageURI = data.getData();
-            try {
-                InputStream inputStream = getContentResolver().openInputStream(imageURI);
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                showImg.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 }

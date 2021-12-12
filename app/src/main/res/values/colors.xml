@@ -10,4 +10,7 @@
 
 <!--    Colors for applications-->
     <color name="mainColor">#FF7000</color>
+    <color name="editColor">#335DB1</color>
+    <color name="deleteColor">#CF2E2E</color>
+
 </resources>

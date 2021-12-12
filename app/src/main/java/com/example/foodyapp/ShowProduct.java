@@ -8,10 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 public class ShowProduct extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    ListView listview;
     Button btnadd;
     ImageView btnback;
 
@@ -20,10 +21,12 @@ public class ShowProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_product);
 
-        recyclerView = (RecyclerView) findViewById(R.id.listProduct);
+        listview = (ListView) findViewById(R.id.listProduct);
 
         btnback = (ImageView) findViewById(R.id.btnback);
 
+
+        //Event: Click btnadd to go to AddProduct
         btnadd = (Button) findViewById(R.id.btnaaddForm);
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,5 +35,7 @@ public class ShowProduct extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
+
 }
