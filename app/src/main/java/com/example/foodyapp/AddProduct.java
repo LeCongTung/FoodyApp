@@ -61,7 +61,7 @@ public class AddProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
         //Init Permission
-
+        dbMT = new SQLiteHelperMT(this);
 
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
@@ -96,6 +96,23 @@ public class AddProduct extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Event: Insert datas
+    void InsertMT(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_NAME, name);
+        cv.put(COLUMN_PRICE, price);
+        cv.put(COLUMN_LOCATION, location);
+
+        long result = db.insert(TABLE_NAME, null, cv);
+        if (result == -1){
+            Toast.makeText(context, "Lỗi!", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Get images from Gallery
