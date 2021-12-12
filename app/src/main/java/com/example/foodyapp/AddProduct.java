@@ -21,6 +21,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -43,6 +44,7 @@ public class AddProduct extends AppCompatActivity {
     private EditText inputName, inputPrice, inputLocation;
     private Button btnaddProduct, btnaddImage;
     public static SQLiteHelperMT dbMT;
+    SQLiteDatabase sqLiteDatabase;
 
     //Another
     int id = 0;
@@ -76,12 +78,11 @@ public class AddProduct extends AppCompatActivity {
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbMT = new SQLiteHelperMT(AddProduct.this);
-                dbMT.InsertMT(
-                        inputName.getText().toString().trim(),
-                        Integer.valueOf(inputPrice.getText().toString().trim()),
-                        inputLocation.getText().toString().trim()
-                );
+                ContentValues cv = new ContentValues();
+                cv.put("nameMT", inputName.getText().toString());
+                cv.put("priceMT", inputName.getText().toString());
+                cv.put("locationMT", inputName.getText().toString());
+
             }
         });
 
@@ -98,13 +99,13 @@ public class AddProduct extends AppCompatActivity {
     }
 
     //Get images from Gallery
-//    private byte[] imageViewToByte(ImageView image) {
-//        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//        byte[] byteArray = stream.toByteArray();
-//        return byteArray;
-//    }
+    private byte[] imageViewToByte(ImageView image) {
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
+    }
 
 //    private ActivityResultLauncher<Intent> galleryPermission = registerForActivityResult(
 //            new ActivityResultContracts.StartActivityForResult(),
