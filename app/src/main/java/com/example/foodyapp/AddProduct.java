@@ -1,5 +1,7 @@
 package com.example.foodyapp;
 
+import static com.example.foodyapp.SQLiteHelperMT.TABLE_NAME;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -39,7 +41,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class AddProduct extends AppCompatActivity {
 
-   //View
+    //View
     private ImageView btnback, showImg;
     private EditText inputName, inputPrice, inputLocation;
     private Button btnaddProduct, btnaddImage;
@@ -80,10 +82,7 @@ public class AddProduct extends AppCompatActivity {
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ContentValues cv = new ContentValues();
-                cv.put("nameMT", inputName.getText().toString());
-                cv.put("priceMT", inputName.getText().toString());
-                cv.put("locationMT", inputName.getText().toString());
+                InsertMT();
 
             }
         });
@@ -109,22 +108,25 @@ public class AddProduct extends AppCompatActivity {
         cv.put("locationMT", inputLocation.getText().toString());
         sqLiteDatabase = dbMT.getWritableDatabase();
 
-        long result = sqLiteDatabase.insert(TABLE, null, cv);
+        long result = sqLiteDatabase.insert(TABLE_NAME, null, cv);
         if (result == -1){
-            Toast.makeText(context, "Lỗi!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddProduct.this, "Lỗi!", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddProduct.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+            inputName.setText("");
+            inputPrice.setText("");
+            inputLocation.setText("");
         }
     }
 
     //Get images from Gallery
-    private byte[] imageViewToByte(ImageView image) {
-        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        return byteArray;
-    }
+//    private byte[] imageViewToByte(ImageView image) {
+//        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+//        byte[] byteArray = stream.toByteArray();
+//        return byteArray;
+//    }
 
 //    private ActivityResultLauncher<Intent> galleryPermission = registerForActivityResult(
 //            new ActivityResultContracts.StartActivityForResult(),

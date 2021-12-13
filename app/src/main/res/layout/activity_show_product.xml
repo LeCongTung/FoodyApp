@@ -61,8 +61,8 @@
             android:layout_marginBottom="40dp"
             android:background="@drawable/bg_orange_btn"
             android:text="+"
-            android:textSize="45sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="45sp" />
     </RelativeLayout>
 
 </RelativeLayout>

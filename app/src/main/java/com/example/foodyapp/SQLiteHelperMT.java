@@ -18,7 +18,7 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Product.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE_NAME = "tblMILKTEA";
+    public static final String TABLE_NAME = "tblMILKTEA";
     private static final String COLUMN_ID = "idMT";
     private static final String COLUMN_NAME = "nameMT";
     private static final String COLUMN_PRICE = "priceMT";
@@ -41,21 +41,5 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         String query = "DROP TABLE IF EXISTS " + TABLE_NAME;
         db.execSQL(query);
-    }
-
-    void InsertMT(String name, int price, String location){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-        cv.put(COLUMN_NAME, name);
-        cv.put(COLUMN_PRICE, price);
-        cv.put(COLUMN_LOCATION, location);
-
-        long result = db.insert(TABLE_NAME, null, cv);
-        if (result == -1){
-            Toast.makeText(context, "Lỗi!", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-        }
     }
 }
