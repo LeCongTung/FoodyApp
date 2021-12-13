@@ -55,6 +55,8 @@ public class AddProduct extends AppCompatActivity {
     final int REQUEST_CODE_CAMERA = 100;
     final int REQUEST_CODE_GALLERY = 101;
 
+//    =new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//    =new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,14 +102,14 @@ public class AddProduct extends AppCompatActivity {
 
     //Event: Insert datas
     void InsertMT(){
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_NAME, name);
-        cv.put(COLUMN_PRICE, price);
-        cv.put(COLUMN_LOCATION, location);
+        cv.put("nameMT", inputName.getText().toString());
+        cv.put("price", inputPrice.getText().toString());
+        cv.put("locationMT", inputLocation.getText().toString());
+        sqLiteDatabase = dbMT.getWritableDatabase();
 
-        long result = db.insert(TABLE_NAME, null, cv);
+        long result = sqLiteDatabase.insert(TABLE, null, cv);
         if (result == -1){
             Toast.makeText(context, "Lỗi!", Toast.LENGTH_SHORT).show();
         }else {
