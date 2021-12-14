@@ -99,10 +99,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btnaddImage"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/titleName"
-
             android:layout_marginStart="20dp"
+
             android:layout_marginTop="40dp"
+            android:layout_toRightOf="@id/titleName"
 
             android:hint="Ví dụ: Trà sữa"
             android:textAlignment="center"
@@ -126,10 +126,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/nameP"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/titleCost"
-
             android:layout_marginStart="25dp"
+
             android:layout_marginTop="25dp"
+            android:layout_toRightOf="@id/titleCost"
 
             android:hint="Đơn vị: VNĐ"
             android:textAlignment="center"

@@ -24,22 +24,28 @@ public class SQLiteHelperMT extends SQLiteOpenHelper {
     private static final String COLUMN_PRICE = "priceMT";
     private static final String COLUMN_LOCATION = "locationMT";
 
+    public SQLiteHelperMT(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
 
-    public SQLiteHelperMT(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
+    public void QueryData(String sql){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+    }
+
+    public Cursor GetData(String sql){
+        SQLiteDatabase db = getReadableDatabase();
+        return db.rawQuery(sql, null);
+    }
+
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + TABLE_NAME +
-                "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + "TEXT, " + COLUMN_PRICE + "INTEGER, " + COLUMN_LOCATION + "TEXT );";
-        db.execSQL(query);
-    }
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        String query = "DROP TABLE IF EXISTS " + TABLE_NAME;
-        db.execSQL(query);
     }
 }

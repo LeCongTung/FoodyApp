@@ -23,6 +23,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,16 +37,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
-
 public class AddProduct extends AppCompatActivity {
 
     //View
     private ImageView btnback, showImg;
     private EditText inputName, inputPrice, inputLocation;
     private Button btnaddProduct, btnaddImage;
-    public static SQLiteHelperMT dbMT;
+    SQLiteHelperMT dbMT;
     SQLiteDatabase sqLiteDatabase;
 
     //Another
@@ -64,8 +62,6 @@ public class AddProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
-        //Init Permission
-        dbMT = new SQLiteHelperMT(this);
 
         //Init View
         inputName = (EditText) findViewById(R.id.nameP);
@@ -76,13 +72,13 @@ public class AddProduct extends AppCompatActivity {
         btnback = (ImageView) findViewById(R.id.btnback);
 
         btnaddImage = (Button) findViewById(R.id.btnaddImage);
-        btnback = (ImageView) findViewById(R.id.btnback);
 
         //Event: Click btnaddProduct to add an item
+        btnaddProduct = (Button) findViewById(R.id.btnaddProduct);
         btnaddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                InsertMT();
+
 
             }
         });
@@ -93,31 +89,13 @@ public class AddProduct extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(AddProduct.this, ShowProduct.class);
                 startActivity(intent);
-
             }
         });
 
     }
 
     //Event: Insert datas
-    void InsertMT(){
-        ContentValues cv = new ContentValues();
 
-        cv.put("nameMT", inputName.getText().toString());
-        cv.put("price", inputPrice.getText().toString());
-        cv.put("locationMT", inputLocation.getText().toString());
-        sqLiteDatabase = dbMT.getWritableDatabase();
-
-        long result = sqLiteDatabase.insert(TABLE_NAME, null, cv);
-        if (result == -1){
-            Toast.makeText(AddProduct.this, "Lỗi!", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(AddProduct.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-            inputName.setText("");
-            inputPrice.setText("");
-            inputLocation.setText("");
-        }
-    }
 
     //Get images from Gallery
 //    private byte[] imageViewToByte(ImageView image) {
