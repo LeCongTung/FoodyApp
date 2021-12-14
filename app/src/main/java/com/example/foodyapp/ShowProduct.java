@@ -39,9 +39,9 @@ public class ShowProduct extends AppCompatActivity {
         dbMT = new SQLiteHelperMT(this, "Product.sqlite", null, 1);
 
         //Create table
-        dbMT.QueryData("CREATE TABLE IF NOT EXISTS tblMilkTea(idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR(100), locationMT VARCHAR(255))");
-//        dbMT.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Tra sua thao moc', '113 Le Loi, Da Nang')");
-//        dbMT.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Tra dao', '113 Le Loi, Da Nang')");
+        dbMT.QueryData("CREATE TABLE IF NOT EXISTS tblMilkTea(idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR(100), price INTEGER, locationMT VARCHAR(255))");
+//        dbMT.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa thảo mộc', 30000, '113 Lê Lợi, Đà Nẵng')");
+//        dbMT.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sũa matcha', 25000, '113 Lê Lợi, Đà Nẵng')");
 
 
 
@@ -50,16 +50,11 @@ public class ShowProduct extends AppCompatActivity {
         while (dataMT.moveToNext()){
             int id = dataMT.getInt(0);
             String name = dataMT.getString(1);
-//            int price = dataMT.getInt(2);
-            String location = dataMT.getString(2);
-            arrayListMT.add(new MilkTea(id, name, location));
+            int price = dataMT.getInt(2);
+            String location = dataMT.getString(3);
+            arrayListMT.add(new MilkTea(id, name, price, location));
         }
         adapterMT.notifyDataSetChanged();
-
-        //Init Elements
-
-
-        btnback = (ImageView) findViewById(R.id.btnback);
 
         //Event: Click btnadd to go to AddProduct
         btnadd = (Button) findViewById(R.id.btnaaddForm);

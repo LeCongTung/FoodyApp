@@ -3,7 +3,7 @@ package com.example.foodyapp;
 public class MilkTea {
     private int id;
     private String name;
-//    private int price;
+    private int price;
     private String location;
 
     public MilkTea(int id, String name, int price, String location) {
@@ -32,13 +32,9 @@ public class MilkTea {
         this.name = name;
     }
 
-//    public int getPrice() {
-//        return price;
-//    }
-//
-//    public void setPrice(int price) {
-//        this.price = price;
-//    }
+    public int getPrice() { return price; }
+
+    public void setPrice(int price) { this.price = price; }
 
     public String getLocation() {
         return location;

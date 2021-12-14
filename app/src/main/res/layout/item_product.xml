@@ -1,111 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contentItem"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="150dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/bg_white_itemlist">
 
-    android:layout_margin="10dp">
+    <ImageView
+        android:id="@+id/imageProduct"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:src="@drawable/addimage" />
 
     <RelativeLayout
-        android:id="@+id/contentItem"
+        android:id="@+id/informationItem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
 
-        <ImageView
-            android:id="@+id/imageProduct"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
+        android:layout_toRightOf="@id/imageProduct">
 
-            android:src="@drawable/addimage" />
-
-        <RelativeLayout
-            android:id="@+id/infoProduct"
+        <TextView
+            android:id="@+id/nameProduct"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_toRightOf="@id/imageProduct">
+            android:layout_height="wrap_content"
 
-            <TextView
-                android:id="@+id/nameProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
 
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+            android:text="Name:"
+            android:textColor="@color/mainColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-                android:text="Name:"
-                android:textColor="@color/mainColor"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/priceProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nameProduct"
-
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-
-                android:text="Address"
-                android:textColor="@color/mainColor"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/locationProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/priceProduct"
-
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-
-                android:text="Address"
-                android:textColor="@color/mainColor"
-                android:textSize="15sp" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/Eventbtn"
+        <TextView
+            android:id="@+id/priceProduct"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/infoProduct"
-            android:layout_toRightOf="@id/imageProduct"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameProduct"
 
-            <Button
-                android:id="@+id/btnEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
 
-                android:background="@color/editColor"
+            android:text="Price"
+            android:textColor="@color/mainColor"
+            android:textSize="15sp" />
 
-                android:drawableLeft="@drawable/ic_edit"
-                android:paddingStart="20dp"
+        <TextView
+            android:id="@+id/locationProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priceProduct"
 
-                android:text="Sửa"
-                android:textColor="@color/white"
-                android:textAlignment="center"/>
+            android:layout_marginTop="5dp"
 
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-
-                android:background="@color/deleteColor"
-
-                android:drawableLeft="@drawable/ic_delete"
-                android:paddingStart="20dp"
-
-                android:text="Xóa"
-                android:textColor="@color/white" />
-        </LinearLayout>
-
-
+            android:text="Address"
+            android:textColor="@color/mainColor"
+            android:textSize="15sp" />
     </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:id="@+id/EventBtn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/informationItem"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:src="@drawable/ic_edit"/>
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:src="@drawable/ic_delete"/>
+
+    </LinearLayout>
+</RelativeLayout>

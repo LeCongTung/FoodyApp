@@ -14,10 +14,13 @@
         android:theme="@style/Theme.FoodyApp">
         <activity
             android:name=".AddProduct"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Thêm sản phẩm"
+            android:parentActivityName=".ShowProduct"/>
         <activity
             android:name=".ShowProduct"
-            android:exported="true">
+            android:exported="true"
+            android:label="Sản phẩm đang có">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -40,7 +40,7 @@ import android.widget.Toast;
 public class AddProduct extends AppCompatActivity {
 
     //View
-    private ImageView btnback, showImg;
+    private ImageView showImg;
     private EditText inputName, inputPrice, inputLocation;
     private Button btnaddProduct, btnaddImage;
     SQLiteHelperMT dbMT;
@@ -69,7 +69,6 @@ public class AddProduct extends AppCompatActivity {
         inputLocation = (EditText) findViewById(R.id.locationP);
 
         showImg = (ImageView) findViewById(R.id.imgProduct);
-        btnback = (ImageView) findViewById(R.id.btnback);
 
         btnaddImage = (Button) findViewById(R.id.btnaddImage);
 
@@ -80,15 +79,6 @@ public class AddProduct extends AppCompatActivity {
             public void onClick(View view) {
 
 
-            }
-        });
-
-        //Event: Click btnback to go back a previous layout
-        btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddProduct.this, ShowProduct.class);
-                startActivity(intent);
             }
         });
 

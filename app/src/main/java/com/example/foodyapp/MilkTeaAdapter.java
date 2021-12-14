@@ -53,7 +53,7 @@ public class MilkTeaAdapter extends BaseAdapter {
             convertView = inflater.inflate(layout, null);
 
             vh.name = (TextView) convertView.findViewById(R.id.nameProduct);
-//            vh.price = (TextView) convertView.findViewById(R.id.priceProduct);
+            vh.price = (TextView) convertView.findViewById(R.id.priceProduct);
             vh.location = (TextView) convertView.findViewById(R.id.locationProduct);
             convertView.setTag(vh);
         }else{
@@ -62,7 +62,7 @@ public class MilkTeaAdapter extends BaseAdapter {
 
         MilkTea mt = MilkTealist.get(postion);
         vh.name.setText(mt.getName());
-//        vh.price.setText(mt.getPrice());
+        vh.price.setText(String.valueOf(mt.getPrice()));
         vh.location.setText(mt.getLocation());
         return convertView;
     }
