@@ -65,7 +65,7 @@ public class MilkTeaAdapter extends BaseAdapter {
             vh = (viewHolder) view.getTag();
         }
         MilkTea dt = mtlist.get(i);
-        vh.tvid.setText(String.valueOf(dt.getIdMT()));
+        vh.tvid.setText(String.valueOf(dt.getIdMT()) + ".");
         vh.tvname.setText(dt.getNameMT());
         vh.tvprice.setText(String.valueOf(dt.getPriceMT()));
         vh.tvlocation.setText(dt.getLocationMT());

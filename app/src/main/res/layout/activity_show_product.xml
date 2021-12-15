@@ -13,24 +13,9 @@
         android:layout_height="match_parent">
 
         <ListView
-            android:id="@+id/listProduct"
+            android:id="@+id/list_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-        <Button
-            android:id="@+id/btnaaddForm"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-
-            android:layout_marginRight="20dp"
-
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_orange_btn"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="45sp" />
     </RelativeLayout>
 
 </RelativeLayout>
