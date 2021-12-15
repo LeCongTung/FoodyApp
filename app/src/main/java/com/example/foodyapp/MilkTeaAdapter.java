@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -16,17 +17,17 @@ public class MilkTeaAdapter extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private List<MilkTea> MilkTealist;
+    private List<MilkTea> mtlist;
 
-    public MilkTeaAdapter(Context context, int layout, List<MilkTea> milkTealist) {
+    public MilkTeaAdapter(Context context, int layout, List<MilkTea> mtlist) {
         this.context = context;
         this.layout = layout;
-        MilkTealist = milkTealist;
+        this.mtlist = mtlist;
     }
 
     @Override
     public int getCount() {
-        return MilkTealist.size();
+        return mtlist.size();
     }
 
     @Override
@@ -39,31 +40,35 @@ public class MilkTeaAdapter extends BaseAdapter {
         return 0;
     }
 
-    private class ViewHolder{
-        TextView name, price, location;
-        Button btnedit, btndelete;
+    private class viewHolder{
+        TextView tvid, tvname, tvprice, tvlocation;
+        ImageView btnedit, btndelete;
     }
 
     @Override
-    public View getView(int postion, View convertView, ViewGroup parent) {
-        ViewHolder vh;
-        if (convertView == null){
-            vh = new ViewHolder();
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        viewHolder vh;
+        if (view == null){
+            vh = new viewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(layout, null);
+            view = inflater.inflate(layout, null);
 
-            vh.name = (TextView) convertView.findViewById(R.id.nameProduct);
-            vh.price = (TextView) convertView.findViewById(R.id.priceProduct);
-            vh.location = (TextView) convertView.findViewById(R.id.locationProduct);
-            convertView.setTag(vh);
-        }else{
-            vh = (ViewHolder) convertView.getTag();
+            vh.tvid = (TextView) view.findViewById(R.id.tvid);
+            vh.tvname = (TextView) view.findViewById(R.id.tvname);
+            vh.tvprice = (TextView) view.findViewById(R.id.tvprice);
+            vh.tvprice = (TextView) view.findViewById(R.id.tvprice);
+            vh.tvlocation = (TextView) view.findViewById(R.id.tvlocation);
+            vh.btnedit = (ImageView) view.findViewById(R.id.btnedit);
+            vh.btndelete = (ImageView) view.findViewById(R.id.btndelete);
+            view.setTag(vh);
+        }else {
+            vh = (viewHolder) view.getTag();
         }
-
-        MilkTea mt = MilkTealist.get(postion);
-        vh.name.setText(mt.getName());
-        vh.price.setText(String.valueOf(mt.getPrice()));
-        vh.location.setText(mt.getLocation());
-        return convertView;
+        MilkTea dt = mtlist.get(i);
+        vh.tvid.setText(String.valueOf(dt.getIdMT()));
+        vh.tvname.setText(dt.getNameMT());
+        vh.tvprice.setText(String.valueOf(dt.getPriceMT()));
+        vh.tvlocation.setText(dt.getLocationMT());
+        return view;
     }
 }

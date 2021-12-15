@@ -17,55 +17,40 @@ import java.util.ArrayList;
 
 public class ShowProduct extends AppCompatActivity {
 
-    ListView listview;
-    Button btnadd;
-    ImageView btnback;
-    SQLiteHelperMT dbMT;
-    SQLiteDatabase sqLiteDatabase;
-    ArrayList<MilkTea> arrayListMT;
-    MilkTeaAdapter adapterMT;
+    SQLiteHelperMT db;
+    ListView lsv;
+    ArrayList<MilkTea> arrayMT;
+    MilkTeaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_product);
 
-        listview = (ListView) findViewById(R.id.listProduct);
-        arrayListMT = new ArrayList<>();
-        adapterMT = new MilkTeaAdapter(this, R.layout.item_product, arrayListMT);
-        listview.setAdapter(adapterMT);
+        lsv = (ListView) findViewById(R.id.list_item);
+        arrayMT = new ArrayList<>();
+        adapter = new MilkTeaAdapter(this, R.layout.item_product, arrayMT);
+        lsv.setAdapter(adapter);
+        ;
+        db = new SQLiteHelperMT(this, "Product.sqlite", null, 1);
 
-        //Init using data from Database *Product.sqlite
-        dbMT = new SQLiteHelperMT(this, "Product.sqlite", null, 1);
+        db.QueryData("CREATE TABLE IF NOT EXISTS tblMilktea (idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR(200), priceMT INTEGER, locationMT VARCHAR(200))");
+        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà đào', 25000, '113 Lê Lợi, Đà Nẵng')");
+        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà chanh', 23000, '113 Lê Lợi, Đà Nẵng')");
+        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa trân châu đường đen', 30000, '113 Lê Lợi, Đà Nẵng')");
+        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa hỗn hợp', 35000, '20 Nguyễn Văn Linh, Đà Nẵng')");
+        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa Hokaido', 40000, '20 Nguyễn Văn Linh, Đà Nẵng')");
 
-        //Create table
-        dbMT.QueryData("CREATE TABLE IF NOT EXISTS tblMilkTea(idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR(100), price INTEGER, locationMT VARCHAR(255))");
-//        dbMT.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa thảo mộc', 30000, '113 Lê Lợi, Đà Nẵng')");
-//        dbMT.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sũa matcha', 25000, '113 Lê Lợi, Đà Nẵng')");
+        Cursor DataMilkTea = db.GetData("SELECT * FROM tblMilkTea");
+        while (DataMilkTea.moveToNext()){
+            int id = DataMilkTea.getInt(0);
+            String name = DataMilkTea.getString(1);
+            int price = DataMilkTea.getInt(2);
+            String location = DataMilkTea.getString(3);
+            arrayMT.add(new MilkTea(id, name, price, location));
 
-
-
-        //Show data
-        Cursor dataMT = dbMT.GetData("SELECT * FROM tblMilkTea");
-        while (dataMT.moveToNext()){
-            int id = dataMT.getInt(0);
-            String name = dataMT.getString(1);
-            int price = dataMT.getInt(2);
-            String location = dataMT.getString(3);
-            arrayListMT.add(new MilkTea(id, name, price, location));
         }
-        adapterMT.notifyDataSetChanged();
-
-        //Event: Click btnadd to go to AddProduct
-        btnadd = (Button) findViewById(R.id.btnaaddForm);
-        btnadd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ShowProduct.this, AddProduct.class);
-                startActivity(intent);
-            }
-        });
-
+        adapter.notifyDataSetChanged();
     }
 
 }

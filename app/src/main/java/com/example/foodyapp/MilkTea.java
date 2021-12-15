@@ -1,46 +1,52 @@
 package com.example.foodyapp;
 
 public class MilkTea {
-    private int id;
-    private String name;
-    private int price;
-    private String location;
+    private int idMT;
+    private String nameMT;
+    private int priceMT;
+    private String locationMT;
 
-    public MilkTea(int id, String name, int price, String location) {
-        this.id = id;
-        this.name = name;
-//        this.price = price;
-        this.location = location;
+    public MilkTea(int idMT, String nameMT, int priceMT, String locationMT) {
+        this.idMT = idMT;
+        this.nameMT = nameMT;
+        this.priceMT = priceMT;
+        this.locationMT = locationMT;
     }
 
-    public MilkTea(int id, String name, String location) {
+    public String getLocationMT() {
+        return locationMT;
     }
 
-    public int getId() {
-        return id;
+    public void setLocationMT(String locationMT) {
+        this.locationMT = locationMT;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+    public int getIdMT() {
+        return idMT;
     }
 
-    public String getName() {
-        return name;
+    public void setIdMT(int idMT) {
+        this.idMT = idMT;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNameMT() {
+        return nameMT;
     }
 
-    public int getPrice() { return price; }
-
-    public void setPrice(int price) { this.price = price; }
-
-    public String getLocation() {
-        return location;
+    public void setNameMT(String nameMT) {
+        this.nameMT = nameMT;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public int getPriceMT() {
+        return priceMT;
     }
+
+    public void setPriceMT(int priceMT) {
+        this.priceMT = priceMT;
+    }
+
+
+
+
 }

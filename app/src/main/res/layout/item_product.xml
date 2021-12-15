@@ -1,84 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/contentItem"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:layout_margin="10dp"
-    android:background="@drawable/bg_white_itemlist">
+    android:layout_height="50dp"
+    android:layout_marginBottom="5dp"
+    android:background="#CCCACA">
+
+    <TextView
+        android:id="@+id/tvid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:text="id"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tvid"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:text="name"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@id/tvname"
+        android:text="price"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@id/tvprice"
+        android:text="location"
+        android:textColor="@color/black" />
+
 
     <ImageView
-        android:id="@+id/imageProduct"
-        android:layout_width="120dp"
-        android:layout_height="150dp"
-        android:src="@drawable/addimage" />
-
-    <RelativeLayout
-        android:id="@+id/informationItem"
-        android:layout_width="match_parent"
+        android:id="@+id/btnedit"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_toLeftOf="@id/btndelete"
 
-        android:layout_toRightOf="@id/imageProduct">
+        android:background="@drawable/bg_blue"
+        android:src="@drawable/ic_edit" />
 
-        <TextView
-            android:id="@+id/nameProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="5dp"
-
-            android:text="Name:"
-            android:textColor="@color/mainColor"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/priceProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nameProduct"
-
-            android:layout_marginTop="5dp"
-
-            android:text="Price"
-            android:textColor="@color/mainColor"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/locationProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/priceProduct"
-
-            android:layout_marginTop="5dp"
-
-            android:text="Address"
-            android:textColor="@color/mainColor"
-            android:textSize="15sp" />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/EventBtn"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/btndelete"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@id/informationItem"
-        android:orientation="vertical"
-        android:weightSum="2">
+        android:layout_alignParentRight="true"
 
-        <ImageView
-            android:id="@+id/btnEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+        android:background="@drawable/bg_red"
+        android:src="@drawable/ic_delete" />
 
-            android:src="@drawable/ic_edit"/>
-        <ImageView
-            android:id="@+id/btnDelete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-
-            android:src="@drawable/ic_delete"/>
-
-    </LinearLayout>
 </RelativeLayout>

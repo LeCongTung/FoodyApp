@@ -24,9 +24,9 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
 
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="20dp"
 
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/bg_orange_btn"
             android:text="+"
             android:textColor="@color/white"
