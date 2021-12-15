@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_marginBottom="5dp"
-    android:background="#CCCACA">
+
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/imgproduct"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/addimage"/>
+        android:src="@drawable/addimage" />
 
     <TextView
         android:id="@+id/tvid"
@@ -22,7 +22,7 @@
 
         android:text="id"
         android:textColor="@color/mainColor"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvname"
@@ -35,34 +35,43 @@
 
         android:text="name"
         android:textColor="@color/mainColor"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/tvid"
         android:layout_marginStart="10dp"
-        android:layout_toRightOf="@id/tvname"
+
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/imgproduct"
+
+
         android:text="price"
-        android:textColor="@color/black" />
+        android:textColor="@color/mainColor" />
 
     <TextView
         android:id="@+id/tvlocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+
         android:layout_marginStart="10dp"
-        android:layout_toRightOf="@id/tvprice"
+
+        android:layout_below="@id/tvprice"
+        android:layout_toRightOf="@id/imgproduct"
+
         android:text="location"
-        android:textColor="@color/black" />
+        android:textColor="@color/mainColor" />
 
 
     <ImageView
         android:id="@+id/btnedit"
         android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:layout_toLeftOf="@id/btndelete"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+
+        android:padding="10dp"
 
         android:background="@drawable/bg_blue"
         android:src="@drawable/ic_edit" />
@@ -70,8 +79,11 @@
     <ImageView
         android:id="@+id/btndelete"
         android:layout_width="50dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:layout_alignParentRight="true"
+        android:layout_below="@id/btnedit"
+
+        android:padding="10dp"
 
         android:background="@drawable/bg_red"
         android:src="@drawable/ic_delete" />
