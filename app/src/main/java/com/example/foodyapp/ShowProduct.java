@@ -40,23 +40,16 @@ public class ShowProduct extends AppCompatActivity {
         ;
         db = new SQLiteHelperMT(this, "Product.sqlite", null, 1);
 
-        db.QueryData("CREATE TABLE IF NOT EXISTS tblMilktea (idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR(200), priceMT INTEGER, locationMT VARCHAR(200))");
-//        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà đào', 25000, '113 Lê Lợi, Đà Nẵng')");
-//        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà chanh', 23000, '113 Lê Lợi, Đà Nẵng')");
-//        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa trân châu đường đen', 30000, '113 Lê Lợi, Đà Nẵng')");
-//        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa hỗn hợp', 35000, '20 Nguyễn Văn Linh, Đà Nẵng')");
-//        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa Hokaido', 40000, '20 Nguyễn Văn Linh, Đà Nẵng')");
+    //        db.QueryData("CREATE TABLE IF NOT EXISTS tblMilktea (idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR(200), priceMT INTEGER, locationMT VARCHAR(200))");
+    //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà đào', 25000, '113 Lê Lợi, Đà Nẵng')");
+    //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà chanh', 23000, '113 Lê Lợi, Đà Nẵng')");
+    //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa trân châu đường đen', 30000, '113 Lê Lợi, Đà Nẵng')");
+    //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa hỗn hợp', 35000, '20 Nguyễn Văn Linh, Đà Nẵng')");
+    //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa Hokaido', 40000, '20 Nguyễn Văn Linh, Đà Nẵng')");
+    //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa dâu', 34000, '15 Huỳnh Thúc Kháng, Đà Nẵng')");
+    //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa chocolate', 34000, '15 Huỳnh Thúc Kháng, Đà Nẵng')");
 
-        Cursor DataMilkTea = db.GetData("SELECT * FROM tblMilkTea");
-        while (DataMilkTea.moveToNext()){
-            int id = DataMilkTea.getInt(0);
-            String name = DataMilkTea.getString(1);
-            int price = DataMilkTea.getInt(2);
-            String location = DataMilkTea.getString(3);
-            arrayMT.add(new MilkTea(id, name, price, location));
-
-        }
-        adapter.notifyDataSetChanged();
+        SelectData();
     }
 
     //Event: Open Insert datas in the dialog
@@ -75,6 +68,21 @@ public class ShowProduct extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Show data to listview
+    private void SelectData(){
+        Cursor DataMilkTea = db.GetData("SELECT * FROM tblMilkTea");
+        arrayMT.clear();
+        while (DataMilkTea.moveToNext()){
+            int id = DataMilkTea.getInt(0);
+            String name = DataMilkTea.getString(1);
+            int price = DataMilkTea.getInt(2);
+            String location = DataMilkTea.getString(3);
+            arrayMT.add(new MilkTea(id, name, price, location));
+
+        }
+        adapter.notifyDataSetChanged();
+    }
+
     private void DialogAdd(){
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_add_product);
@@ -83,9 +91,29 @@ public class ShowProduct extends AppCompatActivity {
         EditText etName = (EditText) dialog.findViewById(R.id.etname);
         EditText etPrice = (EditText) dialog.findViewById(R.id.etprice);
         EditText etLocation = (EditText) dialog.findViewById(R.id.etlocation);
-        Button btnadd = (Button) dialog.findViewById(R.id.btnAdd);
 
-        //Event: Open Insert datas in the dialog
+        //Event: Insert datas by pressing add button
+        Button btnadd = (Button) dialog.findViewById(R.id.btnAdd);
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = etName.getText().toString();
+                int price = Integer.parseInt(etPrice.getText().toString());
+                String location = etLocation.getText().toString();
+
+                if (name.equals("") || location.equals("")){
+                    Toast.makeText(ShowProduct.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                }else{
+                    db.QueryData("INSERT INTO tblMilkTea VALUES (null, '"+ name +"', '"+ price +"', '"+ location +"')");
+                    Toast.makeText(ShowProduct.this, "Đã thêm thành công!", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    SelectData();
+                }
+
+            }
+        });
+
+        //Event: Close a dialog
         Button btncancel = (Button) dialog.findViewById(R.id.btnCancel);
         btncancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +121,6 @@ public class ShowProduct extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
         dialog.show();
     }
 }

@@ -66,9 +66,10 @@
 
             android:layout_marginBottom="20dp"
 
-            android:textSize="15sp"
+            android:hint="Đơn vị: VNĐ"
             android:textAlignment="center"
-            android:hint="Đơn vị: VNĐ"/>
+            android:textSize="15sp"
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/title_location"
