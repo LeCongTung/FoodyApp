@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -77,6 +78,22 @@ public class ShowProduct extends AppCompatActivity {
     private void DialogAdd(){
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_add_product);
+
+        //Init elements
+        EditText etName = (EditText) dialog.findViewById(R.id.etname);
+        EditText etPrice = (EditText) dialog.findViewById(R.id.etprice);
+        EditText etLocation = (EditText) dialog.findViewById(R.id.etlocation);
+        Button btnadd = (Button) dialog.findViewById(R.id.btnAdd);
+
+        //Event: Open Insert datas in the dialog
+        Button btncancel = (Button) dialog.findViewById(R.id.btnCancel);
+        btncancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
         dialog.show();
     }
 }
