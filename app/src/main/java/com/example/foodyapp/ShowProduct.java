@@ -147,12 +147,12 @@ public class ShowProduct extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String nameC = etName.getText().toString().trim();
-//                int priceC = Integer.parseInt(etPrice.getText().toString().trim());
+                int priceC = Integer.parseInt(etPrice.getText().toString().trim());
                 String locationC = etLocation.getText().toString().trim();
                 if (name.equals("") || location.equals("")){
                     Toast.makeText(ShowProduct.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
                 }else {
-                    db.QueryData("UPDATE tblMilktea SET nameMT = '" + nameC + "', locationMT = '" + locationC + "' WHERE idMT ='" + id + "'");
+                    db.QueryData("UPDATE tblMilktea SET nameMT = '" + nameC + "', priceMT = '"+ priceC +"', locationMT = '" + locationC + "' WHERE idMT ='" + id + "'");
                     Toast.makeText(ShowProduct.this, "Đã cập nhật thành công!", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                     SelectData();
