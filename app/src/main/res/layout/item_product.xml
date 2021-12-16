@@ -12,23 +12,10 @@
         android:src="@drawable/addimage" />
 
     <TextView
-        android:id="@+id/tvid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/imgproduct"
-
-        android:text="id"
-        android:textColor="@color/mainColor"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/tvname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/tvid"
+        android:layout_toRightOf="@id/imgproduct"
 
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
@@ -41,7 +28,7 @@
         android:id="@+id/tvprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvid"
+        android:layout_below="@+id/tvname"
         android:layout_marginStart="10dp"
 
         android:layout_marginTop="10dp"

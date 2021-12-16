@@ -1,6 +1,7 @@
 package com.example.foodyapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -161,6 +163,39 @@ public class ShowProduct extends AppCompatActivity {
         });
 
         //Event: Close the dialog
+        Button btncancel = (Button) dialog.findViewById(R.id.btnCancel);
+        btncancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    //Show the delete product dialog
+    public void DialogDelete(String name, int id){
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_delete_product);
+
+        //Init elements
+        TextView etName = (TextView) dialog.findViewById(R.id.title_name);
+
+        etName.setText("Bạn có chắc muốn xóa \""+ name +"\" không?");
+
+        //Event: Delete datas by pressing delete button
+        Button btndelete = (Button) dialog.findViewById(R.id.btnDelete);
+        btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.QueryData("DELETE FROM tblMilktea WHERE idMT ='" + id + "'");
+                Toast.makeText(ShowProduct.this, "Đã xóa thành công!", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+                SelectData();
+            }
+        });
+
+
         Button btncancel = (Button) dialog.findViewById(R.id.btnCancel);
         btncancel.setOnClickListener(new View.OnClickListener() {
             @Override

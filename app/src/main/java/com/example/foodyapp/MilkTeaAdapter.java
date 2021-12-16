@@ -41,7 +41,7 @@ public class MilkTeaAdapter extends BaseAdapter {
     }
 
     private class viewHolder{
-        TextView tvid, tvname, tvprice, tvlocation;
+        TextView tvname, tvprice, tvlocation;
         ImageView btnedit, btndelete;
     }
 
@@ -53,9 +53,8 @@ public class MilkTeaAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
 
-            vh.tvid = (TextView) view.findViewById(R.id.tvid);
+
             vh.tvname = (TextView) view.findViewById(R.id.tvname);
-            vh.tvprice = (TextView) view.findViewById(R.id.tvprice);
             vh.tvprice = (TextView) view.findViewById(R.id.tvprice);
             vh.tvlocation = (TextView) view.findViewById(R.id.tvlocation);
 
@@ -66,7 +65,6 @@ public class MilkTeaAdapter extends BaseAdapter {
             vh = (viewHolder) view.getTag();
         }
         final MilkTea dt = mtlist.get(i);
-        vh.tvid.setText(String.valueOf(dt.getIdMT()) + ".");
         vh.tvname.setText(dt.getNameMT());
         vh.tvprice.setText("Giá tiền: " + String.valueOf(dt.getPriceMT()) + " VNĐ");
         vh.tvlocation.setText("Địa điểm: " + dt.getLocationMT());
@@ -84,7 +82,7 @@ public class MilkTeaAdapter extends BaseAdapter {
         vh.btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                context.DialogDelete(dt.getNameMT(), dt.getIdMT());
             }
         });
 
