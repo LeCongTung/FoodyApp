@@ -69,6 +69,23 @@ public class MilkTeaAdapter extends BaseAdapter {
         vh.tvname.setText(dt.getNameMT());
         vh.tvprice.setText("Giá tiền: " + String.valueOf(dt.getPriceMT()) + " VNĐ");
         vh.tvlocation.setText("Địa điểm: " + dt.getLocationMT());
+
+        //Event: Edit elements
+        vh.btnedit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        //Event: Delete elements
+        vh.btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         return view;
     }
 }
