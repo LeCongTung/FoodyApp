@@ -78,7 +78,7 @@
 
             android:layout_marginBottom="10dp"
 
-            android:text="Giá sản phẩm: "
+            android:text="Địa chỉ cơ sở: "
             android:textColor="@color/black" />
 
         <EditText

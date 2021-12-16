@@ -15,11 +15,11 @@ import java.util.List;
 
 public class MilkTeaAdapter extends BaseAdapter {
 
-    private Context context;
+    private ShowProduct context;
     private int layout;
     private List<MilkTea> mtlist;
 
-    public MilkTeaAdapter(Context context, int layout, List<MilkTea> mtlist) {
+    public MilkTeaAdapter(ShowProduct context, int layout, List<MilkTea> mtlist) {
         this.context = context;
         this.layout = layout;
         this.mtlist = mtlist;
@@ -58,13 +58,14 @@ public class MilkTeaAdapter extends BaseAdapter {
             vh.tvprice = (TextView) view.findViewById(R.id.tvprice);
             vh.tvprice = (TextView) view.findViewById(R.id.tvprice);
             vh.tvlocation = (TextView) view.findViewById(R.id.tvlocation);
+
             vh.btnedit = (ImageView) view.findViewById(R.id.btnedit);
             vh.btndelete = (ImageView) view.findViewById(R.id.btndelete);
             view.setTag(vh);
         }else {
             vh = (viewHolder) view.getTag();
         }
-        MilkTea dt = mtlist.get(i);
+        final MilkTea dt = mtlist.get(i);
         vh.tvid.setText(String.valueOf(dt.getIdMT()) + ".");
         vh.tvname.setText(dt.getNameMT());
         vh.tvprice.setText("Giá tiền: " + String.valueOf(dt.getPriceMT()) + " VNĐ");
@@ -74,6 +75,7 @@ public class MilkTeaAdapter extends BaseAdapter {
         vh.btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                context.DialogUpdate(dt.getNameMT(), dt.getPriceMT(), dt.getLocationMT(), dt.getIdMT());
 
             }
         });

@@ -40,7 +40,7 @@ public class ShowProduct extends AppCompatActivity {
         ;
         db = new SQLiteHelperMT(this, "Product.sqlite", null, 1);
 
-    //        db.QueryData("CREATE TABLE IF NOT EXISTS tblMilktea (idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR(200), priceMT INTEGER, locationMT VARCHAR(200))");
+        db.QueryData("CREATE TABLE IF NOT EXISTS tblMilktea (idMT INTEGER PRIMARY KEY AUTOINCREMENT, nameMT VARCHAR(200), priceMT INTEGER, locationMT VARCHAR(200))");
     //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà đào', 25000, '113 Lê Lợi, Đà Nẵng')");
     //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà chanh', 23000, '113 Lê Lợi, Đà Nẵng')");
     //        db.QueryData("INSERT INTO tblMilkTea VALUES (null, 'Trà sữa trân châu đường đen', 30000, '113 Lê Lợi, Đà Nẵng')");
@@ -83,6 +83,7 @@ public class ShowProduct extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    //Show the add product dialog
     private void DialogAdd(){
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_add_product);
@@ -97,14 +98,14 @@ public class ShowProduct extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = etName.getText().toString();
-                int price = Integer.parseInt(etPrice.getText().toString());
-                String location = etLocation.getText().toString();
+                String name = etName.getText().toString().trim();
+                int price = Integer.parseInt(etPrice.getText().toString().trim());
+                String location = etLocation.getText().toString().trim();
 
                 if (name.equals("") || location.equals("")){
                     Toast.makeText(ShowProduct.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
                 }else{
-                    db.QueryData("INSERT INTO tblMilkTea VALUES (null, '"+ name +"', '"+ price +"', '"+ location +"')");
+                    db.QueryData("INSERT INTO tblMilktea VALUES (null, '"+ name +"', '"+ price +"', '"+ location +"')");
                     Toast.makeText(ShowProduct.this, "Đã thêm thành công!", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                     SelectData();
@@ -113,7 +114,53 @@ public class ShowProduct extends AppCompatActivity {
             }
         });
 
-        //Event: Close a dialog
+        //Event: Close the dialog
+        Button btncancel = (Button) dialog.findViewById(R.id.btnCancel);
+        btncancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    //Show the update product dialog
+    public void DialogUpdate(String name, int price, String location, final int id){
+
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_update_product);
+
+        //Init elements
+        EditText etName = (EditText) dialog.findViewById(R.id.etname);
+        EditText etPrice = (EditText) dialog.findViewById(R.id.etprice);
+        EditText etLocation = (EditText) dialog.findViewById(R.id.etlocation);
+
+        //Show datas before update
+        etName.setText(name);
+        etPrice.setText("" + price);
+        etLocation.setText(location);
+
+        //Event: Update datas by pressing update button
+        Button btnupdate = (Button) dialog.findViewById(R.id.btnUpdate);
+        btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nameC = etName.getText().toString().trim();
+//                int priceC = Integer.parseInt(etPrice.getText().toString().trim());
+                String locationC = etLocation.getText().toString().trim();
+                if (name.equals("") || location.equals("")){
+                    Toast.makeText(ShowProduct.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                }else {
+                    db.QueryData("UPDATE tblMilktea SET nameMT = '" + nameC + "', locationMT = '" + locationC + "' WHERE idMT ='" + id + "'");
+                    Toast.makeText(ShowProduct.this, "Đã cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    SelectData();
+                }
+            }
+        });
+
+        //Event: Close the dialog
         Button btncancel = (Button) dialog.findViewById(R.id.btnCancel);
         btncancel.setOnClickListener(new View.OnClickListener() {
             @Override
