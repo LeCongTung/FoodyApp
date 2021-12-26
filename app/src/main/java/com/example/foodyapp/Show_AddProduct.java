@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodyapp.adapters.Adaptermilktea;
-import com.example.foodyapp.units.milktea;
+import com.example.foodyapp.units.product;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class Show_AddProduct extends AppCompatActivity {
 
     Button btnadd;
     ListView lv;
-    ArrayList<milktea> milkteaArray;
+    ArrayList<product> milkteaArray;
     Adaptermilktea milkteaAdapter;
     public static Database db;
 
@@ -37,7 +37,7 @@ public class Show_AddProduct extends AppCompatActivity {
 
         //Create a database and a table with values
         db = new Database(this, "Product.sqlite", null, 1);
-        db.QueryData("CREATE TABLE IF NOT EXISTS milktea(idP INTEGER PRIMARY KEY AUTOINCREMENT, nameP VARCHAR(255), priceP INTEGER, typeP VARCHAR(255), locationP VARCHAR(255), descriptionMT VARCHAR(255), imageMT BLOB)");
+        db.QueryData("CREATE TABLE IF NOT EXISTS product(idP INTEGER PRIMARY KEY AUTOINCREMENT, nameP VARCHAR(255), priceP INTEGER, typeP VARCHAR(255), locationP VARCHAR(255), descriptionMT VARCHAR(255), imageMT BLOB)");
 
 
         //Call class show datas to list view
@@ -56,11 +56,11 @@ public class Show_AddProduct extends AppCompatActivity {
 
     //Event: Show all datas
     private void showData(){
-        Cursor cursor = db.GetData("SELECT * FROM milktea");
+        Cursor cursor = db.GetData("SELECT * FROM product");
         milkteaArray.clear();
         while (cursor.moveToNext()){
             milkteaArray.add(new
-                    milktea(cursor.getInt(0),
+                    product(cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getInt(2),
                     cursor.getString(3),
@@ -86,8 +86,8 @@ public class Show_AddProduct extends AppCompatActivity {
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.QueryData("DELETE FROM mobile WHERE idMT ='" + id + "'");
-                Toast.makeText(ShowProduct.this, "Đã xóa thành công!", Toast.LENGTH_SHORT).show();
+                db.QueryData("DELETE FROM product WHERE idP ='" + id + "'");
+                Toast.makeText(Show_AddProduct.this, "Đã xóa thành công!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 showData();
             }

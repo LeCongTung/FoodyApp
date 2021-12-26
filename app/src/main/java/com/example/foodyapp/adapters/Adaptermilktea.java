@@ -12,16 +12,16 @@ import android.widget.TextView;
 
 import com.example.foodyapp.R;
 import com.example.foodyapp.Show_AddProduct;
-import com.example.foodyapp.units.milktea;
+import com.example.foodyapp.units.product;
 
 import java.util.List;
 
 public class Adaptermilktea extends BaseAdapter {
     private Show_AddProduct context;
     private int layout;
-    private List<milktea> milkteaList;
+    private List<product> milkteaList;
 
-    public Adaptermilktea(Context context, int layout, List<milktea> milkteaList) {
+    public Adaptermilktea(Context context, int layout, List<product> milkteaList) {
         this.context = (Show_AddProduct) context;
         this.layout = layout;
         this.milkteaList = milkteaList;
@@ -68,13 +68,13 @@ public class Adaptermilktea extends BaseAdapter {
         }
 
         //Show datas
-        milktea mb = milkteaList.get(i);
-        vh.tvname.setText(mb.getName());
-        vh.tvtype.setText(String.valueOf(mb.getType()));
-        vh.tvprice.setText("Giá: " + String.valueOf(mb.getPrice()) + " VNĐ");
-        vh.tvlocation.setText(mb.getLocation());
+        product mt = milkteaList.get(i);
+        vh.tvname.setText(mt.getName());
+        vh.tvtype.setText(String.valueOf(mt.getType()));
+        vh.tvprice.setText("Giá: " + String.valueOf(mt.getPrice()) + " VNĐ");
+        vh.tvlocation.setText(mt.getLocation());
 
-        byte[] imageM = mb.getImage();
+        byte[] imageM = mt.getImage();
         Bitmap bm = BitmapFactory.decodeByteArray(imageM, 0, imageM.length);
         vh.imageitem.setImageBitmap(bm);
 
@@ -90,10 +90,9 @@ public class Adaptermilktea extends BaseAdapter {
         vh.btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                context.DialogDelete(mb.getName(), mb.getId());
+                context.DialogDelete(mt.getName(), mt.getId());
             }
         });
-
         return view;
    }
 }

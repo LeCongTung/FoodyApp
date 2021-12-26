@@ -62,7 +62,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
 
-                android:background="@color/mainColor"
+                android:background="@drawable/btn_circle_orange"
 
                 android:text="Xóa"
                 android:textAllCaps="false"
@@ -82,7 +82,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
 
-                android:background="@color/mainColor"
+                android:background="@drawable/btn_circle_orange"
 
                 android:text="Hủy"
                 android:textAllCaps="false"

@@ -26,7 +26,7 @@ public class Database extends SQLiteOpenHelper {
     //Excute: Add a product into database
     public void addP (String name, int price, String type, String location, String description, byte[] image){
         SQLiteDatabase db = getWritableDatabase();
-        String sql = "INSERT INTO milktea VALUES (null, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO product VALUES (null, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = db.compileStatement(sql);
         statement.clearBindings();
 

@@ -1,6 +1,6 @@
 package com.example.foodyapp.units;
 
-public class milktea {
+public class product {
     private int id;
     private String name;
     private int price;
@@ -9,7 +9,7 @@ public class milktea {
     private String description;
     private byte[] image;
 
-    public milktea(int id, String name, int price, String type, String location, String description, byte[] image) {
+    public product(int id, String name, int price, String type, String location, String description, byte[] image) {
         this.id = id;
         this.name = name;
         this.price = price;
