@@ -12,10 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodyApp">
+
         <activity
-            android:name=".ShowProduct"
+            android:name=".Activity_AddProduct"
             android:exported="true"
-            android:label="Sản phẩm đang có">
+            android:label="Thêm sản phẩm mới"
+            android:parentActivityName=".Show_AddProduct"/>
+
+<!--        Main-->
+        <activity
+            android:name=".Show_AddProduct"
+            android:exported="true"
+            android:label="Sản phẩm có sẵn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
