@@ -11,17 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodyapp.R;
-import com.example.foodyapp.Show_AddProduct;
+import com.example.foodyapp.show.Show_AddProduct;
 import com.example.foodyapp.units.product;
 
 import java.util.List;
 
-public class Adaptermilktea extends BaseAdapter {
+public class Adapterproduct extends BaseAdapter {
     private Show_AddProduct context;
     private int layout;
     private List<product> milkteaList;
 
-    public Adaptermilktea(Context context, int layout, List<product> milkteaList) {
+    public Adapterproduct(Context context, int layout, List<product> milkteaList) {
         this.context = (Show_AddProduct) context;
         this.layout = layout;
         this.milkteaList = milkteaList;
@@ -70,9 +70,9 @@ public class Adaptermilktea extends BaseAdapter {
         //Show datas
         product mt = milkteaList.get(i);
         vh.tvname.setText(mt.getName());
-        vh.tvtype.setText(String.valueOf(mt.getType()));
         vh.tvprice.setText("Giá: " + String.valueOf(mt.getPrice()) + " VNĐ");
-        vh.tvlocation.setText(mt.getLocation());
+        vh.tvtype.setText("Loại: " + mt.getType());
+        vh.tvlocation.setText("Mô tả: " + mt.getLocation());
 
         byte[] imageM = mt.getImage();
         Bitmap bm = BitmapFactory.decodeByteArray(imageM, 0, imageM.length);
@@ -82,7 +82,7 @@ public class Adaptermilktea extends BaseAdapter {
         vh.btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                context.DialogUpdate(mb.getName(), mb.getQuantity(), mb.getPrice(), mb.getDescription(),mb.getImage(), mb.getId());
+                context.DialogUpdate(mt.getName(), mt.getPrice(), mt.getType(), mt.getLocation(), mt.getDescription(),mt.getImage(), mt.getId());
             }
         });
 

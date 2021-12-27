@@ -1,100 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:padding="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-
-        android:src="@drawable/ic_addimageorange" />
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@id/image"
-
-        android:text="name"
-        android:textColor="@color/mainColor"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name"
-        android:layout_marginStart="20dp"
-
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/image"
-
-        android:text="type"
-        android:textColor="@color/mainColor"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/type"
-        android:layout_marginStart="20dp"
-
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/image"
-
-        android:text="price"
-        android:textColor="@color/mainColor"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/price"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-
-        android:layout_toRightOf="@id/image"
-        android:maxWidth="160dp"
-
-        android:singleLine="true"
-        android:text="location"
-        android:textColor="@color/mainColor"
-        android:textSize="15sp" />
+    app:cardBackgroundColor="@color/white"
+    android:outlineSpotShadowColor="@color/mainColor">
 
     <RelativeLayout
-        android:layout_width="55dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true">
+        android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/btnedit"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/outimage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="10dp"
+            android:layout_centerVertical="true">
 
-            android:background="@drawable/btn_outlinecircle"
-            android:src="@drawable/ic_baseline_edit_24"
-            android:padding="10dp"
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
 
-            android:textColor="@color/white" />
+                android:scaleType="centerCrop"
 
-        <ImageView
-            android:id="@+id/btndelete"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_below="@id/btnedit"
+                android:src="@drawable/ic_addimageorange" />
+        </androidx.cardview.widget.CardView>
 
-            android:background="@drawable/btn_outlinecircle"
-            android:src="@drawable/ic_baseline_delete_24"
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/outimage"
 
-            android:padding="10dp"
-            android:textColor="@color/white" />
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+
+            android:text="name"
+            android:textColor="@color/mainColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginStart="20dp"
+
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/outimage"
+
+            android:text="type"
+            android:textColor="@color/mainColor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/type"
+            android:layout_marginStart="20dp"
+
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/outimage"
+
+            android:text="price"
+            android:textColor="@color/mainColor"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+
+            android:layout_toRightOf="@id/outimage"
+            android:maxWidth="160dp"
+
+            android:singleLine="true"
+            android:text="location"
+            android:textColor="@color/mainColor"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginEnd="10dp"
+            android:outlineSpotShadowColor="@color/white"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/btnedit"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/btn_outlinecircle"
+
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_edit_24"
+
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/btndelete"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@id/btnedit"
+
+                android:background="@drawable/btn_outlinecircle"
+                android:padding="10dp"
+
+                android:src="@drawable/ic_baseline_delete_24"
+                android:textColor="@color/white" />
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -51,9 +51,7 @@ public class product {
         this.type = type;
     }
 
-    public String getLocation() {
-        return location;
-    }
+    public String getLocation() { return location; }
 
     public void setLocation(String location) {
         this.location = location;

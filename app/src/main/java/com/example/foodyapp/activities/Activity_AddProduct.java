@@ -1,4 +1,4 @@
-package com.example.foodyapp;
+package com.example.foodyapp.activities;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -20,6 +20,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.foodyapp.R;
+import com.example.foodyapp.show.Show_AddProduct;
 
 import java.io.ByteArrayOutputStream;
 
@@ -118,15 +121,15 @@ public class Activity_AddProduct extends AppCompatActivity {
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                 byte[] image = byteArrayOutputStream.toByteArray();
 
+                //Call values into elements
+                String nameP = etname.getText().toString().trim();
+                int priceP = Integer.parseInt(etprice.getText().toString().trim());
                 String typeP = ettype.getSelectedItem().toString().trim();
+                String locationP = etlocation.getText().toString().trim();
+                String descriptionP = etdescription.getText().toString().trim();
 
                 Show_AddProduct.db.addP(
-                        etname.getText().toString().trim(),
-                        Integer.parseInt(etprice.getText().toString().trim()),
-                        typeP,
-                        etlocation.getText().toString().trim(),
-                        etdescription.getText().toString().trim(),
-                        image);
+                        nameP, priceP, typeP, locationP, descriptionP, image);
 
                 Toast.makeText(Activity_AddProduct.this, "Đã thêm thành công!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Activity_AddProduct.this, Show_AddProduct.class));

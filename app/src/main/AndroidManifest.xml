@@ -14,22 +14,29 @@
         android:theme="@style/Theme.FoodyApp">
 
         <activity
-            android:name=".Activity_AddProduct"
+            android:name=".Layout_Home"
             android:exported="true"
-            android:label="Thêm sản phẩm mới"
-            android:parentActivityName=".Show_AddProduct"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 
-<!--        Main-->
-        <activity
-            android:name=".Show_AddProduct"
-            android:exported="true"
-            android:label="Sản phẩm có sẵn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name=".activities.Activity_AddProduct"
+            android:exported="true"
+            android:label="Thêm sản phẩm mới"
+            android:parentActivityName=".show.Show_AddProduct" /> <!-- Main -->
+        <activity
+            android:name=".show.Show_AddProduct"
+            android:exported="true"
+            android:label="Sản phẩm có sẵn"/>
+
+
     </application>
 
 </manifest>

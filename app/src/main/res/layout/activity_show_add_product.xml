@@ -4,14 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Show_AddProduct">
+    tools:context=".show.Show_AddProduct">
 
     <ListView
         android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/btnadd"
-        android:scrollbars="none" />
+        android:scrollbars="none"
+
+        android:layout_margin="20dp"
+
+        android:divider="@null"
+        android:dividerHeight="10dp" />
 
     <Button
         android:id="@+id/btnadd"
