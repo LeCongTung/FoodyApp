@@ -1,18 +1,23 @@
 package com.example.foodyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.helper.widget.Carousel;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
 
+import com.example.foodyapp.adapters.Adapter_Product;
 import com.example.foodyapp.adapters.Adaptersliderview;
+import com.example.foodyapp.units.product;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Layout_Home extends AppCompatActivity {
+
+    RecyclerView rcv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,12 @@ public class Layout_Home extends AppCompatActivity {
 
         sliderView.setSliderAdapter(adaptersliderview);
         sliderView.setAutoCycle(true);
+
+        //RecycleView products
+        LinearLayoutManager layoutmanager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        rcv = (RecyclerView) findViewById(R.id.bestChoice);
+        rcv.setLayoutManager(layoutmanager);
+
     }
 
 

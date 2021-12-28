@@ -16,12 +16,12 @@ import com.example.foodyapp.units.product;
 
 import java.util.List;
 
-public class Adapterproduct extends BaseAdapter {
+public class Adapter_Product extends BaseAdapter {
     private Show_AddProduct context;
     private int layout;
     private List<product> milkteaList;
 
-    public Adapterproduct(Context context, int layout, List<product> milkteaList) {
+    public Adapter_Product(Context context, int layout, List<product> milkteaList) {
         this.context = (Show_AddProduct) context;
         this.layout = layout;
         this.milkteaList = milkteaList;

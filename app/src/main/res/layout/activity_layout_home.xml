@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Layout_Home">
+    tools:context=".Layout_Home"
+
+    android:background="#D5D2D2">
 
 <!--    header home-->
     <RelativeLayout
@@ -42,8 +44,8 @@
             android:layout_marginStart="15dp"
 
             android:text="Đà Nẵng"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 <!--    Carousel Panel-->
@@ -58,5 +60,142 @@
        app:sliderIndicatorUnselectedColor="@color/white" />
 
 <!--    Choice type-->
+    <RelativeLayout
+        android:id="@+id/choicetype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageSlide"
+
+        android:background="@color/mainColor"
+        android:paddingHorizontal="50dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp">
+
+        <Button
+            android:id="@+id/selectrice"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+
+            android:background="@drawable/btn_circle_white_10"
+
+            android:drawableTop="@drawable/ic_rice"
+
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+
+            android:text="Cơm"
+            android:textAllCaps="false"
+            android:textColor="@color/mainColor"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/selectdrink"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/btn_circle_white_10"
+
+            android:drawableTop="@drawable/ic_drink"
+
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+
+            android:text="Đồ uống"
+            android:textAllCaps="false"
+            android:textColor="@color/mainColor"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/selectfastfood"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/btn_circle_white_10"
+
+            android:drawableTop="@drawable/ic_fastfood"
+
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+
+            android:text="Fastfood"
+            android:textAllCaps="false"
+            android:textColor="@color/mainColor"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/selectcake"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_below="@+id/selectrice"
+
+            android:layout_marginTop="30dp"
+
+            android:background="@drawable/btn_circle_white_10"
+
+            android:drawableTop="@drawable/ic_cake"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+
+            android:text="Bánh"
+            android:textAllCaps="false"
+            android:textColor="@color/mainColor"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/selectfruits"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_below="@id/selectdrink"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginTop="30dp"
+
+            android:background="@drawable/btn_circle_white_10"
+
+            android:drawableTop="@drawable/ic_fruits"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+
+            android:text="Trái cây"
+            android:textAllCaps="false"
+            android:textColor="@color/mainColor"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/selectspan"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_below="@id/selectdrink"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginTop="30dp"
+
+            android:background="@drawable/btn_circle_white_10"
+
+            android:drawableTop="@drawable/ic_span"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+
+            android:text="Đồ hộp"
+            android:textAllCaps="false"
+            android:textColor="@color/mainColor"
+            android:textSize="13sp" />
+
+
+    </RelativeLayout>
+
+<!--    Best choice-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bestChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choicetype"
+        android:orientation="horizontal"
+
+        android:layout_marginTop="20dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

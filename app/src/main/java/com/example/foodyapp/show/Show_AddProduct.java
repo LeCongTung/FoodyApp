@@ -29,7 +29,7 @@ import android.widget.Toast;
 import com.example.foodyapp.Database;
 import com.example.foodyapp.R;
 import com.example.foodyapp.activities.Activity_AddProduct;
-import com.example.foodyapp.adapters.Adapterproduct;
+import com.example.foodyapp.adapters.Adapter_Product;
 import com.example.foodyapp.units.product;
 
 import java.io.ByteArrayOutputStream;
@@ -40,7 +40,7 @@ public class Show_AddProduct extends AppCompatActivity {
     Button btnadd;
     ListView lv;
     ArrayList<product> milkteaArray;
-    Adapterproduct milkteaAdapter;
+    Adapter_Product milkteaAdapter;
     public static Database db;
 
     @Override
@@ -50,7 +50,7 @@ public class Show_AddProduct extends AppCompatActivity {
 
         lv = (ListView) findViewById(R.id.list_item);
         milkteaArray = new ArrayList<>();
-        milkteaAdapter = new Adapterproduct(this, R.layout.interface_item, milkteaArray);
+        milkteaAdapter = new Adapter_Product(this, R.layout.interface_item, milkteaArray);
         lv.setAdapter(milkteaAdapter);
 
         //Create a database and a table with values
@@ -152,7 +152,7 @@ public class Show_AddProduct extends AppCompatActivity {
                                 cursor.getBlob(6)));
                     }
                     milkteaAdapter.notifyDataSetChanged();
-                    milkteaAdapter = new Adapterproduct(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
+                    milkteaAdapter = new Adapter_Product(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
 
                 }else if (arm.equals("Giá tăng dần") && info.isEmpty()){
@@ -170,7 +170,7 @@ public class Show_AddProduct extends AppCompatActivity {
                                 cursor.getBlob(6)));
                     }
                     milkteaAdapter.notifyDataSetChanged();
-                    milkteaAdapter = new Adapterproduct(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
+                    milkteaAdapter = new Adapter_Product(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
 
                 }else if (arm.equals("Giá tăng dần")){
@@ -187,7 +187,7 @@ public class Show_AddProduct extends AppCompatActivity {
                                 cursor.getBlob(6)));
                     }
                     milkteaAdapter.notifyDataSetChanged();
-                    milkteaAdapter = new Adapterproduct(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
+                    milkteaAdapter = new Adapter_Product(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
 
                 }else if (arm.equals("Giá giảm dần") && info.isEmpty()){
@@ -204,7 +204,7 @@ public class Show_AddProduct extends AppCompatActivity {
                                 cursor.getBlob(6)));
                     }
                     milkteaAdapter.notifyDataSetChanged();
-                    milkteaAdapter = new Adapterproduct(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
+                    milkteaAdapter = new Adapter_Product(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
 
                 }else if (arm.equals("Giá giảm dần")) {
@@ -221,7 +221,7 @@ public class Show_AddProduct extends AppCompatActivity {
                                 cursor.getBlob(6)));
                     }
                     milkteaAdapter.notifyDataSetChanged();
-                    milkteaAdapter = new Adapterproduct(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
+                    milkteaAdapter = new Adapter_Product(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
 
                 }else if (arm.equals("Loại sản phẩm")) {
@@ -238,7 +238,7 @@ public class Show_AddProduct extends AppCompatActivity {
                                 cursor.getBlob(6)));
                     }
                     milkteaAdapter.notifyDataSetChanged();
-                    milkteaAdapter = new Adapterproduct(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
+                    milkteaAdapter = new Adapter_Product(Show_AddProduct.this, R.layout.interface_item, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
 
                 }
