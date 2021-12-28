@@ -46,4 +46,17 @@
             android:textColor="@color/black"/>
     </RelativeLayout>
 
+<!--    Carousel Panel-->
+   <com.smarteist.autoimageslider.SliderView
+       android:id="@+id/imageSlide"
+       android:layout_width="match_parent"
+       android:layout_height="200dp"
+       android:layout_below="@id/header"
+
+       app:sliderIndicatorGravity="end|bottom"
+       app:sliderIndicatorSelectedColor="@color/mainColor"
+       app:sliderIndicatorUnselectedColor="@color/white" />
+
+<!--    Choice type-->
+
 </RelativeLayout>
