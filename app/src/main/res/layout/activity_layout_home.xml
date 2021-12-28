@@ -187,15 +187,19 @@
     </RelativeLayout>
 
 <!--    Best choice-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/bestChoice"
+    
+<!--    Bottom navigation-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/choicetype"
-        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
 
-        android:layout_marginTop="20dp">
+        android:background="@color/white"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@drawable/select_bottomnav"
+        app:itemTextColor="@drawable/select_bottomnav"
 
-    </androidx.recyclerview.widget.RecyclerView>
+        app:menu="@menu/menu_bottomnav" />
 
 </RelativeLayout>
