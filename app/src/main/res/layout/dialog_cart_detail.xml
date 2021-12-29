@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:layout_margin="20dp">
+
+    <ImageView
+        android:id="@+id/showImage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_addimageorange" />
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showImage"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Tên sản phẩm"
+            android:textColor="@color/mainColor"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô tả "
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết "
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:id="@+id/ordernumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="number"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/mainColor"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnminus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toLeftOf="@id/quantity"
+                android:background="@drawable/btn_circle_orange"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="35dp" />
+
+            <Button
+                android:id="@+id/btnplus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/quantity"
+                android:background="@drawable/btn_circle_orange"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/content"
+        android:weightSum="4"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="3"
+            android:paddingStart="20dp"
+            android:text="50"
+            android:textColor="@color/mainColor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/total"
+            android:layout_weight="3"
+            android:text=" VNĐ"
+            android:textColor="@color/mainColor"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnaddcart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_rightcircle"
+            android:drawableStart="@drawable/ic_cartwhite"
+            android:drawablePadding="10dp"
+            android:padding="15dp"
+            android:text="Thêm vào giỏ"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</RelativeLayout>
