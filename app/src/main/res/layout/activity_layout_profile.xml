@@ -101,7 +101,7 @@
         android:drawablePadding="20dp"
         android:paddingHorizontal="30dp"
 
-        android:text="Chế độ cửa hàng"
+        android:text="Hình thức thanh toán"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black" />
@@ -121,7 +121,7 @@
         android:drawablePadding="20dp"
         android:paddingHorizontal="30dp"
 
-        android:text="Chế độ cửa hàng"
+        android:text="Đăng xuất"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black" />

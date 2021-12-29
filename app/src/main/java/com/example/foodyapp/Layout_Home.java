@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.foodyapp.adapters.Adaptersliderview;
+import com.example.foodyapp.show.Show_ListType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -64,6 +67,67 @@ public class Layout_Home extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        //Excution
+        Button btntorice = (Button) findViewById(R.id.selectrice);
+        btntorice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Layout_Home.this, Show_ListType.class);
+                intent.putExtra("info", "Cơm");
+                startActivity(intent);
+            }
+        });
+
+        Button btntodrink = (Button) findViewById(R.id.selectdrink);
+        btntodrink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Layout_Home.this, Show_ListType.class);
+                intent.putExtra("info", "Đồ uống");
+                startActivity(intent);
+            }
+        });
+
+        Button btntofastfood = (Button) findViewById(R.id.selectfastfood);
+        btntofastfood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Layout_Home.this, Show_ListType.class);
+                intent.putExtra("info", "Đồ ăn nhanh");
+                startActivity(intent);
+            }
+        });
+
+        Button btntocake = (Button) findViewById(R.id.selectcake);
+        btntocake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Layout_Home.this, Show_ListType.class);
+                intent.putExtra("info", "Bánh");
+                startActivity(intent);
+            }
+        });
+
+        Button btntofruits = (Button) findViewById(R.id.selectfruits);
+        btntofruits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Layout_Home.this, Show_ListType.class);
+                intent.putExtra("info", "Trái cây");
+                startActivity(intent);
+            }
+        });
+
+        Button btntospan = (Button) findViewById(R.id.selectspan);
+        btntospan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Layout_Home.this, Show_ListType.class);
+                intent.putExtra("info", "Đồ hộp");
+                startActivity(intent);
             }
         });
 

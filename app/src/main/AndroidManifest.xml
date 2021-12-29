@@ -15,7 +15,9 @@
         android:theme="@style/Theme.FoodyApp">
         <activity
             android:name=".show.Show_ListType"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".Layout_Home"
+            android:label="Sản phẩm"/>
         <activity
             android:name=".Layout_Cart"
             android:exported="true" />
