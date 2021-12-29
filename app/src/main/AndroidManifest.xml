@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodyApp">
         <activity
-            android:name=".Layout_Profile"
+            android:name=".show.Show_ListType"
             android:exported="true" />
         <activity
             android:name=".Layout_Cart"
@@ -33,14 +33,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Layout_Profile"
+            android:exported="true"
+            android:theme="@style/MainScreen" />
+        <activity
             android:name=".activities.Activity_AddProduct"
             android:exported="true"
             android:label="Thêm sản phẩm mới"
-            android:parentActivityName=".show.Show_AddProduct" /> <!-- Main -->
+            android:parentActivityName=".show.Show_AddProduct" />
         <activity
             android:name=".show.Show_AddProduct"
             android:exported="true"
-            android:label="Sản phẩm có sẵn" />
+            android:label="Sản phẩm có sẵn"
+            android:parentActivityName=".Layout_Profile" />
     </application>
 
 </manifest>

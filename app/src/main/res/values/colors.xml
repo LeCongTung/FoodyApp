@@ -15,4 +15,6 @@
 
     <color name="unselect">#808080</color>
 
+    <color name="background">#D5D2D2</color>
+
 </resources>
