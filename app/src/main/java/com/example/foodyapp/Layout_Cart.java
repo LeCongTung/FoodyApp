@@ -4,17 +4,42 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ListView;
 
+import com.example.foodyapp.adapters.Adapter_Cart;
+import com.example.foodyapp.adapters.Adapter_ListType;
+import com.example.foodyapp.units.cart;
+import com.example.foodyapp.units.product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class Layout_Cart extends AppCompatActivity {
+
+    Button btnadd;
+    ListView lv;
+    ArrayList<cart> milkteaArray;
+    Adapter_Cart milkteaAdapter;
+    public static Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_cart);
+
+        lv = (ListView) findViewById(R.id.list_item);
+        milkteaArray = new ArrayList<cart>();
+        milkteaAdapter = new Adapter_Cart(this, R.layout.interface_item_incart, milkteaArray);
+        lv.setAdapter(milkteaAdapter);
+
+        //Create a database and a table with values
+        db = new Database(this, "Product.sqlite", null, 1);
+
+        showData();
 
         //Bottom navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnav);
@@ -45,5 +70,21 @@ public class Layout_Cart extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    //Event: Show all datas
+    private void showData() {
+        Cursor cursor = db.GetData("SELECT * FROM cart");
+        milkteaArray.clear();
+        while (cursor.moveToNext()) {
+            milkteaArray.add(new
+                    cart(cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getString(3),
+                    cursor.getInt(4),
+                    cursor.getBlob(5)));
+        }
+        milkteaAdapter.notifyDataSetChanged();
     }
 }

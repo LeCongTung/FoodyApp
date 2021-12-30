@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -58,7 +60,7 @@ public class Show_ListType extends AppCompatActivity {
 
         //Create a database and a table with values
         db = new Database(this, "Product.sqlite", null, 1);
-        db.QueryData("CREATE TABLE IF NOT EXISTS cart(idC INTEGER PRIMARY KEY AUTOINCREMENT, nameC VARCHAR(255), priceC INTEGER, quantityC INTEGER, imageC BLOB)");
+        db.QueryData("CREATE TABLE IF NOT EXISTS cart(idC INTEGER PRIMARY KEY AUTOINCREMENT, nameC VARCHAR(255), priceC INTEGER, locationC VARCHAR(255), quantityC INTEGER, imageC BLOB)");
 
         //Call class show datas to list view
 
@@ -248,9 +250,15 @@ public class Show_ListType extends AppCompatActivity {
 
 
 
-    public void DialogPay(String name, int price, int quantity , byte[] image, String location, String description, final int id){
+    public void DialogPay(String name, int price , byte[] image, String location, String description, final int id){
+
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_cart_detail);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setAttributes(lp);
 
         numberorder = 1;
         Intent intent = getIntent();
@@ -338,6 +346,7 @@ public class Show_ListType extends AppCompatActivity {
                 Show_ListType.db.addC(
                         etName.getText().toString().trim(),
                         Integer.parseInt(etTotal.getText().toString().trim()),
+                        etLocation.getText().toString().trim(),
                         Integer.parseInt(etQuantity.getText().toString().trim()),
                         image);
 

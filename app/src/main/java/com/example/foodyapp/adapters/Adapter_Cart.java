@@ -10,22 +10,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.foodyapp.Layout_Cart;
 import com.example.foodyapp.R;
-import com.example.foodyapp.show.Show_AddProduct;
 import com.example.foodyapp.show.Show_ListType;
 import com.example.foodyapp.units.cart;
 import com.example.foodyapp.units.product;
 
 import java.util.List;
-import java.util.Random;
 
-public class Adapter_ListType extends BaseAdapter {
-    private Show_ListType context;
+public class Adapter_Cart extends BaseAdapter {
+    private Layout_Cart context;
     private int layout;
-    private List<product> milkteaList;
+    private List<cart> milkteaList;
 
-    public Adapter_ListType(Context context, int layout, List<product> milkteaList) {
-        this.context = (Show_ListType) context;
+    public Adapter_Cart(Context context, int layout, List<cart> milkteaList) {
+        this.context = (Layout_Cart) context;
         this.layout = layout;
         this.milkteaList = milkteaList;
     }
@@ -46,7 +45,7 @@ public class Adapter_ListType extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView tvname, tvprice, tvtype, tvlocation, tvrate;
+        TextView tvname, tvprice, tvlocation, tvquantity;
         ImageView imageitem;
     }
 
@@ -59,9 +58,8 @@ public class Adapter_ListType extends BaseAdapter {
             view = inflater.inflate(layout, null);
             vh.tvname = (TextView) view.findViewById(R.id.name);
             vh.tvprice = (TextView) view.findViewById(R.id.price);
-            vh.tvtype = (TextView) view.findViewById(R.id.type);
-            vh.tvlocation = (TextView) view.findViewById(R.id.description);
-            vh.tvrate = (TextView) view.findViewById(R.id.rate);
+            vh.tvlocation = (TextView) view.findViewById(R.id.location);
+            vh.tvquantity = (TextView) view.findViewById(R.id.quantity);
 
             vh.imageitem = (ImageView) view.findViewById(R.id.image);
 
@@ -70,17 +68,13 @@ public class Adapter_ListType extends BaseAdapter {
             vh = (ViewHolder) view.getTag();
         }
 
-        //Set random number for rate
-        double rand = 7 + (Math.random() * 3);
-        double finalnumberrate = Math.round(rand * 10.0)/10.0;
 
         //Show datas
-        product mt = milkteaList.get(i);
+        cart mt = milkteaList.get(i);
         vh.tvname.setText(mt.getName());
         vh.tvprice.setText("Giá: " + String.valueOf(mt.getPrice()) + " VNĐ");
-        vh.tvtype.setText(mt.getType());
         vh.tvlocation.setText(mt.getLocation());
-        vh.tvrate.setText(""+ finalnumberrate);
+        vh.tvquantity.setText(""+ mt.getQuantity());
 
         byte[] imageM = mt.getImage();
         Bitmap bm = BitmapFactory.decodeByteArray(imageM, 0, imageM.length);
@@ -90,7 +84,7 @@ public class Adapter_ListType extends BaseAdapter {
         vh.imageitem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.DialogPay(mt.getName(), mt.getPrice(), mt.getImage(), mt.getLocation(), mt.getDescription(), mt.getId());
+//                context.DialogPay(mt.getName(), mt.getPrice(), mt.getImage(), mt.getLocation(), mt.getDescription(), mt.getId());
             }
         });
         return view;

@@ -40,16 +40,17 @@ public class Database extends SQLiteOpenHelper {
         statement.executeInsert();
     }
 
-    public void addC (String name, int price, int quantity, byte[] image){
+    public void addC (String name, int price, String location, int quantity, byte[] image){
         SQLiteDatabase db = getWritableDatabase();
-        String sql = "INSERT INTO cart VALUES (null, ?, ?, ?, ?)";
+        String sql = "INSERT INTO cart VALUES (null, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = db.compileStatement(sql);
         statement.clearBindings();
 
         statement.bindString(1, name);
         statement.bindString(2, String.valueOf(price));
-        statement.bindString(3, String.valueOf(quantity));
-        statement.bindBlob(4, image);
+        statement.bindString(3, location);
+        statement.bindString(4, String.valueOf(quantity));
+        statement.bindBlob(5, image);
 
         statement.executeInsert();
     }
