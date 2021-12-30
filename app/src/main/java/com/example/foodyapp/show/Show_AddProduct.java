@@ -297,7 +297,6 @@ public class Show_AddProduct extends AppCompatActivity {
         //Show datas before update
         tvname.setText(name);
         tvprice.setText("" + price);
-        tvtype.getItemAtPosition(id).toString();
         tvlocation.setText(location);
         tvdescription.setText(description);
         imageView.setImageBitmap(bm);
@@ -307,12 +306,6 @@ public class Show_AddProduct extends AppCompatActivity {
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BitmapDrawable bm = (BitmapDrawable) imageView.getDrawable();
-                Bitmap bitmap = bm.getBitmap();
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                byte[] image = byteArrayOutputStream.toByteArray();
-
                 String nameP = tvname.getText().toString().trim();
                 int priceP = Integer.parseInt(tvprice.getText().toString().trim());
                 String typeP = tvtype.getSelectedItem().toString().trim();

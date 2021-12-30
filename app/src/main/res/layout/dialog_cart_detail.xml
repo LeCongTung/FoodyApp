@@ -47,6 +47,14 @@
             android:textColor="@color/black"
             android:layout_marginTop="10dp"/>
 
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết "
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"/>
+
         <RelativeLayout
             android:id="@+id/ordernumber"
             android:layout_width="match_parent"

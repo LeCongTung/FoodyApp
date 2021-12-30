@@ -103,7 +103,7 @@
             android:layout_marginTop="5dp"
 
             android:layout_toRightOf="@id/outimage"
-            android:maxWidth="160dp"
+            android:maxWidth="200dp"
 
             android:singleLine="true"
             android:text="location"

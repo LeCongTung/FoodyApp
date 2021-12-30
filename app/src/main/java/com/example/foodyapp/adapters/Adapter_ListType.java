@@ -46,7 +46,7 @@ public class Adapter_ListType extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView tvname, tvprice, tvtype, tvdescription, tvrate;
+        TextView tvname, tvprice, tvtype, tvlocation, tvrate;
         ImageView imageitem;
     }
 
@@ -60,7 +60,7 @@ public class Adapter_ListType extends BaseAdapter {
             vh.tvname = (TextView) view.findViewById(R.id.name);
             vh.tvprice = (TextView) view.findViewById(R.id.price);
             vh.tvtype = (TextView) view.findViewById(R.id.type);
-            vh.tvdescription = (TextView) view.findViewById(R.id.description);
+            vh.tvlocation = (TextView) view.findViewById(R.id.description);
             vh.tvrate = (TextView) view.findViewById(R.id.rate);
 
             vh.imageitem = (ImageView) view.findViewById(R.id.image);
@@ -70,17 +70,16 @@ public class Adapter_ListType extends BaseAdapter {
             vh = (ViewHolder) view.getTag();
         }
 
-        double rand = Math.random();
-        rand = rand * 10;
-        double finalnumberrate = Math.round(rand * 1.0);
-
+        //Set random number for rate
+        double rand = 7 + (Math.random() * 3);
+        double finalnumberrate = Math.round(rand * 10.0)/10.0;
 
         //Show datas
         product mt = milkteaList.get(i);
         vh.tvname.setText(mt.getName());
         vh.tvprice.setText("Giá: " + String.valueOf(mt.getPrice()) + " VNĐ");
         vh.tvtype.setText(mt.getType());
-        vh.tvdescription.setText(mt.getDescription());
+        vh.tvlocation.setText(mt.getLocation());
         vh.tvrate.setText(""+ finalnumberrate);
 
         byte[] imageM = mt.getImage();

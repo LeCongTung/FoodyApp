@@ -20,10 +20,12 @@
             android:label="Sản phẩm"/>
         <activity
             android:name=".Layout_Cart"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/MainScreen"/>
         <activity
             android:name=".Layout_History"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/MainScreen"/>
         <activity
             android:name=".Layout_Home"
             android:exported="true"
