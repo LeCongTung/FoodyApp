@@ -14,15 +14,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodyApp">
         <activity
-            android:name=".activities.Activity_Login"
-            android:exported="true"
-            android:theme="@style/MainScreen">
-
+            android:name=".waiting_form"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.Activity_Login"
+            android:exported="true"
+            android:theme="@style/MainScreen">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".activities.Activity_CompletePay"
@@ -43,7 +51,7 @@
         <activity
             android:name=".Layout_Home"
             android:exported="true"
-            android:theme="@style/MainScreen"/>
+            android:theme="@style/MainScreen" />
         <activity
             android:name=".Layout_Profile"
             android:exported="true"

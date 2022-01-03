@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.foodyapp.activities.Activity_Login;
 import com.example.foodyapp.show.Show_AddProduct;
@@ -33,6 +34,7 @@ public class Layout_Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Layout_Profile.this, Activity_Login.class));
+                Toast.makeText(Layout_Profile.this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
             }
         });
 

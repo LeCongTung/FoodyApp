@@ -23,15 +23,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/location"
-
             android:background="@drawable/btn_circle_white"
-
             android:drawableStart="@drawable/ic_search"
-
             android:drawablePadding="10dp"
             android:hint="Bạn cần tìm gì?"
-
             android:padding="5dp"
+            android:singleLine="true"
             android:textSize="15sp" />
 
         <TextView
@@ -40,9 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-
             android:layout_marginStart="15dp"
-
+            android:drawableLeft="@drawable/ic_search_black_24dp"
             android:text="Đà Nẵng"
             android:textColor="@color/white"
             android:textStyle="bold" />
