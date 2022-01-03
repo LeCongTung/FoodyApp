@@ -335,7 +335,6 @@ public class Show_ListType extends AppCompatActivity {
         btnaddcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int quantityC = Integer.parseInt(etQuantity.getText().toString().trim());
                 BitmapDrawable bm = (BitmapDrawable) imageView.getDrawable();
                 Bitmap bitmap = bm.getBitmap();
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -344,7 +343,6 @@ public class Show_ListType extends AppCompatActivity {
 
                 int cost = Integer.parseInt(etTotal.getText().toString().trim());
 
-//                db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
                 Show_ListType.db.addC(
                         etName.getText().toString().trim(),
                         cost,

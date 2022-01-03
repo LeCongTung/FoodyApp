@@ -168,7 +168,7 @@ public class Layout_Cart extends AppCompatActivity {
                 total += perProduct;
                 etTotal.setText(""+ total);
                 db.QueryData("UPDATE cart SET quantityC = quantityC + 1 WHERE idC ='" + id + "'");
-
+                db.QueryData("UPDATE cart SET priceC = '"+ total +"' WHERE idC ='" + id + "'");
             }
         });
 
@@ -186,6 +186,7 @@ public class Layout_Cart extends AppCompatActivity {
                     total-= perProduct;
                     etTotal.setText(""+ total);
                     db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
+                    db.QueryData("UPDATE cart SET priceC = '"+ total +"' WHERE idC ='" + id + "'");
                 }
 
             }
@@ -206,7 +207,7 @@ public class Layout_Cart extends AppCompatActivity {
 
                 dialog.dismiss();
                 showData();
-                Toast.makeText(Layout_Cart.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Layout_Cart.this, "Đã thay đổi!", Toast.LENGTH_SHORT).show();
             }
         });
         dialog.show();
@@ -228,8 +229,8 @@ public class Layout_Cart extends AppCompatActivity {
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.QueryData("DELETE FROM product WHERE idP ='" + id + "'");
-                Toast.makeText(Show_AddProduct.this, "Đã xóa thành công!", Toast.LENGTH_SHORT).show();
+                db.QueryData("DELETE FROM cart WHERE idC ='" + id + "'");
+                Toast.makeText(Layout_Cart.this, "Đã xóa thành công!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 showData();
             }

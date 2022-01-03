@@ -46,7 +46,7 @@ public class Adapter_Cart extends BaseAdapter {
 
     private class ViewHolder{
         TextView tvname, tvprice, tvlocation, tvquantity;
-        ImageView imageitem;
+        ImageView imageitem, btndelete;
     }
 
     @Override
@@ -62,6 +62,7 @@ public class Adapter_Cart extends BaseAdapter {
             vh.tvquantity = (TextView) view.findViewById(R.id.quantity);
 
             vh.imageitem = (ImageView) view.findViewById(R.id.image);
+            vh.btndelete = (ImageView) view.findViewById(R.id.btndelete);
 
             view.setTag(vh);
         }else {
@@ -87,6 +88,15 @@ public class Adapter_Cart extends BaseAdapter {
                 context.DialogUpdate(mt.getName(), mt.getPrice(), mt.getQuantity(), mt.getImage(), mt.getLocation(), mt.getId());
             }
         });
+
+        //Event: Delete a product in cart
+        vh.btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.DialogDelete(mt.getName(), mt.getId());
+            }
+        });
+
         return view;
    }
 }

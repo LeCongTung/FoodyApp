@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.foodyapp.activities.Activity_Login;
 import com.example.foodyapp.show.Show_AddProduct;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -24,6 +25,14 @@ public class Layout_Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Layout_Profile.this, Show_AddProduct.class));
+            }
+        });
+
+        Button btnlogout = (Button) findViewById(R.id.logout);
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Layout_Profile.this, Activity_Login.class));
             }
         });
 

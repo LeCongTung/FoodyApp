@@ -17,4 +17,7 @@
 
     <color name="background">#D5D2D2</color>
 
+    <color name="fb">#1851C5</color>
+    <color name="sdt">#1D981D</color>
+    <color name="gg">#E83131</color>
 </resources>
