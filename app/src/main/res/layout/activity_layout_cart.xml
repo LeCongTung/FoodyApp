@@ -38,8 +38,8 @@
 
             android:text="Tổng tiền"
             android:textColor="@color/mainColor"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:background="@drawable/btn_circle_orange"
 
             android:paddingHorizontal="30dp"
-            android:text="Giỏ hàng"
+            android:text="Thanh toán"
             android:textAllCaps="false"
             android:textColor="@color/white" />
     </RelativeLayout>

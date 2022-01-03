@@ -125,7 +125,7 @@ public class Show_ListType extends AppCompatActivity {
         //Init elements
         EditText etSearch = (EditText) dialog.findViewById(R.id.search);
         Spinner selection = (Spinner) dialog.findViewById(R.id.selection);
-        String arr[] = {"Tên sản phẩm", "Loại sản phẩm","Giá tăng dần", "Giá giảm dần"};
+        String arr[] = {"Tên sản phẩm","Giá tăng dần", "Giá giảm dần"};
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
@@ -296,7 +296,7 @@ public class Show_ListType extends AppCompatActivity {
         imageView.setImageBitmap(bm);
 
         etDescription.setText(description);
-        etLocation.setText(location);
+        etLocation.setText("Địa chỉ: "  + location);
 
         //Event: Plus one more product
         btnplus.setOnClickListener(new View.OnClickListener() {
@@ -307,7 +307,7 @@ public class Show_ListType extends AppCompatActivity {
                 int total = Integer.parseInt(etTotal.getText().toString().trim());
                 total += perProduct;
                 etTotal.setText(""+ total);
-                db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
+                db.QueryData("UPDATE cart SET quantityC = quantityC + 1 WHERE idC ='" + id + "'");
 
             }
         });
@@ -325,7 +325,7 @@ public class Show_ListType extends AppCompatActivity {
                     int total = Integer.parseInt(etTotal.getText().toString().trim());
                     total-= perProduct;
                     etTotal.setText(""+ total);
-                    db.QueryData("UPDATE cart SET quantityC = quantityC + 1 WHERE idC ='" + id + "'");
+                    db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
                 }
 
             }
@@ -342,13 +342,19 @@ public class Show_ListType extends AppCompatActivity {
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                 byte[] image = byteArrayOutputStream.toByteArray();
 
-                db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
+                int cost = Integer.parseInt(etTotal.getText().toString().trim());
+
+//                db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
                 Show_ListType.db.addC(
                         etName.getText().toString().trim(),
-                        Integer.parseInt(etTotal.getText().toString().trim()),
+                        cost,
                         etLocation.getText().toString().trim(),
                         Integer.parseInt(etQuantity.getText().toString().trim()),
                         image);
+
+                Intent intent = new Intent(Show_ListType.this, Layout_Cart.class);
+                intent.putExtra("info", cost);
+                startActivity(intent);
 
                 dialog.dismiss();
                 Toast.makeText(Show_ListType.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();

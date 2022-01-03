@@ -84,7 +84,7 @@ public class Adapter_Cart extends BaseAdapter {
         vh.imageitem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                context.DialogPay(mt.getName(), mt.getPrice(), mt.getImage(), mt.getLocation(), mt.getDescription(), mt.getId());
+                context.DialogUpdate(mt.getName(), mt.getPrice(), mt.getQuantity(), mt.getImage(), mt.getLocation(), mt.getId());
             }
         });
         return view;

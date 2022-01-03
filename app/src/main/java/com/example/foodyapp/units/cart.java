@@ -5,9 +5,6 @@ public class cart {
     private String name;
     private int price;
     private String location;
-
-
-
     private int quantity;
     private byte[] image;
 
