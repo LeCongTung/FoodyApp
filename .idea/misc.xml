@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/drawable/background_waiting_form.xml" value="0.2703125" />
+        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/drawable/btn_circle_orange.xml" value="0.2703125" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.2703125" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_add_product.xml" value="0.264" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_complete_pay.xml" value="0.12360688956433637" />
@@ -12,6 +13,7 @@
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_layout_home.xml" value="0.2" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_layout_profile.xml" value="0.12360688956433637" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_register_form.xml" value="0.264" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_show_list_type.xml" value="0.264" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_waiting_form.xml" value="0.264" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/dialog_delete_product.xml" value="0.264" />

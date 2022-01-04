@@ -100,13 +100,14 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/btnregister"
+                android:id="@+id/tvregister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-
                 android:text="Tạo tài khoản"
-                android:textColor="@color/black"/>
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/mainColor" />
         </RelativeLayout>
 
         <Button
