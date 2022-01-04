@@ -21,6 +21,14 @@ public class Layout_Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_profile);
 
+        Button information = (Button) findViewById(R.id.information);
+        information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Layout_Profile.this, Private_information.class);
+                startActivity(intent);
+            }
+        });
         Button btntoshop = (Button) findViewById(R.id.shop);
         btntoshop.setOnClickListener(new View.OnClickListener() {
             @Override
