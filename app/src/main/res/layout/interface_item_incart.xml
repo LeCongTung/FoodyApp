@@ -39,6 +39,7 @@
 
             android:layout_toRightOf="@id/outimage"
 
+            android:fontFamily="@font/product_sans_bold"
             android:text="name"
             android:textColor="@color/mainColor"
             android:textSize="18sp"
@@ -54,6 +55,7 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/outimage"
 
+            android:fontFamily="@font/product_sans_regular"
             android:text="quantity"
             android:textColor="@color/mainColor"
             android:textSize="15sp" />
@@ -68,6 +70,7 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/outimage"
 
+            android:fontFamily="@font/product_sans_regular"
             android:text="price"
             android:textColor="@color/mainColor"
             android:textSize="15sp" />
@@ -81,8 +84,9 @@
             android:layout_marginTop="5dp"
 
             android:layout_toRightOf="@id/outimage"
-            android:maxWidth="150dp"
+            android:fontFamily="@font/product_sans_regular"
 
+            android:maxWidth="150dp"
             android:singleLine="true"
             android:text="location"
             android:textColor="@color/mainColor"
@@ -101,16 +105,11 @@
                 android:id="@+id/btndelete"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-
                 android:layout_marginTop="30dp"
-
                 android:background="@drawable/btn_outlinecircle"
-
                 android:padding="10dp"
                 android:src="@drawable/ic_baseline_delete_24"
-
                 android:textColor="@color/white" />
-
         </RelativeLayout>
     </RelativeLayout>
 

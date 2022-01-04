@@ -5,18 +5,19 @@
       <map>
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/drawable/background_waiting_form.xml" value="0.2703125" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.2703125" />
-        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_add_product.xml" value="0.1" />
+        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_add_product.xml" value="0.264" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_complete_pay.xml" value="0.12360688956433637" />
-        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_layout_cart.xml" value="0.12360688956433637" />
+        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_layout_cart.xml" value="0.264" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_layout_history.xml" value="0.12360688956433637" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_layout_home.xml" value="0.2" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_layout_profile.xml" value="0.12360688956433637" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_show_list_type.xml" value="0.264" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/activity_waiting_form.xml" value="0.264" />
-        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/interface_item_incart.xml" value="0.264" />
-        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/interface_item_inhome.xml" value="0.12360688956433637" />
-        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/interface_item_inlist.xml" value="0.264" />
+        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/dialog_delete_product.xml" value="0.264" />
+        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/interface_item_incart.xml" value="0.4" />
+        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/interface_item_inhome.xml" value="0.264" />
+        <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/interface_item_inlist.xml" value="0.4" />
         <entry key="..\:/BT_LTDD/FoodyApp/FoodyApp/app/src/main/res/layout/slideview_panel.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/drawable-v24/bg_blue.xml" value="0.3888888888888889" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/drawable-v24/btn_bottomcircle.xml" value="0.33796296296296297" />

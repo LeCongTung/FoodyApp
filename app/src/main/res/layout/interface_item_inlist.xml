@@ -38,6 +38,7 @@
 
             android:layout_toRightOf="@id/outimage"
 
+            android:fontFamily="@font/product_sans_bold"
             android:text="name"
             android:textColor="@color/mainColor"
             android:textSize="18sp"
@@ -53,6 +54,7 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/outimage"
 
+            android:fontFamily="@font/product_sans_regular"
             android:text="rate"
             android:textColor="@color/mainColor"
             android:textSize="15sp" />
@@ -67,8 +69,10 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/outimage"
 
+            android:fontFamily="@font/product_sans_regular"
             android:text="type"
             android:textColor="@color/mainColor"
+
             android:textSize="15sp" />
 
         <ImageView
@@ -90,6 +94,7 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/outimage"
 
+            android:fontFamily="@font/product_sans_regular"
             android:text="price"
             android:textColor="@color/mainColor"
             android:textSize="15sp" />
@@ -103,8 +108,9 @@
             android:layout_marginTop="5dp"
 
             android:layout_toRightOf="@id/outimage"
-            android:maxWidth="200dp"
+            android:fontFamily="@font/product_sans_regular"
 
+            android:maxWidth="200dp"
             android:singleLine="true"
             android:text="location"
             android:textColor="@color/mainColor"

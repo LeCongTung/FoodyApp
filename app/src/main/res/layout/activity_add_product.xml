@@ -61,7 +61,8 @@
             android:layout_marginTop="80dp"
             android:text="Tên sản phẩm"
             android:textColor="@color/mainColor"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <EditText
             android:id="@+id/name"
