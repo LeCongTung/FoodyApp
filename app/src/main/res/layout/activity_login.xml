@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="Đăng nhập"
+            android:text="Tài khoản"
             android:textColor="@color/mainColor"
             android:textStyle="bold"
             android:textSize="18sp"/>
@@ -62,7 +62,6 @@
             android:layout_marginVertical="10dp"
             android:padding="10dp"
 
-            android:hint="Tài khoản"
             android:singleLine="true"/>
 
         <TextView
@@ -80,14 +79,14 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/mainColor">
             <EditText
-                android:id="@+id/passw"
+                android:id="@+id/pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_circle_gray"
                 android:layout_marginVertical="5dp"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -102,6 +101,7 @@
                 android:id="@+id/btnforgot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
 
                 android:text="Quên mật khẩu?"
                 android:textColor="@color/black" />
@@ -112,9 +112,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="Tạo tài khoản"
-                android:textStyle="bold"
+                android:textColor="@color/mainColor"
                 android:textSize="18dp"
-                android:textColor="@color/mainColor" />
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <Button
@@ -127,21 +127,16 @@
             android:text="Đăng nhập"
             android:textColor="@color/white"/>
 
-        //Other ways to login
-        <Button
-            android:id="@+id/btnloginbyfb"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginVertical="5dp"
-            android:padding="10dp"
+            android:layout_marginVertical="20dp"
 
-            android:background="@drawable/btn_login_fb"
-            android:drawableStart="@drawable/loginfb"
+            android:text="----------  HOẶC  ----------"
+            android:textAlignment="center"/>
 
-            android:text="Đăng nhập bằng Facebook"
-            android:textAllCaps="false"
-            android:textColor="@color/white"/>
+        //Log in with phone number
         <Button
             android:id="@+id/btnloginbysdt"
             android:layout_width="match_parent"
@@ -154,20 +149,6 @@
             android:drawableStart="@drawable/loginsdt"
 
             android:text="Đăng nhập bằng số điện thoại"
-            android:textAllCaps="false"
-            android:textColor="@color/white"/>
-        <Button
-            android:id="@+id/btnloginbygg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginVertical="5dp"
-            android:padding="10dp"
-
-            android:background="@drawable/btn_login_gg"
-            android:drawableStart="@drawable/logingg"
-
-            android:text="Đăng nhập bằng Google"
             android:textAllCaps="false"
             android:textColor="@color/white"/>
     </LinearLayout>

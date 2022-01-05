@@ -18,7 +18,7 @@
 
         android:background="@color/mainColor">
 
-        <EditText
+        <TextView
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,9 +27,9 @@
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="10dp"
             android:hint="Bạn cần tìm gì?"
-            android:padding="5dp"
+            android:padding="8dp"
             android:singleLine="true"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/location"
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="15dp"
-            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:layout_marginStart="20dp"
+
             android:text="Đà Nẵng"
             android:textColor="@color/white"
             android:textStyle="bold" />

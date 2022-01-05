@@ -1,4 +1,4 @@
-package com.example.foodyapp;
+package com.example.foodyapp.show;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.foodyapp.activities.Activity_Login;
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.foodyapp.Layout_Profile;
+import com.example.foodyapp.R;
 
-public class Private_information extends AppCompatActivity {
+public class Show_PrivateInformation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class Private_information extends AppCompatActivity {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Private_information.this, Layout_Profile.class);
+                Intent intent = new Intent(Show_PrivateInformation.this, Layout_Profile.class);
                 startActivity(intent);
             }
         });

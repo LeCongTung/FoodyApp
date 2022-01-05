@@ -41,7 +41,6 @@ import java.util.ArrayList;
 
 public class Show_ListType extends AppCompatActivity {
 
-    Button btnadd;
     ListView lv;
     ArrayList<product> milkteaArray;
     Adapter_ListType milkteaAdapter;
@@ -63,7 +62,6 @@ public class Show_ListType extends AppCompatActivity {
         db.QueryData("CREATE TABLE IF NOT EXISTS cart(idC INTEGER PRIMARY KEY AUTOINCREMENT, nameC VARCHAR(255), priceC INTEGER, locationC VARCHAR(255), quantityC INTEGER, imageC BLOB)");
 
         //Call class show datas to list view
-
         Intent intent = getIntent();
         String info = intent.getExtras().getString("info");
         showData(info);
@@ -327,7 +325,6 @@ public class Show_ListType extends AppCompatActivity {
                     etTotal.setText(""+ total);
                     db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
                 }
-
             }
         });
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register_form">
+    tools:context=".activities.Activity_Register">
 
     <TextView
         android:layout_width="match_parent"
@@ -45,53 +45,55 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:background="@drawable/btn_circle_gray"
-            android:hint="Tên người dùng"
             android:padding="10dp"
             android:singleLine="true"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Số điện thoại người dùng (*)"
+            android:text="Số điện thoại người dùng "
             android:textColor="@color/mainColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/phonenumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:background="@drawable/btn_circle_gray"
-            android:hint="Số điện thoại người dùng"
             android:padding="10dp"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:inputType="number"/>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tài khoản người dùng (*)"
+            android:text="Tài khoản người dùng"
             android:textColor="@color/mainColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:background="@drawable/btn_circle_gray"
-            android:hint="Tài khoản người dùng"
+
             android:padding="10dp"
             android:singleLine="true"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mật khẩu (*)"
+            android:text="Mật khẩu"
             android:textColor="@color/mainColor"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -102,36 +104,39 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/mainColor">
             <EditText
+                android:id="@+id/pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:layout_marginVertical="10dp"
+
                 android:background="@drawable/btn_circle_gray"
+
                 android:padding="10dp"
-                android:singleLine="true"
-                android:inputType="textPassword"/>
+                android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="Địa chỉ nhận hàng (*)"
+            android:text="Địa chỉ nhận hàng"
             android:textColor="@color/mainColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
-
+            android:id="@+id/location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:background="@drawable/btn_circle_gray"
-            android:hint="Địa chỉ nhận hàng"
+
             android:padding="10dp"
             android:singleLine="true"/>
 
         <Button
-            android:id="@+id/btnlogin"
+            android:id="@+id/btnregister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"

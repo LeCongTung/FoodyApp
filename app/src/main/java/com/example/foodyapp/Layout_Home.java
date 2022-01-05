@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.foodyapp.adapters.Adaptersliderview;
 import com.example.foodyapp.show.Show_ListType;
+import com.example.foodyapp.show.Show_Search;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -18,9 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Layout_Home extends AppCompatActivity {
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +69,7 @@ public class Layout_Home extends AppCompatActivity {
             }
         });
 
+
         //Excution
         Button btntorice = (Button) findViewById(R.id.selectrice);
         btntorice.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +77,15 @@ public class Layout_Home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Layout_Home.this, Show_ListType.class);
                 intent.putExtra("info", "Cơm");
+                startActivity(intent);
+            }
+        });
+
+        TextView tvsearch = (TextView) findViewById(R.id.search);
+        tvsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Layout_Home.this, Show_Search.class);
                 startActivity(intent);
             }
         });

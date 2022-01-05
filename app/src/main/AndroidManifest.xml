@@ -14,20 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodyApp">
         <activity
-            android:name=".Private_information"
-            android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:name=".show.Show_UserDetail"
+            android:exported="true"
+            android:label="Thông tin cá nhân"
+            android:parentActivityName=".Layout_Profile"/>
+        <activity
+            android:name=".show.Show_Search"
+            android:exported="true"
+            android:label="Tìm kiếm"
+            android:parentActivityName=".Layout_Home" />
+        <activity
+            android:name=".show.Show_PrivateInformation"
+            android:exported="true">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".Register_form"
-            android:exported="true" />
+            android:name=".activities.Activity_Register"
+            android:exported="true"
+            android:theme="@style/MainScreen" />
         <activity
             android:name=".waiting_form"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/MainScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

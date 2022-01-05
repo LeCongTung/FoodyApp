@@ -54,37 +54,49 @@ public class Database extends SQLiteOpenHelper {
 
         statement.executeInsert();
     }
-//
-//    public void addU (String user, String numberphone, String pass){
-//        SQLiteDatabase db = getWritableDatabase();
-//        String sql = "INSERT INTO user VALUES (null, ?, ?, ?)";
-//        SQLiteStatement statement = db.compileStatement(sql);
-//        statement.clearBindings();
-//
-//        statement.bindString(1, user);
-//        statement.bindString(2, numberphone);
-//        statement.bindString(3, pass);
-//
-//        statement.executeInsert();
-//    }
-//
-//    public Boolean checkuser(String user){
-//        SQLiteDatabase db = getWritableDatabase();
-//        Cursor cursor = db.rawQuery("SELECT user, pass FROM user WHERE user = ?", new String[] {user});
-//        if (cursor.getCount() > 0)
-//            return true;
-//        else
-//            return false;
-//    }
-//
-//    public Boolean checkuserpass(String user, String pass){
-//        SQLiteDatabase db = getWritableDatabase();
-//        Cursor cursor = db.rawQuery("SELECT user, pass FROM user WHERE user = ? AND pass = ?", new String[] {user, pass});
-//        if (cursor.getCount() > 0)
-//            return true;
-//        else
-//            return false;
-//    }
+
+    public void addU (String name, String numberphone, String user, String pass, String location){
+        SQLiteDatabase db = getWritableDatabase();
+        String sql = "INSERT INTO user VALUES (null, ?, ?, ?, ?, ?)";
+        SQLiteStatement statement = db.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, name);
+        statement.bindString(2, numberphone);
+        statement.bindString(3, user);
+        statement.bindString(4, pass);
+        statement.bindString(5, location);
+
+        statement.executeInsert();
+    }
+
+
+    public Boolean checkuser(String user){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT user FROM user WHERE user = ?", new String[] {user});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public Boolean checkphonenumber(String phonenumber){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT numberphoneU FROM user WHERE numberphoneU = ?", new String[] {phonenumber});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public Boolean checkuserpass(String user, String pass){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT user, pass FROM user WHERE user = ? AND pass = ?", new String[] {user, pass});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
 //
 //    public Boolean checkall(String user, String numberphone, String pass){
 //        SQLiteDatabase db = getWritableDatabase();
@@ -93,7 +105,7 @@ public class Database extends SQLiteOpenHelper {
 //            return true;
 //        else
 //            return false;
-//    }
+//  }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {

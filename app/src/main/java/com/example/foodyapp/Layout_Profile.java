@@ -8,11 +8,16 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodyapp.activities.Activity_Login;
 import com.example.foodyapp.show.Show_AddProduct;
+import com.example.foodyapp.show.Show_PrivateInformation;
+import com.example.foodyapp.show.Show_UserDetail;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.w3c.dom.Text;
 
 public class Layout_Profile extends AppCompatActivity {
 
@@ -25,7 +30,7 @@ public class Layout_Profile extends AppCompatActivity {
         information.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Layout_Profile.this, Private_information.class);
+                Intent intent = new Intent(Layout_Profile.this, Show_UserDetail.class);
                 startActivity(intent);
             }
         });
@@ -45,8 +50,6 @@ public class Layout_Profile extends AppCompatActivity {
                 Toast.makeText(Layout_Profile.this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
         //Bottom navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnav);

@@ -7,24 +7,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.foodyapp.Layout_Cart;
+
 import com.example.foodyapp.R;
-import com.example.foodyapp.show.Show_ListType;
+import com.example.foodyapp.show.Show_UserDetail;
 import com.example.foodyapp.units.cart;
-import com.example.foodyapp.units.product;
+import com.example.foodyapp.units.user;
 
 import java.util.List;
 
-public class Adapter_Cart extends BaseAdapter {
-    private Layout_Cart context;
+public class Adapter_User extends BaseAdapter {
+    private Show_UserDetail context;
     private int layout;
-    private List<cart> milkteaList;
+    private List<user> milkteaList;
 
-    public Adapter_Cart(Context context, int layout, List<cart> milkteaList) {
-        this.context = (Layout_Cart) context;
+    public Adapter_User(Context context, int layout, List<user> milkteaList) {
+        this.context = (Show_UserDetail) context;
         this.layout = layout;
         this.milkteaList = milkteaList;
     }
@@ -45,8 +46,8 @@ public class Adapter_Cart extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView tvname, tvprice, tvlocation, tvquantity;
-        ImageView imageitem, btndelete;
+        TextView tvname, tvphonenumber, tvuser, tvlocation;
+        Button btnedit;
     }
 
     @Override
@@ -57,46 +58,31 @@ public class Adapter_Cart extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             vh.tvname = (TextView) view.findViewById(R.id.name);
-            vh.tvprice = (TextView) view.findViewById(R.id.price);
+            vh.tvphonenumber = (TextView) view.findViewById(R.id.phonenumber);
+            vh.tvuser = (TextView) view.findViewById(R.id.user);
             vh.tvlocation = (TextView) view.findViewById(R.id.location);
-            vh.tvquantity = (TextView) view.findViewById(R.id.quantity);
 
-            vh.imageitem = (ImageView) view.findViewById(R.id.image);
-            vh.btndelete = (ImageView) view.findViewById(R.id.btndelete);
+            vh.btnedit = (Button) view.findViewById(R.id.btnedit);
 
             view.setTag(vh);
         }else {
             vh = (ViewHolder) view.getTag();
         }
 
-
         //Show datas
-        cart mt = milkteaList.get(i);
+        user mt = milkteaList.get(i);
         vh.tvname.setText(mt.getName());
-        vh.tvprice.setText("Giá: " + String.valueOf(mt.getPrice()) + " VNĐ");
+        vh.tvphonenumber.setText(mt.getPhonenumber());
+        vh.tvuser.setText(mt.getUser());
         vh.tvlocation.setText(mt.getLocation());
-        vh.tvquantity.setText("Số lượng: "+ mt.getQuantity());
-
-        byte[] imageM = mt.getImage();
-        Bitmap bm = BitmapFactory.decodeByteArray(imageM, 0, imageM.length);
-        vh.imageitem.setImageBitmap(bm);
 
         //Event: Add to cart with item selected
-        vh.imageitem.setOnClickListener(new View.OnClickListener() {
+        vh.btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.DialogUpdate(mt.getName(), mt.getPrice(), mt.getQuantity(), mt.getImage(), mt.getLocation(), mt.getId());
+//                context.DialogUpdate(mt.getName(), mt.getPrice(), mt.getQuantity(), mt.getImage(), mt.getLocation(), mt.getId());
             }
         });
-
-        //Event: Delete a product in cart
-        vh.btndelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                context.DialogDelete(mt.getName(), mt.getId());
-            }
-        });
-
         return view;
-   }
+    }
 }

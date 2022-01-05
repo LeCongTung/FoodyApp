@@ -42,10 +42,10 @@
 
         android:layout_marginTop="20dp"
 
-        android:text="Xin chào!"
-        android:textSize="18sp"
+        android:text="Xin chào quý khách!"
         android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/information"

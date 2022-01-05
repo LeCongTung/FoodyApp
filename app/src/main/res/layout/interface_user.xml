@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ava"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+
+            android:src="@drawable/avatar"/>
+
+        <RelativeLayout
+            android:id="@+id/t1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ava"
+
+            android:layout_marginTop="30dp">
+
+
+
+            <TextView
+                android:id="@+id/title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:drawableStart="@drawable/ic_name"
+                android:drawablePadding="5dp"
+
+                android:text="Họ và tên:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_marginStart="40dp"
+
+                android:text="#name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/t2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t1"
+
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/title_phonenumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="5dp"
+
+                android:text="Điện thoại:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/phonenumber"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_marginStart="20dp"
+
+                android:text="#name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/t3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t2"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/title_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="5dp"
+
+                android:text="Tài khoản:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/user"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_marginStart="20dp"
+
+                android:text="#name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/t5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t3"
+
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/title_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:drawableStart="@drawable/ic_home"
+                android:drawablePadding="5dp"
+
+                android:text="Địa chỉ:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_marginStart="20dp"
+
+                android:maxWidth="200dp"
+                android:text="#name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnedit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/t5"
+
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="20dp"
+
+            android:background="@drawable/btn_outlinecircle"
+
+            android:text="Chỉnh sửa"
+            android:textColor="@color/mainColor" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
