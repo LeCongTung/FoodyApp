@@ -43,7 +43,7 @@ public class Activity_Register extends AppCompatActivity {
                 String getuser = user.getText().toString().trim().toLowerCase();
                 String getnumberphone = numberphone.getText().toString().trim().toLowerCase();
                 String getpass = pass.getText().toString().trim().toLowerCase();
-                String getlocation = location.getText().toString().trim().toLowerCase();
+                String getlocation = location.getText().toString().trim();
                 if (getname.equals("") || getuser.equals("") || getnumberphone.equals("") || getpass.equals("") || getlocation.equals("")){
                     name.setText("");
                     user.setText("");

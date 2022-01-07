@@ -70,6 +70,19 @@ public class Database extends SQLiteOpenHelper {
         statement.executeInsert();
     }
 
+    public void addH (String user, int total, String time){
+        SQLiteDatabase db = getWritableDatabase();
+        String sql = "INSERT INTO history VALUES (null, ?, ?, ?)";
+        SQLiteStatement statement = db.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, user);
+        statement.bindString(2, String.valueOf(total));
+        statement.bindString(3, time);
+
+        statement.executeInsert();
+    }
+
 
     public Boolean checkuser(String user){
         SQLiteDatabase db = getWritableDatabase();
@@ -97,15 +110,15 @@ public class Database extends SQLiteOpenHelper {
         else
             return false;
     }
-//
-//    public Boolean checkall(String user, String numberphone, String pass){
-//        SQLiteDatabase db = getWritableDatabase();
-//        Cursor cursor = db.rawQuery("SELECT * FROM user WHERE user = ? AND numberphone = ? AND pass = ?", new String[] {user, numberphone, pass});
-//        if (cursor.getCount() > 0)
-//            return true;
-//        else
-//            return false;
-//  }
+
+    public Boolean checkpass(String user, String pass){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM user WHERE user = ? AND pass = ?", new String[] {user, pass});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {

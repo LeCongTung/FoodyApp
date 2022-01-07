@@ -6,47 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".show.Show_UserDetail">
 
-    <EditText
-        android:id="@+id/etsearch"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_alignParentBottom="true"
 
-        android:layout_marginTop="20dp"
+        android:background="@color/mainColor" />
 
-        android:background="@drawable/btn_circle_white"
+    <RelativeLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
 
-        android:hint="Xác minh tài khoản"
-        android:maxWidth="260dp"
-        android:maxLines="1"
+        android:background="@color/mainColor">
 
-        android:padding="11dp"
-        android:singleLine="true"
-        android:textSize="15sp" />
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
 
-    <Button
-        android:id="@+id/btncomfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
 
-        android:layout_marginVertical="20dp"
-        android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
 
-        android:background="@drawable/btn_rightcircle"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
 
-        android:text="xác minh"
-        android:textColor="@color/white" />
+            android:layout_toRightOf="@id/back"
+
+            android:text="Thông tin cá nhân"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etsearch"
-        android:layout_marginStart="20dp"
+        android:layout_below="@id/bar"
 
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
 
         android:divider="@null"
         android:dividerHeight="10dp"

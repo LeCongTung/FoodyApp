@@ -14,26 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodyApp">
         <activity
+            android:name=".activities.Activity_ChangePass"
+            android:exported="true"
+            android:theme="@style/MainScreen"/>
+        <activity
             android:name=".show.Show_UserDetail"
             android:exported="true"
-            android:label="Thông tin cá nhân"
-            android:parentActivityName=".Layout_Profile"/>
+            android:theme="@style/MainScreen" />
         <activity
             android:name=".show.Show_Search"
             android:exported="true"
-            android:label="Tìm kiếm"
-            android:parentActivityName=".Layout_Home" />
-        <activity
-            android:name=".show.Show_PrivateInformation"
-            android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:theme="@style/MainScreen" />
         <activity
             android:name=".activities.Activity_Register"
             android:exported="true"
@@ -66,8 +57,7 @@
         <activity
             android:name=".show.Show_ListType"
             android:exported="true"
-            android:label="Sản phẩm"
-            android:parentActivityName=".Layout_Home" />
+            android:theme="@style/MainScreen" />
         <activity
             android:name=".Layout_Cart"
             android:exported="true"
@@ -87,13 +77,11 @@
         <activity
             android:name=".activities.Activity_AddProduct"
             android:exported="true"
-            android:label="Thêm sản phẩm mới"
-            android:parentActivityName=".show.Show_AddProduct" />
+            android:theme="@style/MainScreen" />
         <activity
             android:name=".show.Show_AddProduct"
             android:exported="true"
-            android:label="Sản phẩm có sẵn"
-            android:parentActivityName=".Layout_Profile" />
+            android:theme="@style/MainScreen" />
     </application>
 
 </manifest>

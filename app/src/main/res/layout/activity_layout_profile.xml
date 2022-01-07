@@ -67,10 +67,29 @@
         android:textColor="@color/black" />
 
     <Button
-        android:id="@+id/shop"
+        android:id="@+id/changepass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/information"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_circle_white"
+
+        android:drawableStart="@drawable/ic_password"
+        android:drawablePadding="20dp"
+        android:paddingHorizontal="30dp"
+
+        android:text="Đổi mật khẩu"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/changepass"
 
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
@@ -107,10 +126,30 @@
         android:textColor="@color/black" />
 
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/money"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/btn_circle_white"
+
+        android:drawableStart="@drawable/ic_setting"
+        android:drawablePadding="20dp"
+        android:paddingHorizontal="30dp"
+
+        android:text="Cài đặt"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting"
 
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"

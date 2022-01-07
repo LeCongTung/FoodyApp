@@ -33,7 +33,7 @@ public class Activity_Login extends AppCompatActivity {
 
         //Connect to database and create new account
         db = new Database(this, "Product.sqlite", null, 1);
-        db.QueryData("CREATE TABLE IF NOT EXISTS user(idU INTEGER PRIMARY KEY AUTOINCREMENT, nameU VARCHAR(255), numberphoneU VARCHAR(10), user VARCHAR(255), pass VARCHAR(255), locationU ARCHAR(255))");
+        db.QueryData("CREATE TABLE IF NOT EXISTS user(idU INTEGER PRIMARY KEY AUTOINCREMENT, nameU VARCHAR(255), numberphoneU VARCHAR(10), user VARCHAR(255), pass VARCHAR(255), locationU VARCHAR(255))");
 
         //Event: Press to go to sign up
         TextView tvregister = (TextView) findViewById(R.id.tvregister);
@@ -59,6 +59,7 @@ public class Activity_Login extends AppCompatActivity {
                     if (i == true) {
                         Toast.makeText(Activity_Login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Activity_Login.this, Layout_Home.class);
+                        intent.putExtra("info", user);
                         startActivity(intent);
                     } else {
                         etpass.setText("");

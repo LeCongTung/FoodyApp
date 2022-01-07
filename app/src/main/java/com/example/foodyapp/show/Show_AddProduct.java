@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodyapp.Database;
+import com.example.foodyapp.Layout_Profile;
 import com.example.foodyapp.R;
 import com.example.foodyapp.activities.Activity_AddProduct;
 import com.example.foodyapp.adapters.Adapter_Product;
@@ -57,6 +58,10 @@ public class Show_AddProduct extends AppCompatActivity {
         db = new Database(this, "Product.sqlite", null, 1);
         db.QueryData("CREATE TABLE IF NOT EXISTS product(idP INTEGER PRIMARY KEY AUTOINCREMENT, nameP VARCHAR(255), priceP INTEGER, typeP VARCHAR(255), locationP VARCHAR(255), descriptionP VARCHAR(255), imageP BLOB)");
 
+        Intent intent = getIntent();
+        String info = intent.getExtras().getString("info");
+        int total = intent.getIntExtra("total", 0);
+
         //Call class show datas to list view
         showData();
 
@@ -66,28 +71,39 @@ public class Show_AddProduct extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Show_AddProduct.this, Activity_AddProduct.class);
+                intent.putExtra("info", info);
+                intent.putExtra("total", total);
                 startActivity(intent);
             }
         });
-    }
 
-    //Event: Search data and refresh
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+        ImageView back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Show_AddProduct.this, Layout_Profile.class);
+                intent.putExtra("info", info);
+                intent.putExtra("total", total);
+                startActivity(intent);
+            }
+        });
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Event: Search data and refresh
+        ImageView sort = (ImageView) findViewById(R.id.sort);
+        sort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogSearch();
+            }
+        });
 
-        if (item.getItemId() == R.id.search_product){
-            DialogSearch();
-        }
-        if (item.getItemId() == R.id.refresh){
-            showData();
-        }
-        return super.onOptionsItemSelected(item);
+        ImageView refresh = (ImageView) findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showData();
+            }
+        });
     }
 
     //Event: Show all datas
@@ -243,6 +259,8 @@ public class Show_AddProduct extends AppCompatActivity {
 
                 }
                 dialog.dismiss();
+                int quantity = milkteaArray.size();
+                Toast.makeText(Show_AddProduct.this, "Đã tìm thấy "+quantity+" sản phẩm", Toast.LENGTH_SHORT).show();
             }
         });
 

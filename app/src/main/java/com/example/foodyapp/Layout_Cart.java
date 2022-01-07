@@ -1,6 +1,7 @@
 package com.example.foodyapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -9,6 +10,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -22,19 +24,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodyapp.adapters.Adapter_Cart;
-import com.example.foodyapp.adapters.Adapter_ListType;
-import com.example.foodyapp.show.Show_AddProduct;
-import com.example.foodyapp.show.Show_ListType;
 import com.example.foodyapp.units.cart;
 import com.example.foodyapp.units.product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class Layout_Cart extends AppCompatActivity {
 
-    Button btnadd;
     ListView lv;
     ArrayList<cart> milkteaArray;
     Adapter_Cart milkteaAdapter;
@@ -53,8 +54,21 @@ public class Layout_Cart extends AppCompatActivity {
 
         //Create a database and a table with values
         db = new Database(this, "Product.sqlite", null, 1);
+        db.QueryData("CREATE TABLE IF NOT EXISTS cart(idC INTEGER PRIMARY KEY AUTOINCREMENT, nameC VARCHAR(255), priceC INTEGER, locationC VARCHAR(255), quantityC INTEGER, imageC BLOB)");
+        db.QueryData("CREATE TABLE IF NOT EXISTS history(idH INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR(255), totalH INTEGER, timeH VARCHAR(255))");
 
-//        Intent intent = getIntent();
+        Intent intent = getIntent();
+        String infoname = intent.getExtras().getString("info");
+        int total = intent.getIntExtra("total", 0);
+
+        //Show total
+        TextView tvtotal = (TextView) findViewById(R.id.total);
+        tvtotal.setText("" + total);
+
+        int getTotal = Integer.parseInt(tvtotal.getText().toString());
+
+
+//        Intent intent = get Intent();
 //        int info = intent.getExtras().getInt("info");
 //        int takevalue = info;
 //        int finalcost = takevalue;
@@ -62,6 +76,34 @@ public class Layout_Cart extends AppCompatActivity {
 //        tvtotal.setText("Tổng tiền: " + finalcost);
 
         showData();
+
+        Button btnpay = (Button) findViewById(R.id.btnpay);
+        btnpay.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                Intent getvalue = getIntent();
+                String infoname = getvalue.getExtras().getString("info");
+                int price = Integer.parseInt(tvtotal.getText().toString());
+                if (milkteaArray.size() != 0){
+                    LocalDateTime current = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+                    String formatted = current.format(formatter);
+
+                    Layout_Cart.db.addH(infoname, price, formatted);
+
+                    Intent intent = new Intent(Layout_Cart.this, Layout_History.class);
+                    intent.putExtra("info", infoname);
+                    intent.putExtra("total", 0);
+                    startActivity(intent);
+
+                    tvtotal.setText("0");
+                    db.QueryData("DROP TABLE cart");
+                }else
+                    Toast.makeText(Layout_Cart.this, "Giỏ hàng rỗng", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         //Bottom navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnav);
@@ -75,17 +117,26 @@ public class Layout_Cart extends AppCompatActivity {
                         return true;
 
                     case R.id.history:
-                        startActivity(new Intent(getApplicationContext(), Layout_History.class));
+                        Intent tohistory = new Intent(getApplicationContext(), Layout_History.class);
+                        tohistory.putExtra("info", infoname);
+                        tohistory.putExtra("total", getTotal);
+                        startActivity(tohistory);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Layout_Home.class));
+                        Intent tohome = new Intent(getApplicationContext(), Layout_Home.class);
+                        tohome.putExtra("info", infoname);
+                        tohome.putExtra("total", getTotal);
+                        startActivity(tohome);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext(), Layout_Profile.class));
+                        Intent toaccount = new Intent(getApplicationContext(), Layout_Profile.class);
+                        toaccount.putExtra("info", infoname);
+                        toaccount.putExtra("total", getTotal);
+                        startActivity(toaccount);
                         overridePendingTransition(0,0);
                         return true;
                 }
@@ -121,9 +172,6 @@ public class Layout_Cart extends AppCompatActivity {
         //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setAttributes(lp);
 
-//        Intent intent = getIntent();
-//        String info = intent.getExtras().getString("info");
-
         //Select a position for dialog
         Window window = dialog.getWindow();
         WindowManager.LayoutParams param = window.getAttributes();
@@ -132,7 +180,6 @@ public class Layout_Cart extends AppCompatActivity {
         window.setGravity(Gravity.BOTTOM);
         dialog.setContentView(R.layout.dialog_cart_detail);
         dialog.setCancelable(true);
-
 
         //Init elements
         TextView etName = (TextView) dialog.findViewById(R.id.name);
@@ -169,6 +216,7 @@ public class Layout_Cart extends AppCompatActivity {
                 etTotal.setText(""+ total);
                 db.QueryData("UPDATE cart SET quantityC = quantityC + 1 WHERE idC ='" + id + "'");
                 db.QueryData("UPDATE cart SET priceC = '"+ total +"' WHERE idC ='" + id + "'");
+
             }
         });
 
@@ -187,6 +235,7 @@ public class Layout_Cart extends AppCompatActivity {
                     etTotal.setText(""+ total);
                     db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
                     db.QueryData("UPDATE cart SET priceC = '"+ total +"' WHERE idC ='" + id + "'");
+
                 }
 
             }
@@ -196,25 +245,30 @@ public class Layout_Cart extends AppCompatActivity {
         btnaddcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                int quantityC = Integer.parseInt(etQuantity.getText().toString().trim());
-//                db.QueryData("UPDATE cart SET quantityC = quantityC - 1 WHERE idC ='" + id + "'");
-
                 int cost = Integer.parseInt(etTotal.getText().toString().trim());
 
-//                Intent intent = new Intent(Layout_Cart.this, Layout_Cart.class);
-//                intent.putExtra("info", cost);
-//                startActivity(intent);
+                //Get total price before change quantity
+                Intent intent = getIntent();
+                String infoname = intent.getExtras().getString("info");
+                int total = intent.getIntExtra("total", 0);
+                int totalbefore = total - price;
+                int getValue = totalbefore + cost;
 
                 dialog.dismiss();
                 showData();
                 Toast.makeText(Layout_Cart.this, "Đã thay đổi!", Toast.LENGTH_SHORT).show();
+
+                Intent tovalue = new Intent(Layout_Cart.this, Layout_Cart.class);
+                tovalue.putExtra("info", infoname);
+                tovalue.putExtra("total", getValue);
+                startActivity(tovalue);
             }
         });
         dialog.show();
     }
 
     //Event: Delete a data
-    public void DialogDelete(String name, int id) {
+    public void DialogDelete(String name, int price, int id) {
 
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_delete_product);
@@ -229,10 +283,23 @@ public class Layout_Cart extends AppCompatActivity {
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Get data from intent
+                Intent intent = getIntent();
+                String infoname = intent.getExtras().getString("info");
+                int total = intent.getIntExtra("total", 0);
+                total -= price;
+                TextView tvtotal = (TextView) findViewById(R.id.total);
+
                 db.QueryData("DELETE FROM cart WHERE idC ='" + id + "'");
                 Toast.makeText(Layout_Cart.this, "Đã xóa thành công!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 showData();
+
+                Intent tovalue = new Intent(Layout_Cart.this, Layout_Cart.class);
+                tovalue.putExtra("info", infoname);
+                tovalue.putExtra("total", total);
+                startActivity(tovalue);
+                tvtotal.setText("" + total);
             }
         });
 

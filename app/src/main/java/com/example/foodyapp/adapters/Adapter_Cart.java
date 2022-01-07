@@ -69,7 +69,6 @@ public class Adapter_Cart extends BaseAdapter {
             vh = (ViewHolder) view.getTag();
         }
 
-
         //Show datas
         cart mt = milkteaList.get(i);
         vh.tvname.setText(mt.getName());
@@ -93,7 +92,7 @@ public class Adapter_Cart extends BaseAdapter {
         vh.btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.DialogDelete(mt.getName(), mt.getId());
+                context.DialogDelete(mt.getName(), mt.getPrice(), mt.getId());
             }
         });
 

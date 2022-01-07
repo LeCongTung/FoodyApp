@@ -44,143 +44,156 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-<!--    Carousel Panel-->
-   <com.smarteist.autoimageslider.SliderView
-       android:id="@+id/imageSlide"
-       android:layout_width="match_parent"
-       android:layout_height="200dp"
-       android:layout_below="@id/header"
-
-       app:sliderIndicatorGravity="end|bottom"
-       app:sliderIndicatorSelectedColor="@color/mainColor"
-       app:sliderIndicatorUnselectedColor="@color/white" />
-
-<!--    Choice type-->
-    <RelativeLayout
-        android:id="@+id/choicetype"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageSlide"
+        android:layout_height="wrap_content">
 
-        android:background="@color/mainColor"
-        android:paddingHorizontal="50dp"
-        android:paddingTop="30dp"
-        android:paddingBottom="20dp">
+    <!--    Carousel Panel-->
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/imageSlide"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/header"
 
-        <Button
-            android:id="@+id/selectrice"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            app:sliderIndicatorGravity="end|bottom"
+            app:sliderIndicatorSelectedColor="@color/mainColor"
+            app:sliderIndicatorUnselectedColor="@color/white" />
 
-            android:background="@drawable/btn_circle_white_10"
+    <!--    Choice type-->
+        <RelativeLayout
+            android:id="@+id/choicetype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageSlide"
 
-            android:drawableTop="@drawable/ic_rice"
+            android:background="@color/mainColor"
+            android:paddingHorizontal="50dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="20dp">
 
-            android:drawablePadding="5dp"
-            android:padding="10dp"
+            <Button
+                android:id="@+id/selectrice"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
 
-            android:text="Cơm"
-            android:textAllCaps="false"
-            android:textColor="@color/mainColor"
-            android:textSize="13sp" />
+                android:background="@drawable/btn_circle_white_10"
 
-        <Button
-            android:id="@+id/selectdrink"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_centerHorizontal="true"
+                android:drawableTop="@drawable/ic_rice"
 
-            android:background="@drawable/btn_circle_white_10"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
 
-            android:drawableTop="@drawable/ic_drink"
+                android:text="Cơm"
+                android:textAllCaps="false"
+                android:textColor="@color/mainColor"
+                android:textSize="13sp" />
 
-            android:drawablePadding="5dp"
-            android:padding="10dp"
+            <Button
+                android:id="@+id/selectdrink"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
 
-            android:text="Đồ uống"
-            android:textAllCaps="false"
-            android:textColor="@color/mainColor"
-            android:textSize="13sp" />
+                android:background="@drawable/btn_circle_white_10"
 
-        <Button
-            android:id="@+id/selectfastfood"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_alignParentRight="true"
+                android:drawableTop="@drawable/ic_drink"
 
-            android:background="@drawable/btn_circle_white_10"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
 
-            android:drawableTop="@drawable/ic_fastfood"
+                android:text="Đồ uống"
+                android:textAllCaps="false"
+                android:textColor="@color/mainColor"
+                android:textSize="13sp" />
 
-            android:drawablePadding="5dp"
-            android:padding="10dp"
+            <Button
+                android:id="@+id/selectfastfood"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_alignParentRight="true"
 
-            android:text="Fastfood"
-            android:textAllCaps="false"
-            android:textColor="@color/mainColor"
-            android:textSize="13sp" />
+                android:background="@drawable/btn_circle_white_10"
 
-        <Button
-            android:id="@+id/selectcake"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_below="@+id/selectrice"
+                android:drawableTop="@drawable/ic_fastfood"
 
-            android:layout_marginTop="30dp"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
 
-            android:background="@drawable/btn_circle_white_10"
+                android:text="Fastfood"
+                android:textAllCaps="false"
+                android:textColor="@color/mainColor"
+                android:textSize="13sp" />
 
-            android:drawableTop="@drawable/ic_cake"
-            android:drawablePadding="5dp"
-            android:padding="10dp"
+            <Button
+                android:id="@+id/selectcake"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/selectrice"
 
-            android:text="Bánh"
-            android:textAllCaps="false"
-            android:textColor="@color/mainColor"
-            android:textSize="13sp" />
+                android:layout_marginTop="30dp"
 
-        <Button
-            android:id="@+id/selectfruits"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_below="@id/selectdrink"
-            android:layout_centerHorizontal="true"
+                android:background="@drawable/btn_circle_white_10"
 
-            android:layout_marginTop="30dp"
+                android:drawableTop="@drawable/ic_cake"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
 
-            android:background="@drawable/btn_circle_white_10"
+                android:text="Bánh"
+                android:textAllCaps="false"
+                android:textColor="@color/mainColor"
+                android:textSize="13sp" />
 
-            android:drawableTop="@drawable/ic_fruits"
-            android:drawablePadding="5dp"
-            android:padding="10dp"
+            <Button
+                android:id="@+id/selectfruits"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@id/selectdrink"
+                android:layout_centerHorizontal="true"
 
-            android:text="Trái cây"
-            android:textAllCaps="false"
-            android:textColor="@color/mainColor"
-            android:textSize="13sp" />
+                android:layout_marginTop="30dp"
 
-        <Button
-            android:id="@+id/selectspan"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_below="@id/selectdrink"
-            android:layout_alignParentRight="true"
+                android:background="@drawable/btn_circle_white_10"
 
-            android:layout_marginTop="30dp"
+                android:drawableTop="@drawable/ic_fruits"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
 
-            android:background="@drawable/btn_circle_white_10"
+                android:text="Trái cây"
+                android:textAllCaps="false"
+                android:textColor="@color/mainColor"
+                android:textSize="13sp" />
 
-            android:drawableTop="@drawable/ic_span"
-            android:drawablePadding="5dp"
-            android:padding="10dp"
+            <Button
+                android:id="@+id/selectspan"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@id/selectdrink"
+                android:layout_alignParentRight="true"
 
-            android:text="Đồ hộp"
-            android:textAllCaps="false"
-            android:textColor="@color/mainColor"
-            android:textSize="13sp" />
+                android:layout_marginTop="30dp"
+
+                android:background="@drawable/btn_circle_white_10"
+
+                android:drawableTop="@drawable/ic_span"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+
+                android:text="Đồ hộp"
+                android:textAllCaps="false"
+                android:textColor="@color/mainColor"
+                android:textSize="13sp" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
+
+<!--        Show voucher in horizontal listview-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/voucher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"/>
+    </ScrollView>
+
 
 <!--    Best choice-->
     

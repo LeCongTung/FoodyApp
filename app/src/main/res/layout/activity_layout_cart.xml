@@ -53,7 +53,7 @@
             android:textColor="@color/mainColor" />
 
         <Button
-            android:id="@+id/btntocart"
+            android:id="@+id/btnpay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

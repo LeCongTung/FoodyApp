@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.foodyapp.Database;
 import com.example.foodyapp.Layout_Cart;
+import com.example.foodyapp.Layout_Home;
 import com.example.foodyapp.R;
 import com.example.foodyapp.adapters.Adapter_ListType;
 import com.example.foodyapp.adapters.Adapter_Search;
@@ -50,6 +51,19 @@ public class Show_Search extends AppCompatActivity {
 
         //Create a database and a table with values
         db = new Database(this, "Product.sqlite", null, 1);
+
+        Intent intent = getIntent();
+        String info = intent.getExtras().getString("info");
+
+        ImageView back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Show_Search.this, Layout_Home.class);
+                intent.putExtra("info", info);
+                startActivity(intent);
+            }
+        });
 
         //Search with key word
         Button btnsearch = (Button) findViewById(R.id.btnsearch);
@@ -93,6 +107,9 @@ public class Show_Search extends AppCompatActivity {
         dialog.getWindow().setAttributes(lp);
 
         numberorder = 1;
+        Intent intent = getIntent();
+        String info = intent.getExtras().getString("info");
+        int total = intent.getIntExtra("total", 0);
 
         //Select a position for dialog
         Window window = dialog.getWindow();
@@ -178,8 +195,10 @@ public class Show_Search extends AppCompatActivity {
                         Integer.parseInt(etQuantity.getText().toString().trim()),
                         image);
 
+
                 Intent intent = new Intent(Show_Search.this, Layout_Cart.class);
-                intent.putExtra("info", cost);
+                intent.putExtra("info", info);
+                intent.putExtra("total", total + cost);
                 startActivity(intent);
 
                 dialog.dismiss();

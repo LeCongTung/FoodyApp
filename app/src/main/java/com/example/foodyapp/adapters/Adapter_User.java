@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,7 +48,7 @@ public class Adapter_User extends BaseAdapter {
 
     private class ViewHolder{
         TextView tvname, tvphonenumber, tvuser, tvlocation;
-        Button btnedit;
+        ImageView btnedit;
     }
 
     @Override
@@ -62,7 +63,7 @@ public class Adapter_User extends BaseAdapter {
             vh.tvuser = (TextView) view.findViewById(R.id.user);
             vh.tvlocation = (TextView) view.findViewById(R.id.location);
 
-            vh.btnedit = (Button) view.findViewById(R.id.btnedit);
+            vh.btnedit = (ImageView) view.findViewById(R.id.btnedit);
 
             view.setTag(vh);
         }else {
@@ -80,7 +81,7 @@ public class Adapter_User extends BaseAdapter {
         vh.btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                context.DialogUpdate(mt.getName(), mt.getPrice(), mt.getQuantity(), mt.getImage(), mt.getLocation(), mt.getId());
+                context.DialogUpdate(mt.getName(), mt.getPhonenumber(), mt.getUser(), mt.getLocation(), mt.getId());
             }
         });
         return view;

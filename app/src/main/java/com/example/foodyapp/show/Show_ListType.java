@@ -30,6 +30,8 @@ import android.widget.Toast;
 
 import com.example.foodyapp.Database;
 import com.example.foodyapp.Layout_Cart;
+import com.example.foodyapp.Layout_Home;
+import com.example.foodyapp.Layout_Profile;
 import com.example.foodyapp.R;
 import com.example.foodyapp.adapters.Adapter_ListType;
 import com.example.foodyapp.adapters.Adapter_Product;
@@ -63,21 +65,57 @@ public class Show_ListType extends AppCompatActivity {
 
         //Call class show datas to list view
         Intent intent = getIntent();
+        String type = intent.getExtras().getString("type");
         String info = intent.getExtras().getString("info");
-        showData(info);
+        int total = intent.getIntExtra("total", 0);
+        showData(type);
+
+        TextView tvtypename = (TextView) findViewById(R.id.typename);
+        tvtypename.setText(type);
 
         Button btntocard = (Button) findViewById(R.id.btntocart);
         btntocard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Show_ListType.this, Layout_Cart.class));
+                Intent intent = new Intent(Show_ListType.this, Layout_Cart.class);
+                intent.putExtra("info", info);
+                intent.putExtra("total", total);
+                startActivity(intent);
+            }
+        });
+
+        ImageView back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Show_ListType.this, Layout_Home.class);
+                intent.putExtra("info", info);
+                intent.putExtra("total", total);
+                startActivity(intent);
+            }
+        });
+
+        //Event: Search data and refresh
+        ImageView sort = (ImageView) findViewById(R.id.sort);
+        sort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogSearch();
+            }
+        });
+
+        ImageView refresh = (ImageView) findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showData(type);
             }
         });
     }
 
     //Event: Show all datas
-    private void showData(String info) {
-        Cursor cursor = db.GetData("SELECT * FROM product WHERE typeP LIKE '%" + info + "%'");
+    private void showData(String type) {
+        Cursor cursor = db.GetData("SELECT * FROM product WHERE typeP LIKE '%" + type + "%'");
         milkteaArray.clear();
         while (cursor.moveToNext()) {
             milkteaArray.add(new
@@ -92,33 +130,13 @@ public class Show_ListType extends AppCompatActivity {
         milkteaAdapter.notifyDataSetChanged();
     }
 
-    //Event: Search data and refresh
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = getIntent();
-        String info = intent.getExtras().getString("info");
-
-        if (item.getItemId() == R.id.search_product){
-            DialogSearch();
-        }
-        if (item.getItemId() == R.id.refresh){
-            showData(info);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     public void DialogSearch(){
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_search_product);
 
         Intent intent = getIntent();
-        String more = intent.getExtras().getString("info");
+        String more = intent.getExtras().getString("type");
 
         //Init elements
         EditText etSearch = (EditText) dialog.findViewById(R.id.search);
@@ -144,10 +162,10 @@ public class Show_ListType extends AppCompatActivity {
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String info = etSearch.getText().toString().trim();
+                String name = etSearch.getText().toString().trim();
                 String arm = selection.getSelectedItem().toString().trim();
                 if (arm.equals("Tên sản phẩm")) {
-                    Cursor cursor = db.GetData("SELECT * FROM product WHERE nameP LIKE '%" + info + "%' AND typeP LIKE '%" + more + "%'");
+                    Cursor cursor = db.GetData("SELECT * FROM product WHERE nameP LIKE '%" + name + "%' AND typeP LIKE '%" + more + "%'");
                     milkteaArray.clear();
                     while (cursor.moveToNext()) {
                         milkteaArray.add(new
@@ -163,7 +181,7 @@ public class Show_ListType extends AppCompatActivity {
                     milkteaAdapter = new Adapter_ListType(Show_ListType.this, R.layout.interface_item_inlist, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
 
-                }else if (arm.equals("Giá tăng dần") && info.isEmpty()){
+                }else if (arm.equals("Giá tăng dần") && name.isEmpty()){
                     Cursor cursor = db.GetData("SELECT * FROM product WHERE typeP LIKE '%" + more + "%' ORDER BY priceP ASC");
                     milkteaArray.clear();
                     milkteaArray.clear();
@@ -182,7 +200,7 @@ public class Show_ListType extends AppCompatActivity {
                     lv.setAdapter(milkteaAdapter);
 
                 }else if (arm.equals("Giá tăng dần")){
-                    Cursor cursor = db.GetData("SELECT * FROM product WHERE priceP >= '"+ info +"' AND typeP LIKE '%" + more + "%' ORDER BY priceP ASC");
+                    Cursor cursor = db.GetData("SELECT * FROM product WHERE priceP >= '"+ name +"' AND typeP LIKE '%" + more + "%' ORDER BY priceP ASC");
                     milkteaArray.clear();
                     while (cursor.moveToNext()) {
                         milkteaArray.add(new
@@ -198,7 +216,7 @@ public class Show_ListType extends AppCompatActivity {
                     milkteaAdapter = new Adapter_ListType(Show_ListType.this, R.layout.interface_item_inlist, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
 
-                }else if (arm.equals("Giá giảm dần") && info.isEmpty()){
+                }else if (arm.equals("Giá giảm dần") && name.isEmpty()){
                     Cursor cursor = db.GetData("SELECT * FROM product WHERE typeP LIKE '%" + more + "%' ORDER BY priceP DESC");
                     milkteaArray.clear();
                     while (cursor.moveToNext()) {
@@ -216,7 +234,7 @@ public class Show_ListType extends AppCompatActivity {
                     lv.setAdapter(milkteaAdapter);
 
                 }else if (arm.equals("Giá giảm dần")) {
-                    Cursor cursor = db.GetData("SELECT * FROM product WHERE priceP <= '" + info + "' AND typeP LIKE '%" + more + "%' ORDER BY priceP DESC");
+                    Cursor cursor = db.GetData("SELECT * FROM product WHERE priceP <= '" + name + "' AND typeP LIKE '%" + more + "%' ORDER BY priceP DESC");
                     milkteaArray.clear();
                     while (cursor.moveToNext()) {
                         milkteaArray.add(new
@@ -232,6 +250,8 @@ public class Show_ListType extends AppCompatActivity {
                     milkteaAdapter = new Adapter_ListType(Show_ListType.this, R.layout.interface_item_inlist, milkteaArray);
                     lv.setAdapter(milkteaAdapter);
                 }
+                int quantity = milkteaArray.size();
+                Toast.makeText(Show_ListType.this, "Đã tìm thấy "+quantity+" sản phẩm", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });
@@ -261,6 +281,7 @@ public class Show_ListType extends AppCompatActivity {
         numberorder = 1;
         Intent intent = getIntent();
         String info = intent.getExtras().getString("info");
+        int total = intent.getIntExtra("total", 0);
 
         //Select a position for dialog
         Window window = dialog.getWindow();
@@ -348,7 +369,8 @@ public class Show_ListType extends AppCompatActivity {
                         image);
 
                 Intent intent = new Intent(Show_ListType.this, Layout_Cart.class);
-                intent.putExtra("info", cost);
+                intent.putExtra("info", info);
+                intent.putExtra("total", total + cost);
                 startActivity(intent);
 
                 dialog.dismiss();

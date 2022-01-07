@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.foodyapp.Layout_Profile;
 import com.example.foodyapp.R;
 import com.example.foodyapp.show.Show_AddProduct;
 
@@ -40,6 +41,21 @@ public class Activity_AddProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
+
+        Intent intent = getIntent();
+        String infoname = intent.getExtras().getString("info");
+        int total = intent.getIntExtra("total", 0);
+
+        ImageView back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_AddProduct.this, Show_AddProduct.class);
+                intent.putExtra("info", infoname);
+                intent.putExtra("total", total);
+                startActivity(intent);
+            }
+        });
 
         //Init Elements
         etname = (EditText) findViewById(R.id.name);
@@ -132,7 +148,10 @@ public class Activity_AddProduct extends AppCompatActivity {
                         nameP, priceP, typeP, locationP, descriptionP, image);
 
                 Toast.makeText(Activity_AddProduct.this, "Đã thêm thành công!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Activity_AddProduct.this, Show_AddProduct.class));
+                Intent intent = new Intent(Activity_AddProduct.this, Show_AddProduct.class);
+                intent.putExtra("info", infoname);
+                intent.putExtra("total", total);
+                startActivity(intent);
             }
         });
     }
