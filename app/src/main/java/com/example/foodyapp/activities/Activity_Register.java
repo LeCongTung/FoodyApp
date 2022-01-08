@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.foodyapp.Database;
 import com.example.foodyapp.R;
+import com.example.foodyapp.loading.Loading_afterRegister;
 
 public class Activity_Register extends AppCompatActivity {
 
@@ -63,7 +64,9 @@ public class Activity_Register extends AppCompatActivity {
                                         getpass,
                                         getlocation);
                                 Toast.makeText(Activity_Register.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Activity_Register.this, Activity_Login.class));
+                                Intent intent = new Intent(Activity_Register.this, Loading_afterRegister.class);
+                                intent.putExtra("info", getuser);
+                                startActivity(intent);
                             }else
                                 numberphone.setText("");
                                 Toast.makeText(Activity_Register.this, "Số điện thoại đã được dùng!", Toast.LENGTH_SHORT).show();

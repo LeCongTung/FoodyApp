@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".activities.Notification"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,9 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodyApp">
         <activity
+            android:name=".loading.Loading_afterLogout"
+            android:exported="true" />
+        <activity
+            android:name=".loading.Loading_toHistory"
+            android:exported="true"
+            android:theme="@style/MainScreen" />
+        <activity
+            android:name=".loading.Loading_afterRegister"
+            android:exported="true"
+            android:theme="@style/MainScreen" />
+        <activity
             android:name=".activities.Activity_ChangePass"
             android:exported="true"
-            android:theme="@style/MainScreen"/>
+            android:theme="@style/MainScreen" />
         <activity
             android:name=".show.Show_UserDetail"
             android:exported="true"
@@ -30,7 +42,7 @@
             android:exported="true"
             android:theme="@style/MainScreen" />
         <activity
-            android:name=".waiting_form"
+            android:name=".loading.Loading_toLogin"
             android:exported="true"
             android:theme="@style/MainScreen">
             <intent-filter>

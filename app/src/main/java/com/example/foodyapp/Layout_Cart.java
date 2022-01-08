@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodyapp.adapters.Adapter_Cart;
+import com.example.foodyapp.loading.Loading_toHistory;
 import com.example.foodyapp.units.cart;
 import com.example.foodyapp.units.product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -92,13 +93,14 @@ public class Layout_Cart extends AppCompatActivity {
 
                     Layout_Cart.db.addH(infoname, price, formatted);
 
-                    Intent intent = new Intent(Layout_Cart.this, Layout_History.class);
+                    Intent intent = new Intent(Layout_Cart.this, Loading_toHistory.class);
                     intent.putExtra("info", infoname);
                     intent.putExtra("total", 0);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
 
                     tvtotal.setText("0");
-                    db.QueryData("DROP TABLE cart");
+                    db.QueryData("DELETE FROM cart");
                 }else
                     Toast.makeText(Layout_Cart.this, "Giỏ hàng rỗng", Toast.LENGTH_SHORT).show();
 
@@ -262,6 +264,7 @@ public class Layout_Cart extends AppCompatActivity {
                 tovalue.putExtra("info", infoname);
                 tovalue.putExtra("total", getValue);
                 startActivity(tovalue);
+                overridePendingTransition(R.anim.anim_blur, R.anim.anim_blur);
             }
         });
         dialog.show();
@@ -299,6 +302,8 @@ public class Layout_Cart extends AppCompatActivity {
                 tovalue.putExtra("info", infoname);
                 tovalue.putExtra("total", total);
                 startActivity(tovalue);
+                overridePendingTransition(R.anim.anim_blur, R.anim.anim_blur);
+
                 tvtotal.setText("" + total);
             }
         });

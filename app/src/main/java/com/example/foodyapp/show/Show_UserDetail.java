@@ -67,6 +67,7 @@ public class Show_UserDetail extends AppCompatActivity {
                 intent.putExtra("info", info);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_back, R.anim.anim_back_2);
             }
         });
 

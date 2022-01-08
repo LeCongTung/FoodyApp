@@ -81,6 +81,7 @@ public class Show_ListType extends AppCompatActivity {
                 intent.putExtra("info", info);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
             }
         });
 
@@ -92,6 +93,7 @@ public class Show_ListType extends AppCompatActivity {
                 intent.putExtra("info", info);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_back, R.anim.anim_back_2);
             }
         });
 
@@ -372,6 +374,7 @@ public class Show_ListType extends AppCompatActivity {
                 intent.putExtra("info", info);
                 intent.putExtra("total", total + cost);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
 
                 dialog.dismiss();
                 Toast.makeText(Show_ListType.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();

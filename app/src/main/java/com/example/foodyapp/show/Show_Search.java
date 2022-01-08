@@ -2,12 +2,14 @@ package com.example.foodyapp.show;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.session.PlaybackState;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -62,6 +64,7 @@ public class Show_Search extends AppCompatActivity {
                 Intent intent = new Intent(Show_Search.this, Layout_Home.class);
                 intent.putExtra("info", info);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_back, R.anim.anim_back_2);
             }
         });
 

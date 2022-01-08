@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.foodyapp.activities.Activity_ChangePass;
 import com.example.foodyapp.activities.Activity_Login;
+import com.example.foodyapp.loading.Loading_afterLogout;
 import com.example.foodyapp.show.Show_AddProduct;
 import com.example.foodyapp.show.Show_UserDetail;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -77,10 +78,9 @@ public class Layout_Profile extends AppCompatActivity {
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Layout_Profile.this, Activity_Login.class));
-                Toast.makeText(Layout_Profile.this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Layout_Profile.this, Loading_afterLogout.class));
 
-                db.QueryData("DROP TABLE cart");
+                db.QueryData("DELETE FROM cart");
             }
         });
 

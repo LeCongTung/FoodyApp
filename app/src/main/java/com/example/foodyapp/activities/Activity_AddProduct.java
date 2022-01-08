@@ -54,6 +54,7 @@ public class Activity_AddProduct extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_back, R.anim.anim_back_2);
             }
         });
 
@@ -152,6 +153,7 @@ public class Activity_AddProduct extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_back, R.anim.anim_back_2);
             }
         });
     }

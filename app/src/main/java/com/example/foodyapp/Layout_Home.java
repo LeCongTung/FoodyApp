@@ -2,6 +2,7 @@ package com.example.foodyapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -9,8 +10,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.foodyapp.adapters.Adapter_RecycleView;
 import com.example.foodyapp.adapters.Adaptersliderview;
 import com.example.foodyapp.show.Show_ListType;
 import com.example.foodyapp.show.Show_Search;
@@ -32,7 +35,6 @@ public class Layout_Home extends AppCompatActivity {
 
         db = new Database(this, "Product.sqlite", null, 1);
         db.QueryData("CREATE TABLE IF NOT EXISTS cart(idC INTEGER PRIMARY KEY AUTOINCREMENT, nameC VARCHAR(255), priceC INTEGER, locationC VARCHAR(255), quantityC INTEGER, imageC BLOB)");
-
 
         Intent intent = getIntent();
         String infoname = intent.getExtras().getString("info");
@@ -100,6 +102,7 @@ public class Layout_Home extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
             }
         });
 
@@ -112,6 +115,7 @@ public class Layout_Home extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
             }
         });
 
@@ -124,6 +128,7 @@ public class Layout_Home extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
             }
         });
 
@@ -136,6 +141,7 @@ public class Layout_Home extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
             }
         });
 
@@ -148,6 +154,7 @@ public class Layout_Home extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
             }
         });
 
@@ -160,6 +167,7 @@ public class Layout_Home extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
             }
         });
 
@@ -172,15 +180,27 @@ public class Layout_Home extends AppCompatActivity {
                 intent.putExtra("info", infoname);
                 intent.putExtra("total", total);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_enter_2);
             }
         });
 
+        //Set voucher
+        RecyclerView listvoucher = findViewById(R.id.voucher);
+        List<voucher> listv = new ArrayList<>();
+        listv.add(new voucher(R.drawable.voucher1));
+        listv.add(new voucher(R.drawable.voucher2));
+        listv.add(new voucher(R.drawable.voucher1));
+        listv.add(new voucher(R.drawable.voucher2));
+        listv.add(new voucher(R.drawable.voucher1));
+        listv.add(new voucher(R.drawable.voucher2));
+
+        LinearLayoutManager hlist = new LinearLayoutManager(this);
+        hlist.setOrientation(LinearLayoutManager.HORIZONTAL);
+        listvoucher.setLayoutManager(hlist);
+
+        Adapter_RecycleView adaptor = new Adapter_RecycleView(Layout_Home.this, listv);
+
+        listvoucher.setAdapter(adaptor);
+
     }
-
-    //Set voucher
-    RecyclerView listvoucher = findViewById(R.id.voucher);
-    List<voucher> listv = new ArrayList<>();
-
-
-
 }

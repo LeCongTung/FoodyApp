@@ -3,7 +3,6 @@
     android:layout_width="150dp"
     android:layout_height="150dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
 
     app:cardBackgroundColor="@color/white"
     android:outlineSpotShadowColor="@color/mainColor">

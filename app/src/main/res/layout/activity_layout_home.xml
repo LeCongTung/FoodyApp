@@ -46,152 +46,196 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header">
 
-    <!--    Carousel Panel-->
-        <com.smarteist.autoimageslider.SliderView
-            android:id="@+id/imageSlide"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@id/header"
-
-            app:sliderIndicatorGravity="end|bottom"
-            app:sliderIndicatorSelectedColor="@color/mainColor"
-            app:sliderIndicatorUnselectedColor="@color/white" />
-
-    <!--    Choice type-->
         <RelativeLayout
-            android:id="@+id/choicetype"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageSlide"
+            android:layout_height="match_parent">
 
-            android:background="@color/mainColor"
-            android:paddingHorizontal="50dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="20dp">
 
-            <Button
-                android:id="@+id/selectrice"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+        <!--    Carousel Panel-->
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlide"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
 
-                android:background="@drawable/btn_circle_white_10"
+                app:sliderIndicatorGravity="end|bottom"
+                app:sliderIndicatorSelectedColor="@color/mainColor"
+                app:sliderIndicatorUnselectedColor="@color/white" />
 
-                android:drawableTop="@drawable/ic_rice"
+        <!--    Choice type-->
+            <RelativeLayout
+                android:id="@+id/choicetype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageSlide"
 
-                android:drawablePadding="5dp"
-                android:padding="10dp"
+                android:background="@color/mainColor"
+                android:paddingHorizontal="50dp"
+                android:paddingTop="30dp"
+                android:paddingBottom="20dp">
 
-                android:text="Cơm"
-                android:textAllCaps="false"
-                android:textColor="@color/mainColor"
-                android:textSize="13sp" />
+                <Button
+                    android:id="@+id/selectrice"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
 
-            <Button
-                android:id="@+id/selectdrink"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_centerHorizontal="true"
+                    android:background="@drawable/btn_circle_white_10"
 
-                android:background="@drawable/btn_circle_white_10"
+                    android:drawableTop="@drawable/ic_rice"
 
-                android:drawableTop="@drawable/ic_drink"
+                    android:drawablePadding="5dp"
+                    android:padding="10dp"
 
-                android:drawablePadding="5dp"
-                android:padding="10dp"
+                    android:text="Cơm"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mainColor"
+                    android:textSize="13sp" />
 
-                android:text="Đồ uống"
-                android:textAllCaps="false"
-                android:textColor="@color/mainColor"
-                android:textSize="13sp" />
+                <Button
+                    android:id="@+id/selectdrink"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerHorizontal="true"
 
-            <Button
-                android:id="@+id/selectfastfood"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_alignParentRight="true"
+                    android:background="@drawable/btn_circle_white_10"
 
-                android:background="@drawable/btn_circle_white_10"
+                    android:drawableTop="@drawable/ic_drink"
 
-                android:drawableTop="@drawable/ic_fastfood"
+                    android:drawablePadding="5dp"
+                    android:padding="10dp"
 
-                android:drawablePadding="5dp"
-                android:padding="10dp"
+                    android:text="Đồ uống"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mainColor"
+                    android:textSize="13sp" />
 
-                android:text="Fastfood"
-                android:textAllCaps="false"
-                android:textColor="@color/mainColor"
-                android:textSize="13sp" />
+                <Button
+                    android:id="@+id/selectfastfood"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_alignParentRight="true"
 
-            <Button
-                android:id="@+id/selectcake"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_below="@+id/selectrice"
+                    android:background="@drawable/btn_circle_white_10"
 
-                android:layout_marginTop="30dp"
+                    android:drawableTop="@drawable/ic_fastfood"
 
-                android:background="@drawable/btn_circle_white_10"
+                    android:drawablePadding="5dp"
+                    android:padding="10dp"
 
-                android:drawableTop="@drawable/ic_cake"
-                android:drawablePadding="5dp"
-                android:padding="10dp"
+                    android:text="Fastfood"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mainColor"
+                    android:textSize="13sp" />
 
-                android:text="Bánh"
-                android:textAllCaps="false"
-                android:textColor="@color/mainColor"
-                android:textSize="13sp" />
+                <Button
+                    android:id="@+id/selectcake"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_below="@+id/selectrice"
 
-            <Button
-                android:id="@+id/selectfruits"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_below="@id/selectdrink"
-                android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
 
-                android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_circle_white_10"
 
-                android:background="@drawable/btn_circle_white_10"
+                    android:drawableTop="@drawable/ic_cake"
+                    android:drawablePadding="5dp"
+                    android:padding="10dp"
 
-                android:drawableTop="@drawable/ic_fruits"
-                android:drawablePadding="5dp"
-                android:padding="10dp"
+                    android:text="Bánh"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mainColor"
+                    android:textSize="13sp" />
 
-                android:text="Trái cây"
-                android:textAllCaps="false"
-                android:textColor="@color/mainColor"
-                android:textSize="13sp" />
+                <Button
+                    android:id="@+id/selectfruits"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_below="@id/selectdrink"
+                    android:layout_centerHorizontal="true"
 
-            <Button
-                android:id="@+id/selectspan"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_below="@id/selectdrink"
-                android:layout_alignParentRight="true"
+                    android:layout_marginTop="30dp"
 
-                android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_circle_white_10"
 
-                android:background="@drawable/btn_circle_white_10"
+                    android:drawableTop="@drawable/ic_fruits"
+                    android:drawablePadding="5dp"
+                    android:padding="10dp"
 
-                android:drawableTop="@drawable/ic_span"
-                android:drawablePadding="5dp"
-                android:padding="10dp"
+                    android:text="Trái cây"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mainColor"
+                    android:textSize="13sp" />
 
-                android:text="Đồ hộp"
-                android:textAllCaps="false"
-                android:textColor="@color/mainColor"
-                android:textSize="13sp" />
+                <Button
+                    android:id="@+id/selectspan"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_below="@id/selectdrink"
+                    android:layout_alignParentRight="true"
 
+                    android:layout_marginTop="30dp"
+
+                    android:background="@drawable/btn_circle_white_10"
+
+                    android:drawableTop="@drawable/ic_span"
+                    android:drawablePadding="5dp"
+                    android:padding="10dp"
+
+                    android:text="Đồ hộp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mainColor"
+                    android:textSize="13sp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/vouchercontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/choicetype"
+
+                android:layout_marginTop="20sp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:paddingVertical="10dp"
+                    android:paddingStart="20dp"
+
+                    android:text="Phiếu giảm giá"
+                    android:textColor="@color/mainColor"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="20dp"
+                    android:paddingTop="20dp"
+
+                    android:text="Xem tất cả"
+                    android:textColor="@color/black" />
+
+                <!--        Show voucher in horizontal listview-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/voucher"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/title1"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp" />
+            </RelativeLayout>
 
         </RelativeLayout>
-
-<!--        Show voucher in horizontal listview-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/voucher"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"/>
     </ScrollView>
 
 

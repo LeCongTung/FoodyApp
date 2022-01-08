@@ -1,63 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".waiting_form"
-    android:background="@drawable/background_waiting_form"
+    tools:context=".loading.Loading_toLogin"
+    android:background="@color/mainColor"
     android:orientation="vertical">
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ỨNG DỤNG GIAO HÀNG"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:textSize="35dp"
+        android:textSize="25dp"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_marginBottom="5dp"
-        android:textStyle="italic"/>
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/nameapp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="2T2LK"
-        android:layout_gravity="center"
+        android:layout_below="@id/title"
+        android:layout_marginTop="10dp"
         android:textSize="35dp"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_marginBottom="5dp"
-        android:textStyle="italic"/>
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true"
+
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/delivery"/>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Version 1.0"
-            android:textSize="20dp"
+            android:layout_alignParentBottom="true"
             android:fontFamily="sans-serif-medium"
-            android:textColor="@color/white"
-            android:paddingBottom="12dp"
             android:paddingLeft="20dp"
-            android:textStyle="italic"
-            android:layout_alignParentBottom="true" />
+            android:paddingBottom="12dp"
+            android:text="Version 1.0"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="italic" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Đang tải..."
-            android:textSize="20dp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/white"
-            android:paddingBottom="12dp"
-            android:paddingRight="20dp"
-            android:textStyle="italic"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:fontFamily="sans-serif-medium"
+            android:paddingRight="20dp"
+            android:paddingBottom="12dp"
+            android:text="Đang tải..."
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="italic" />
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
