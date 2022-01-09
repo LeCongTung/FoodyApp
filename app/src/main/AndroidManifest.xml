@@ -16,7 +16,8 @@
         android:theme="@style/Theme.FoodyApp">
         <activity
             android:name=".loading.Loading_afterLogout"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/MainScreen"/>
         <activity
             android:name=".loading.Loading_toHistory"
             android:exported="true"

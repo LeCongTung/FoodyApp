@@ -47,7 +47,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/header">
+        android:layout_below="@id/header"
+        android:layout_above="@id/bottomnav">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -234,6 +235,13 @@
                     android:orientation="horizontal"
                     android:paddingBottom="10dp" />
             </RelativeLayout>
+
+            <ImageView
+                android:layout_below="@+id/vouchercontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/poster"
+                android:layout_marginTop="20sp" />
 
         </RelativeLayout>
     </ScrollView>

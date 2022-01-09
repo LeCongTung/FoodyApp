@@ -26,6 +26,8 @@
                 android:scaleType="centerCrop"
 
                 android:src="@drawable/ic_addimageorange" />
+
+
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>

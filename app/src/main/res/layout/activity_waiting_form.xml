@@ -41,10 +41,10 @@
         android:id="@+id/animation"
         android:layout_width="400dp"
         android:layout_height="400dp"
-        android:layout_centerInParent="true"
 
+        android:layout_centerInParent="true"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/delivery"/>
+        app:lottie_rawRes="@raw/delivery" />
 
 
     <RelativeLayout
