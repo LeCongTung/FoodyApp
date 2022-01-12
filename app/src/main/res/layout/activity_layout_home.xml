@@ -48,7 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/header"
-        android:layout_above="@id/bottomnav">
+        android:layout_above="@id/bottomnav"
+        android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -237,17 +238,62 @@
             </RelativeLayout>
 
             <ImageView
-                android:layout_below="@+id/vouchercontent"
+                android:id="@+id/poster"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/vouchercontent"
+                android:layout_marginTop="20sp"
                 android:src="@drawable/poster"
-                android:layout_marginTop="20sp" />
+                android:background="@color/mainColor"/>
+
+            <RelativeLayout
+                android:id="@+id/discount"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_below="@id/poster"
+
+                android:layout_marginTop="20sp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:paddingVertical="10dp"
+                    android:paddingStart="20dp"
+
+                    android:text="Giảm giá 15%"
+                    android:textColor="@color/mainColor"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="20dp"
+                    android:paddingTop="20dp"
+
+                    android:text="Xem tất cả"
+                    android:textColor="@color/black" />
+
+                <ListView
+                    android:id="@+id/list_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title2"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:divider="@null"
+                    android:dividerHeight="10dp"
+                    android:scrollbars="none" />
+            </RelativeLayout>
 
         </RelativeLayout>
     </ScrollView>
-
-
-<!--    Best choice-->
     
 <!--    Bottom navigation-->
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -43,12 +43,13 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.3574074074074074" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.3574074074074074" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/drawable/ic_camera.xml" value="0.37962962962962965" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3101851851851852" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/drawable/select_bottomnav.xml" value="0.3416666666666667" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_add_image.xml" value="0.3148148148148148" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_add_product.xml" value="0.29074074074074074" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_addproduct.xml" value="0.337037037037037" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_change_pass.xml" value="0.287962962962963" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_complete_pay.xml" value="0.3875" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_complete_pay.xml" value="0.2675925925925926" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_layout_cart.xml" value="0.29907407407407405" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_layout_history.xml" value="0.29907407407407405" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/activity_layout_home.xml" value="0.29907407407407405" />
@@ -77,14 +78,18 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/interface_history.xml" value="0.2851851851851852" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/interface_item.xml" value="0.2851851851851852" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/interface_item_incart.xml" value="0.2861111111111111" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/interface_item_indiscount.xml" value="0.3875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/interface_item_inhome.xml" value="0.30092592592592593" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/interface_item_inlist.xml" value="0.2962962962962963" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/interface_item_lowprice.xml" value="0.3875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/interface_user.xml" value="0.29814814814814816" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/item_product.xml" value="0.337037037037037" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/layout/slideview_panel.xml" value="0.27685185185185185" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/menu/add_product.xml" value="0.33240740740740743" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/menu/menu_bottomnav.xml" value="0.3875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/menu/menu_search.xml" value="0.28888888888888886" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3101851851851852" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FoodyApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3101851851851852" />
       </map>
     </option>
   </component>

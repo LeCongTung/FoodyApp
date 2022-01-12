@@ -61,7 +61,7 @@
 
             android:layout_marginVertical="10dp"
             android:padding="10dp"
-            android:paddingStart="20dp"
+            android:paddingStart="10dp"
 
             android:singleLine="true"/>
 
@@ -88,7 +88,7 @@
                 android:padding="10dp"
                 android:singleLine="true"
                 android:inputType="textPassword"
-                android:paddingStart="20dp"/>
+                android:paddingStart="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
